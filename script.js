@@ -184,7 +184,7 @@ function renumerar(tbody){
 function calcular(card){
   const porcentajes = card.querySelectorAll(".porcentaje");
   const notas = card.querySelectorAll(".nota");
-  const finalBox = card.querySelector(".final-box");
+  const notaFinal = card.querySelector(".nota-final");
 
   let total = 0;
 
@@ -197,10 +197,11 @@ function calcular(card){
     }
   }
 
-  finalBox.textContent = total.toFixed(1);
-  finalBox.style.color = total >= 4 ? "#0a8f3c" : "#c40000";
-}
+  notaFinal.textContent = total.toFixed(1);
 
+  // Cambiar color según aprobación
+  notaFinal.style.color = total >= 4 ? "#0a8f3c" : "#c40000";
+}
 /* =========================
    ACTUALIZAR TOTAL %
 ========================= */
