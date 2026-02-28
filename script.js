@@ -20,14 +20,14 @@ function crearRamo(nombre){
         </tr>
       </thead>
       <tbody class="evaluaciones"></tbody>
-<tfoot>
-  <tr>
-    <td><strong>Total</strong></td>
-    <td class="total-porcentaje">0%</td>
-    <td></td>
-    <td></td>
-  </tr>
-</tfoot>
+      <tfoot>
+        <tr>
+          <td><strong>Total</strong></td>
+          <td class="total-porcentaje">0%</td>
+          <td></td>
+          <td></td>
+        </tr>
+      </tfoot>
     </table>
     <button class="add-btn">+ Añadir evaluación</button>
     <div class="final-box">0.0</div>
@@ -35,7 +35,6 @@ function crearRamo(nombre){
 
   const tbody = card.querySelector(".evaluaciones");
 
-  // Crear 4 evaluaciones iniciales
   for(let j=1; j<=4; j++){
     tbody.appendChild(crearEvaluacion(j, card));
   }
@@ -43,6 +42,8 @@ function crearRamo(nombre){
   card.querySelector(".add-btn").addEventListener("click", ()=>{
     tbody.appendChild(crearEvaluacion(tbody.children.length + 1, card));
   });
+
+  actualizarTotalPorcentaje(card);
 
   return card;
 }
@@ -59,9 +60,9 @@ function crearEvaluacion(numero, card){
 
   tr.querySelectorAll(".porcentaje, .nota").forEach(input=>{
     input.addEventListener("input", ()=>{
-  calcular(card);
-actualizarTotalPorcentaje(card);
-});
+      calcular(card);
+      actualizarTotalPorcentaje(card);
+    });
   });
 
   tr.querySelector(".delete-btn").addEventListener("click", ()=>{
@@ -69,6 +70,7 @@ actualizarTotalPorcentaje(card);
     tr.remove();
     renumerar(tbody);
     calcular(card);
+    actualizarTotalPorcentaje(card);
   });
 
   return tr;
@@ -94,7 +96,14 @@ function calcular(card){
 
     if(!isNaN(n) && !isNaN(p)){
       total += n*p;
-      function actualizarTotalPorcentaje(card){
+    }
+  }
+
+  finalBox.textContent = total.toFixed(1);
+  finalBox.style.color = total >= 4 ? "#0a8f3c" : "#c40000";
+}
+
+function actualizarTotalPorcentaje(card){
   const porcentajes = card.querySelectorAll(".porcentaje");
   const totalBox = card.querySelector(".total-porcentaje");
 
@@ -114,8 +123,4 @@ function calcular(card){
   } else {
     totalBox.style.color = "#c40000";
   }
-}
-      
-  finalBox.textContent = total.toFixed(1);
-  finalBox.style.color = total >= 4 ? "#0a8f3c" : "#c40000";
 }
