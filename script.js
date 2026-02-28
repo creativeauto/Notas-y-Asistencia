@@ -74,15 +74,22 @@ function crearRamo(nombre){
   });
 
   // Eliminar ramo
-  card.querySelector(".eliminar").addEventListener("click", ()=>{
+card.querySelector(".eliminar").addEventListener("click", () => {
+
+  const nombreRamo = card.querySelector(".ramo-titulo")?.value || "este ramo";
+
+  const confirmar = confirm(`¿Estás seguro de que quieres eliminar ${nombreRamo}?`);
+
+  if(confirmar){
     card.remove();
     guardarDatos();
     actualizarBotonesAgregar();
-  });
+  }
 
+});
   // Reiniciar ramo
   card.querySelector(".reiniciar").addEventListener("click", ()=>{
-    if(!confirm("¿Seguro que quieres reiniciar este ramo?")) return;
+    if(!confirm(`¿Estás seguro de que quieres eliminar ${nombreRamo}?`)) return;
 
     const tbody = card.querySelector(".evaluaciones");
     tbody.innerHTML = "";
