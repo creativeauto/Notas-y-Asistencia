@@ -221,3 +221,41 @@ function cargarDatos(){
     grid.appendChild(card);
   });
 }
+function activarEnterVertical(){
+  document.addEventListener("keydown", function(e){
+    if(e.key !== "Enter") return;
+
+    const active = document.activeElement;
+
+    if(!active.matches(".porcentaje, .nota, .eval-nombre, .ramo-titulo")) return;
+
+    e.preventDefault();
+
+    // Si es el título del ramo
+    if(active.classList.contains("ramo-titulo")){
+      const nextCard = active.closest(".card").nextElementSibling;
+      if(nextCard){
+        nextCard.querySelector(".ramo-titulo").focus();
+      }
+      return;
+    }
+
+    const td = active.closest("td");
+    const tr = active.closest("tr");
+    const tbody = tr.parentElement;
+
+    const columnIndex = [...tr.children].indexOf(td);
+    const filas = [...tbody.querySelectorAll("tr")];
+    const rowIndex = filas.indexOf(tr);
+
+    const nextRow = filas[rowIndex + 1];
+
+    if(nextRow){
+      const nextInput = nextRow.children[columnIndex].querySelector("input");
+      if(nextInput){
+        nextInput.focus();
+        nextInput.select();
+      }
+    }
+  });
+}
