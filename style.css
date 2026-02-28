@@ -147,18 +147,6 @@ button:hover{
   background:#9e0000;
 }
 
-/* ===== NOTA FINAL ===== */
-
-.final-box{
-  position:absolute;
-  top:40px; /* BAJAMOS la nota */
-  right:15px;
-  font-size:24px;
-  font-weight:bold;
-  color:#c40000;
-  z-index:1;
-}
-
 /* ===== BOTONES + RAMO ===== */
 
 .add-ramo-card{
