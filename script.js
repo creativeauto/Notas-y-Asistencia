@@ -182,9 +182,20 @@ function calcular(card){
 
   let total = 0;
 
-  for(let i=0; i<notas.length; i++){
+  for(let i = 0; i < notas.length; i++){
     const p = parseFloat(porcentajes[i].value) / 100;
     const n = parseFloat(notas[i].value);
+
+    if(!isNaN(n)){
+     
+      if(n >= 40){
+        notas[i].style.color = "#0a8f3c"; // verde
+      } else {
+        notas[i].style.color = "#c40000"; // rojo
+      }
+    } else {
+      notas[i].style.color = "";
+    }
 
     if(!isNaN(n) && !isNaN(p)){
       total += n * p;
@@ -192,9 +203,13 @@ function calcular(card){
   }
 
   notaFinal.textContent = total.toFixed(1);
-  notaFinal.style.color = total >= 4 ? "#0a8f3c" : "#c40000";
-}
 
+  if(total >= 40){
+    notaFinal.style.color = "#0a8f3c";
+  } else {
+    notaFinal.style.color = "#c40000";
+  }
+}
 /* =========================
    ACTUALIZAR TOTAL %
 ========================= */
