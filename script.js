@@ -46,13 +46,16 @@ function crearRamo(nombre){
       </thead>
       <tbody class="evaluaciones"></tbody>
       <tfoot>
-        <tr>
-          <td><strong>Total</strong></td>
-          <td class="total-porcentaje">0%</td>
-          <td class="nota-final">0.0</td>
-          <td></td>
-        </tr>
-      </tfoot>
+  <tr>
+    <td><strong>Total</strong></td>
+    <td class="total-porcentaje">0%</td>
+    <td>
+      <span class="nota-final">0</span>
+      <div class="mensaje-reescala"></div>
+    </td>
+    <td></td>
+  </tr>
+</tfoot>
     </table>
     <button class="add-btn">+ Añadir evaluación</button>
   `;
@@ -179,20 +182,24 @@ function calcular(card){
   const porcentajes = card.querySelectorAll(".porcentaje");
   const notas = card.querySelectorAll(".nota");
   const notaFinal = card.querySelector(".nota-final");
+  const mensaje = card.querySelector(".mensaje-reescala");
 
   if(!notaFinal) return;
 
   let sumaPonderada = 0;
   let totalPorcentaje = 0;
-  let todosLosPorcentajesCompletos = true;
+  let tablaCompleta = true;
 
   for(let i = 0; i < notas.length; i++){
-    const p = parseFloat(porcentajes[i].value);
-    const n = parseFloat(notas[i].value);
+    const pValue = porcentajes[i].value;
+    const nValue = notas[i].value;
 
-    // Verificar si falta porcentaje
-    if(porcentajes[i].value === ""){
-      todosLosPorcentajesCompletos = false;
+    const p = parseFloat(pValue);
+    const n = parseFloat(nValue);
+
+    // Verificar si falta algo
+    if(pValue === "" || nValue === ""){
+      tablaCompleta = false;
     }
 
     // Color individual de notas
@@ -209,12 +216,13 @@ function calcular(card){
   }
 
   let notaCalculada = 0;
+  let seReescala = false;
 
   if(totalPorcentaje > 0){
 
-   
-    if(totalPorcentaje < 100 && todosLosPorcentajesCompletos){
+    if(tablaCompleta && totalPorcentaje < 100){
       notaCalculada = sumaPonderada / (totalPorcentaje / 100);
+      seReescala = true;
     } else {
       notaCalculada = sumaPonderada;
     }
@@ -222,6 +230,16 @@ function calcular(card){
 
   notaFinal.textContent = formatearNumero(notaCalculada);
   notaFinal.style.color = notaCalculada >= 40 ? "#0a8f3c" : "#c40000";
+
+  // 🔥 Mostrar mensaje solo si se re-escala
+  if(seReescala){
+    mensaje.textContent = "Promedio re-escalado (tabla completa < 100%)";
+    mensaje.style.fontSize = "12px";
+    mensaje.style.color = "#666";
+    mensaje.style.marginTop = "4px";
+  } else {
+    mensaje.textContent = "";
+  }
 }
 /* =========================
    CALCULAR PORCENTAJE TOTAL
