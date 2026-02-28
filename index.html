@@ -15,12 +15,17 @@
   <div class="card">
     <input class="ramo-titulo" value="Ramo 1">
     <table>
-      <tr><th>Eval</th><th>%</th><th>Nota</th></tr>
-      <tr><td><input class="eval-nombre" value="P1"></td><td><input type="number" value="25" class="porcentaje"></td><td><input type="number" class="nota"></td></tr>
-      <tr><td><input class="eval-nombre" value="P2"></td><td><input type="number" value="25" class="porcentaje"></td><td><input type="number" class="nota"></td></tr>
-      <tr><td><input class="eval-nombre" value="P3"></td><td><input type="number" value="30" class="porcentaje"></td><td><input type="number" class="nota"></td></tr>
-      <tr><td><input class="eval-nombre" value="P4"></td><td><input type="number" value="20" class="porcentaje"></td><td><input type="number" class="nota"></td></tr>
+      <thead>
+        <tr><th>Eval</th><th>%</th><th>Nota</th></tr>
+      </thead>
+      <tbody class="evaluaciones">
+        <tr><td><input class="eval-nombre" value="Evaluación 1"></td><td><input type="number" value="25" class="porcentaje"></td><td><input type="number" class="nota"></td></tr>
+        <tr><td><input class="eval-nombre" value="Evaluación 2"></td><td><input type="number" value="25" class="porcentaje"></td><td><input type="number" class="nota"></td></tr>
+        <tr><td><input class="eval-nombre" value="Evaluación 3"></td><td><input type="number" value="30" class="porcentaje"></td><td><input type="number" class="nota"></td></tr>
+        <tr><td><input class="eval-nombre" value="Evaluación 4"></td><td><input type="number" value="20" class="porcentaje"></td><td><input type="number" class="nota"></td></tr>
+      </tbody>
     </table>
+    <button onclick="agregarEvaluacion(this)">+ Añadir evaluación</button>
     <button onclick="calcular(this)">Calcular</button>
     <div class="final-box">0.0</div>
   </div>
@@ -29,12 +34,17 @@
   <div class="card">
     <input class="ramo-titulo" value="Ramo 2">
     <table>
-      <tr><th>Eval</th><th>%</th><th>Nota</th></tr>
-      <tr><td><input class="eval-nombre" value="P1"></td><td><input type="number" value="25" class="porcentaje"></td><td><input type="number" class="nota"></td></tr>
-      <tr><td><input class="eval-nombre" value="P2"></td><td><input type="number" value="25" class="porcentaje"></td><td><input type="number" class="nota"></td></tr>
-      <tr><td><input class="eval-nombre" value="P3"></td><td><input type="number" value="30" class="porcentaje"></td><td><input type="number" class="nota"></td></tr>
-      <tr><td><input class="eval-nombre" value="P4"></td><td><input type="number" value="20" class="porcentaje"></td><td><input type="number" class="nota"></td></tr>
+      <thead>
+        <tr><th>Eval</th><th>%</th><th>Nota</th></tr>
+      </thead>
+      <tbody class="evaluaciones">
+        <tr><td><input class="eval-nombre" value="Evaluación 1"></td><td><input type="number" value="25" class="porcentaje"></td><td><input type="number" class="nota"></td></tr>
+        <tr><td><input class="eval-nombre" value="Evaluación 2"></td><td><input type="number" value="25" class="porcentaje"></td><td><input type="number" class="nota"></td></tr>
+        <tr><td><input class="eval-nombre" value="Evaluación 3"></td><td><input type="number" value="30" class="porcentaje"></td><td><input type="number" class="nota"></td></tr>
+        <tr><td><input class="eval-nombre" value="Evaluación 4"></td><td><input type="number" value="20" class="porcentaje"></td><td><input type="number" class="nota"></td></tr>
+      </tbody>
     </table>
+    <button onclick="agregarEvaluacion(this)">+ Añadir evaluación</button>
     <button onclick="calcular(this)">Calcular</button>
     <div class="final-box">0.0</div>
   </div>
@@ -43,12 +53,17 @@
   <div class="card">
     <input class="ramo-titulo" value="Ramo 3">
     <table>
-      <tr><th>Eval</th><th>%</th><th>Nota</th></tr>
-      <tr><td><input class="eval-nombre" value="P1"></td><td><input type="number" value="25" class="porcentaje"></td><td><input type="number" class="nota"></td></tr>
-      <tr><td><input class="eval-nombre" value="P2"></td><td><input type="number" value="25" class="porcentaje"></td><td><input type="number" class="nota"></td></tr>
-      <tr><td><input class="eval-nombre" value="P3"></td><td><input type="number" value="30" class="porcentaje"></td><td><input type="number" class="nota"></td></tr>
-      <tr><td><input class="eval-nombre" value="P4"></td><td><input type="number" value="20" class="porcentaje"></td><td><input type="number" class="nota"></td></tr>
+      <thead>
+        <tr><th>Eval</th><th>%</th><th>Nota</th></tr>
+      </thead>
+      <tbody class="evaluaciones">
+        <tr><td><input class="eval-nombre" value="Evaluación 1"></td><td><input type="number" value="25" class="porcentaje"></td><td><input type="number" class="nota"></td></tr>
+        <tr><td><input class="eval-nombre" value="Evaluación 2"></td><td><input type="number" value="25" class="porcentaje"></td><td><input type="number" class="nota"></td></tr>
+        <tr><td><input class="eval-nombre" value="Evaluación 3"></td><td><input type="number" value="30" class="porcentaje"></td><td><input type="number" class="nota"></td></tr>
+        <tr><td><input class="eval-nombre" value="Evaluación 4"></td><td><input type="number" value="20" class="porcentaje"></td><td><input type="number" class="nota"></td></tr>
+      </tbody>
     </table>
+    <button onclick="agregarEvaluacion(this)">+ Añadir evaluación</button>
     <button onclick="calcular(this)">Calcular</button>
     <div class="final-box">0.0</div>
   </div>
@@ -57,12 +72,17 @@
   <div class="card">
     <input class="ramo-titulo" value="Ramo 4">
     <table>
-      <tr><th>Eval</th><th>%</th><th>Nota</th></tr>
-      <tr><td><input class="eval-nombre" value="P1"></td><td><input type="number" value="25" class="porcentaje"></td><td><input type="number" class="nota"></td></tr>
-      <tr><td><input class="eval-nombre" value="P2"></td><td><input type="number" value="25" class="porcentaje"></td><td><input type="number" class="nota"></td></tr>
-      <tr><td><input class="eval-nombre" value="P3"></td><td><input type="number" value="30" class="porcentaje"></td><td><input type="number" class="nota"></td></tr>
-      <tr><td><input class="eval-nombre" value="P4"></td><td><input type="number" value="20" class="porcentaje"></td><td><input type="number" class="nota"></td></tr>
+      <thead>
+        <tr><th>Eval</th><th>%</th><th>Nota</th></tr>
+      </thead>
+      <tbody class="evaluaciones">
+        <tr><td><input class="eval-nombre" value="Evaluación 1"></td><td><input type="number" value="25" class="porcentaje"></td><td><input type="number" class="nota"></td></tr>
+        <tr><td><input class="eval-nombre" value="Evaluación 2"></td><td><input type="number" value="25" class="porcentaje"></td><td><input type="number" class="nota"></td></tr>
+        <tr><td><input class="eval-nombre" value="Evaluación 3"></td><td><input type="number" value="30" class="porcentaje"></td><td><input type="number" class="nota"></td></tr>
+        <tr><td><input class="eval-nombre" value="Evaluación 4"></td><td><input type="number" value="20" class="porcentaje"></td><td><input type="number" class="nota"></td></tr>
+      </tbody>
     </table>
+    <button onclick="agregarEvaluacion(this)">+ Añadir evaluación</button>
     <button onclick="calcular(this)">Calcular</button>
     <div class="final-box">0.0</div>
   </div>
@@ -71,12 +91,17 @@
   <div class="card">
     <input class="ramo-titulo" value="Ramo 5">
     <table>
-      <tr><th>Eval</th><th>%</th><th>Nota</th></tr>
-      <tr><td><input class="eval-nombre" value="P1"></td><td><input type="number" value="25" class="porcentaje"></td><td><input type="number" class="nota"></td></tr>
-      <tr><td><input class="eval-nombre" value="P2"></td><td><input type="number" value="25" class="porcentaje"></td><td><input type="number" class="nota"></td></tr>
-      <tr><td><input class="eval-nombre" value="P3"></td><td><input type="number" value="30" class="porcentaje"></td><td><input type="number" class="nota"></td></tr>
-      <tr><td><input class="eval-nombre" value="P4"></td><td><input type="number" value="20" class="porcentaje"></td><td><input type="number" class="nota"></td></tr>
+      <thead>
+        <tr><th>Eval</th><th>%</th><th>Nota</th></tr>
+      </thead>
+      <tbody class="evaluaciones">
+        <tr><td><input class="eval-nombre" value="Evaluación 1"></td><td><input type="number" value="25" class="porcentaje"></td><td><input type="number" class="nota"></td></tr>
+        <tr><td><input class="eval-nombre" value="Evaluación 2"></td><td><input type="number" value="25" class="porcentaje"></td><td><input type="number" class="nota"></td></tr>
+        <tr><td><input class="eval-nombre" value="Evaluación 3"></td><td><input type="number" value="30" class="porcentaje"></td><td><input type="number" class="nota"></td></tr>
+        <tr><td><input class="eval-nombre" value="Evaluación 4"></td><td><input type="number" value="20" class="porcentaje"></td><td><input type="number" class="nota"></td></tr>
+      </tbody>
     </table>
+    <button onclick="agregarEvaluacion(this)">+ Añadir evaluación</button>
     <button onclick="calcular(this)">Calcular</button>
     <div class="final-box">0.0</div>
   </div>
@@ -85,12 +110,17 @@
   <div class="card">
     <input class="ramo-titulo" value="Ramo 6">
     <table>
-      <tr><th>Eval</th><th>%</th><th>Nota</th></tr>
-      <tr><td><input class="eval-nombre" value="P1"></td><td><input type="number" value="25" class="porcentaje"></td><td><input type="number" class="nota"></td></tr>
-      <tr><td><input class="eval-nombre" value="P2"></td><td><input type="number" value="25" class="porcentaje"></td><td><input type="number" class="nota"></td></tr>
-      <tr><td><input class="eval-nombre" value="P3"></td><td><input type="number" value="30" class="porcentaje"></td><td><input type="number" class="nota"></td></tr>
-      <tr><td><input class="eval-nombre" value="P4"></td><td><input type="number" value="20" class="porcentaje"></td><td><input type="number" class="nota"></td></tr>
+      <thead>
+        <tr><th>Eval</th><th>%</th><th>Nota</th></tr>
+      </thead>
+      <tbody class="evaluaciones">
+        <tr><td><input class="eval-nombre" value="Evaluación 1"></td><td><input type="number" value="25" class="porcentaje"></td><td><input type="number" class="nota"></td></tr>
+        <tr><td><input class="eval-nombre" value="Evaluación 2"></td><td><input type="number" value="25" class="porcentaje"></td><td><input type="number" class="nota"></td></tr>
+        <tr><td><input class="eval-nombre" value="Evaluación 3"></td><td><input type="number" value="30" class="porcentaje"></td><td><input type="number" class="nota"></td></tr>
+        <tr><td><input class="eval-nombre" value="Evaluación 4"></td><td><input type="number" value="20" class="porcentaje"></td><td><input type="number" class="nota"></td></tr>
+      </tbody>
     </table>
+    <button onclick="agregarEvaluacion(this)">+ Añadir evaluación</button>
     <button onclick="calcular(this)">Calcular</button>
     <div class="final-box">0.0</div>
   </div>
@@ -116,6 +146,20 @@ function calcular(btn){
 
   finalBox.textContent = total.toFixed(1);
   finalBox.style.color = total >= 4 ? "#0a8f3c" : "#c40000";
+}
+
+function agregarEvaluacion(btn){
+  const card = btn.closest(".card");
+  const tbody = card.querySelector(".evaluaciones");
+
+  const nuevaFila = document.createElement("tr");
+  nuevaFila.innerHTML = `
+    <td><input class="eval-nombre" value="Nueva"></td>
+    <td><input type="number" class="porcentaje"></td>
+    <td><input type="number" class="nota"></td>
+  `;
+
+  tbody.appendChild(nuevaFila);
 }
 </script>
 
