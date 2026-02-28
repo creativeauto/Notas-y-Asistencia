@@ -88,8 +88,13 @@ card.querySelector(".eliminar").addEventListener("click", () => {
 
 });
   // Reiniciar ramo
-  card.querySelector(".reiniciar").addEventListener("click", ()=>{
-    if(!confirm(`¿Estás seguro de que quieres eliminar ${nombreRamo}?`)) return;
+card.querySelector(".reiniciar").addEventListener("click", () => {
+
+  const nombreRamo = card.querySelector(".ramo-titulo")?.value || "este ramo";
+
+  const confirmar = confirm(`¿Estás seguro de que quieres reiniciar ${nombreRamo}?`);
+
+  if(!confirmar) return;
 
     const tbody = card.querySelector(".evaluaciones");
     tbody.innerHTML = "";
