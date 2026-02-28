@@ -1,8 +1,20 @@
 const grid = document.getElementById("grid");
 
-for(let i=1; i<=6; i++){
-  grid.appendChild(crearRamo("Ramo " + i));
+/* =========================
+   CARGAR DATOS AL INICIAR
+========================= */
+
+cargarDatos();
+
+if(grid.children.length === 0){
+  for(let i=1; i<=6; i++){
+    grid.appendChild(crearRamo("Ramo " + i));
+  }
 }
+
+/* =========================
+   CREAR RAMO
+========================= */
 
 function crearRamo(nombre){
   const card = document.createElement("div");
@@ -42,12 +54,22 @@ function crearRamo(nombre){
   card.querySelector(".add-btn").addEventListener("click", ()=>{
     tbody.appendChild(crearEvaluacion(tbody.children.length + 1, card));
     actualizarTotalPorcentaje(card);
+    guardarDatos();
+  });
+
+  // Guardar si cambian el nombre del ramo
+  card.querySelector(".ramo-titulo").addEventListener("input", ()=>{
+    guardarDatos();
   });
 
   actualizarTotalPorcentaje(card);
 
   return card;
 }
+
+/* =========================
+   CREAR EVALUACION
+========================= */
 
 function crearEvaluacion(numero, card){
   const tr = document.createElement("tr");
@@ -59,10 +81,11 @@ function crearEvaluacion(numero, card){
     <td><button class="delete-btn">🗑</button></td>
   `;
 
-  tr.querySelectorAll(".porcentaje, .nota").forEach(input=>{
+  tr.querySelectorAll(".porcentaje, .nota, .eval-nombre").forEach(input=>{
     input.addEventListener("input", ()=>{
       calcular(card);
       actualizarTotalPorcentaje(card);
+      guardarDatos();
     });
   });
 
@@ -72,10 +95,15 @@ function crearEvaluacion(numero, card){
     renumerar(tbody);
     calcular(card);
     actualizarTotalPorcentaje(card);
+    guardarDatos();
   });
 
   return tr;
 }
+
+/* =========================
+   RENUMERAR
+========================= */
 
 function renumerar(tbody){
   const filas = tbody.querySelectorAll("tr");
@@ -83,6 +111,10 @@ function renumerar(tbody){
     fila.querySelector(".eval-nombre").value = "Evaluación " + (index + 1);
   });
 }
+
+/* =========================
+   CALCULAR NOTA FINAL
+========================= */
 
 function calcular(card){
   const porcentajes = card.querySelectorAll(".porcentaje");
@@ -104,6 +136,10 @@ function calcular(card){
   finalBox.style.color = total >= 4 ? "#0a8f3c" : "#c40000";
 }
 
+/* =========================
+   ACTUALIZAR TOTAL %
+========================= */
+
 function actualizarTotalPorcentaje(card){
   const porcentajes = card.querySelectorAll(".porcentaje");
   const totalBox = card.querySelector(".total-porcentaje");
@@ -124,4 +160,64 @@ function actualizarTotalPorcentaje(card){
   } else {
     totalBox.style.color = "#c40000";
   }
+}
+
+/* =========================
+   GUARDAR DATOS
+========================= */
+
+function guardarDatos(){
+  const ramos = [];
+
+  document.querySelectorAll(".card").forEach(card=>{
+    const ramo = {
+      titulo: card.querySelector(".ramo-titulo").value,
+      evaluaciones: []
+    };
+
+    card.querySelectorAll("tbody tr").forEach(tr=>{
+      ramo.evaluaciones.push({
+        nombre: tr.querySelector(".eval-nombre").value,
+        porcentaje: tr.querySelector(".porcentaje").value,
+        nota: tr.querySelector(".nota").value
+      });
+    });
+
+    ramos.push(ramo);
+  });
+
+  localStorage.setItem("calculadoraRamos", JSON.stringify(ramos));
+}
+
+/* =========================
+   CARGAR DATOS
+========================= */
+
+function cargarDatos(){
+  const datosGuardados = localStorage.getItem("calculadoraRamos");
+
+  if(!datosGuardados) return;
+
+  const ramos = JSON.parse(datosGuardados);
+  grid.innerHTML = "";
+
+  ramos.forEach(ramo=>{
+    const card = crearRamo(ramo.titulo);
+    const tbody = card.querySelector(".evaluaciones");
+    tbody.innerHTML = "";
+
+    ramo.evaluaciones.forEach((evalData, index)=>{
+      const tr = crearEvaluacion(index+1, card);
+
+      tr.querySelector(".eval-nombre").value = evalData.nombre;
+      tr.querySelector(".porcentaje").value = evalData.porcentaje;
+      tr.querySelector(".nota").value = evalData.nota;
+
+      tbody.appendChild(tr);
+    });
+
+    calcular(card);
+    actualizarTotalPorcentaje(card);
+    grid.appendChild(card);
+  });
 }
