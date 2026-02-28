@@ -233,7 +233,7 @@ function calcular(card){
 
   // 🔥 Mostrar mensaje solo si se re-escala
   if(seReescala){
-    mensaje.textContent = "Promedio re-escalado (tabla completa < 100%)";
+    mensaje.textContent = "Promedio re-escalado";
     mensaje.style.fontSize = "12px";
     mensaje.style.color = "#666";
     mensaje.style.marginTop = "4px";
