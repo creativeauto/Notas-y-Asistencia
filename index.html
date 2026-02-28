@@ -1,101 +1,175 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
-  <title>Calculadora de Notas</title>
-  <style>
-    body{
-      font-family: Arial, sans-serif;
-    }
+<meta charset="UTF-8">
+<title>Notas por Ramo</title>
 
-    table{
-      border-collapse: collapse;
-      width: 400px;
-    }
+<style>
+body{
+  font-family: "Segoe UI", sans-serif;
+  background:#f3f4f8;
+  margin:0;
+  padding:40px;
+}
 
-    th{
-      background: #c40000;
-      color: white;
-      padding: 8px;
-    }
+h1{
+  text-align:center;
+  margin-bottom:40px;
+  font-weight:600;
+}
 
-    td{
-      padding: 6px;
-      text-align: center;
-      border: 1px solid #ccc;
-    }
+.grid{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap:30px;
+  max-width:1200px;
+  margin:auto;
+}
 
-    input{
-      width: 60px;
-      text-align: center;
-    }
+.card{
+  background:white;
+  border-radius:12px;
+  box-shadow:0 8px 25px rgba(0,0,0,0.08);
+  overflow:hidden;
+  display:flex;
+}
 
-    .resultado{
-      font-size: 22px;
-      font-weight: bold;
-      color: green;
-    }
-  </style>
+.card-content{
+  padding:15px;
+  flex:1;
+}
+
+.ramo-titulo{
+  font-weight:600;
+  margin-bottom:10px;
+}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+  font-size:13px;
+}
+
+th{
+  background:#c40000;
+  color:white;
+  padding:6px;
+}
+
+td{
+  padding:6px;
+  text-align:center;
+  border-bottom:1px solid #eee;
+}
+
+input{
+  width:50px;
+  border:1px solid #ccc;
+  border-radius:4px;
+  text-align:center;
+}
+
+.final-box{
+  width:80px;
+  background:#f0f0f3;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:22px;
+  font-weight:bold;
+  color:#c40000;
+}
+
+button{
+  margin-top:10px;
+  padding:6px 10px;
+  border:none;
+  background:#c40000;
+  color:white;
+  border-radius:5px;
+  cursor:pointer;
+  font-size:12px;
+}
+
+button:hover{
+  background:#9e0000;
+}
+</style>
 </head>
+
 <body>
 
-<h2>Calculadora de Promedio</h2>
+<h1>Calculadora de Ramo</h1>
 
-<table>
-  <tr>
-    <th>Evaluación</th>
-    <th>%</th>
-    <th>Nota</th>
-  </tr>
+<div class="grid">
 
-  <tr>
-    <td>Prueba 1</td>
-    <td><input type="number" value="25" class="porcentaje"></td>
-    <td><input type="number" step="0.1" class="nota"></td>
-  </tr>
+  <!-- 6 tarjetas -->
+  <div class="card"> <div class="card-content"> <div class="ramo-titulo">Ramo 1</div> 
+    <table>
+      <tr><th>Eval</th><th>%</th><th>Nota</th></tr>
+      <tr><td>P1</td><td><input value="25" class="porcentaje"></td><td><input class="nota"></td></tr>
+      <tr><td>P2</td><td><input value="25" class="porcentaje"></td><td><input class="nota"></td></tr>
+      <tr><td>P3</td><td><input value="30" class="porcentaje"></td><td><input class="nota"></td></tr>
+      <tr><td>P4</td><td><input value="20" class="porcentaje"></td><td><input class="nota"></td></tr>
+    </table>
+    <button onclick="calcular(this)">Calcular</button>
+  </div>
+  <div class="final-box">0.0</div>
+  </div>
 
-  <tr>
-    <td>Prueba 2</td>
-    <td><input type="number" value="25" class="porcentaje"></td>
-    <td><input type="number" step="0.1" class="nota"></td>
-  </tr>
+  <!-- duplicamos 5 más -->
+  <!-- Puedes cambiar nombres después -->
 
-  <tr>
-    <td>Prueba 3</td>
-    <td><input type="number" value="30" class="porcentaje"></td>
-    <td><input type="number" step="0.1" class="nota"></td>
-  </tr>
+  <div class="card"> <div class="card-content"><div class="ramo-titulo">Ramo 2</div>
+    <table>
+      <tr><th>Eval</th><th>%</th><th>Nota</th></tr>
+      <tr><td>P1</td><td><input value="25" class="porcentaje"></td><td><input class="nota"></td></tr>
+      <tr><td>P2</td><td><input value="25" class="porcentaje"></td><td><input class="nota"></td></tr>
+      <tr><td>P3</td><td><input value="30" class="porcentaje"></td><td><input class="nota"></td></tr>
+      <tr><td>P4</td><td><input value="20" class="porcentaje"></td><td><input class="nota"></td></tr>
+    </table>
+    <button onclick="calcular(this)">Calcular</button>
+  </div>
+  <div class="final-box">0.0</div>
+  </div>
 
-  <tr>
-    <td>Prueba 4</td>
-    <td><input type="number" value="20" class="porcentaje"></td>
-    <td><input type="number" step="0.1" class="nota"></td>
-  </tr>
-</table>
+  <div class="card"> <div class="card-content"><div class="ramo-titulo">Ramo 3</div>
+    <table>
+      <tr><th>Eval</th><th>%</th><th>Nota</th></tr>
+      <tr><td>P1</td><td><input value="25" class="porcentaje"></td><td><input class="nota"></td></tr>
+      <tr><td>P2</td><td><input value="25" class="porcentaje"></td><td><input class="nota"></td></tr>
+      <tr><td>P3</td><td><input value="30" class="porcentaje"></td><td><input class="nota"></td></tr>
+      <tr><td>P4</td><td><input value="20" class="porcentaje"></td><td><input class="nota"></td></tr>
+    </table>
+    <button onclick="calcular(this)">Calcular</button>
+  </div>
+  <div class="final-box">0.0</div>
+  </div>
 
-<br>
+  <div class="card"> <div class="card-content"><div class="ramo-titulo">Ramo 4</div>...</div><div class="final-box">0.0</div></div>
+  <div class="card"> <div class="card-content"><div class="ramo-titulo">Ramo 5</div>...</div><div class="final-box">0.0</div></div>
+  <div class="card"> <div class="card-content"><div class="ramo-titulo">Ramo 6</div>...</div><div class="final-box">0.0</div></div>
 
-<button onclick="calcular()">Calcular promedio</button>
-
-<p>Nota final: <span class="resultado" id="final">0.0</span></p>
+</div>
 
 <script>
-function calcular(){
-  const porcentajes = document.querySelectorAll(".porcentaje");
-  const notas = document.querySelectorAll(".nota");
+function calcular(btn){
+  const card = btn.closest(".card");
+  const porcentajes = card.querySelectorAll(".porcentaje");
+  const notas = card.querySelectorAll(".nota");
+  const finalBox = card.querySelector(".final-box");
 
   let total = 0;
 
-  for(let i = 0; i < notas.length; i++){
-    let p = parseFloat(porcentajes[i].value) / 100;
+  for(let i=0;i<notas.length;i++){
+    let p = parseFloat(porcentajes[i].value)/100;
     let n = parseFloat(notas[i].value);
-
     if(!isNaN(n)){
-      total += n * p;
+      total += n*p;
     }
   }
 
-  document.getElementById("final").textContent = total.toFixed(1);
+  finalBox.textContent = total.toFixed(1);
 }
 </script>
 
