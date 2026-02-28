@@ -46,16 +46,15 @@ function crearRamo(nombre){
         <tr>
           <td><strong>Total</strong></td>
           <td class="total-porcentaje">0%</td>
-          <td></td>
+          <td class="nota-final">0.0</td>
           <td></td>
         </tr>
       </tfoot>
     </table>
     <button class="add-btn">+ Añadir evaluación</button>
-    <div class="final-box">0.0</div>
   `;
 
-  /* ===== MENÚ FUNCIONAL ===== */
+  /* ===== MENÚ ===== */
 
   const menuBtn = card.querySelector(".menu-btn");
   const dropdown = card.querySelector(".menu-dropdown");
@@ -74,27 +73,21 @@ function crearRamo(nombre){
   });
 
   // Eliminar ramo
-card.querySelector(".eliminar").addEventListener("click", () => {
+  card.querySelector(".eliminar").addEventListener("click", () => {
+    const nombreRamo = card.querySelector(".ramo-titulo")?.value || "este ramo";
+    const confirmar = confirm(`¿Estás seguro de que quieres eliminar ${nombreRamo}?`);
+    if(confirmar){
+      card.remove();
+      guardarDatos();
+      actualizarBotonesAgregar();
+    }
+  });
 
-  const nombreRamo = card.querySelector(".ramo-titulo")?.value || "este ramo";
-
-  const confirmar = confirm(`¿Estás seguro de que quieres eliminar ${nombreRamo}?`);
-
-  if(confirmar){
-    card.remove();
-    guardarDatos();
-    actualizarBotonesAgregar();
-  }
-
-});
   // Reiniciar ramo
-card.querySelector(".reiniciar").addEventListener("click", () => {
-
-  const nombreRamo = card.querySelector(".ramo-titulo")?.value || "este ramo";
-
-  const confirmar = confirm(`¿Estás seguro de que quieres reiniciar ${nombreRamo}?`);
-
-  if(!confirmar) return;
+  card.querySelector(".reiniciar").addEventListener("click", () => {
+    const nombreRamo = card.querySelector(".ramo-titulo")?.value || "este ramo";
+    const confirmar = confirm(`¿Estás seguro de que quieres reiniciar ${nombreRamo}?`);
+    if(!confirmar) return;
 
     const tbody = card.querySelector(".evaluaciones");
     tbody.innerHTML = "";
@@ -108,8 +101,6 @@ card.querySelector(".reiniciar").addEventListener("click", () => {
     actualizarTotalPorcentaje(card);
     guardarDatos();
   });
-
-  /* ===== FIN MENÚ ===== */
 
   const tbody = card.querySelector(".evaluaciones");
 
@@ -128,6 +119,7 @@ card.querySelector(".reiniciar").addEventListener("click", () => {
   });
 
   actualizarTotalPorcentaje(card);
+  calcular(card);
 
   return card;
 }
@@ -186,6 +178,8 @@ function calcular(card){
   const notas = card.querySelectorAll(".nota");
   const notaFinal = card.querySelector(".nota-final");
 
+  if(!notaFinal) return;
+
   let total = 0;
 
   for(let i=0; i<notas.length; i++){
@@ -198,10 +192,9 @@ function calcular(card){
   }
 
   notaFinal.textContent = total.toFixed(1);
-
-  // Cambiar color según aprobación
   notaFinal.style.color = total >= 4 ? "#0a8f3c" : "#c40000";
 }
+
 /* =========================
    ACTUALIZAR TOTAL %
 ========================= */
@@ -220,12 +213,8 @@ function actualizarTotalPorcentaje(card){
   });
 
   totalBox.textContent = total.toFixed(1) + "%";
-
-  if(total >= 99.9 && total <= 100.1){
-    totalBox.style.color = "#0a8f3c";
-  } else {
-    totalBox.style.color = "#c40000";
-  }
+  totalBox.style.color =
+    (total >= 99.9 && total <= 100.1) ? "#0a8f3c" : "#c40000";
 }
 
 /* =========================
