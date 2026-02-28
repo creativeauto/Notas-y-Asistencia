@@ -175,7 +175,6 @@ function renumerar(tbody){
 /* =========================
    CALCULAR NOTA FINAL
 ========================= */
-
 function calcular(card){
   const porcentajes = card.querySelectorAll(".porcentaje");
   const notas = card.querySelectorAll(".nota");
@@ -183,12 +182,20 @@ function calcular(card){
 
   if(!notaFinal) return;
 
-  let total = 0;
+  let sumaPonderada = 0;
+  let totalPorcentaje = 0;
+  let todosLosPorcentajesCompletos = true;
 
   for(let i = 0; i < notas.length; i++){
-    const p = parseFloat(porcentajes[i].value) / 100;
+    const p = parseFloat(porcentajes[i].value);
     const n = parseFloat(notas[i].value);
 
+    // Verificar si falta porcentaje
+    if(porcentajes[i].value === ""){
+      todosLosPorcentajesCompletos = false;
+    }
+
+    // Color individual de notas
     if(!isNaN(n)){
       notas[i].style.color = n >= 40 ? "#0a8f3c" : "#c40000";
     } else {
@@ -196,12 +203,25 @@ function calcular(card){
     }
 
     if(!isNaN(n) && !isNaN(p)){
-      total += n * p;
+      sumaPonderada += n * (p / 100);
+      totalPorcentaje += p;
     }
   }
 
-  notaFinal.textContent = formatearNumero(total);
-  notaFinal.style.color = total >= 40 ? "#0a8f3c" : "#c40000";
+  let notaCalculada = 0;
+
+  if(totalPorcentaje > 0){
+
+   
+    if(totalPorcentaje < 100 && todosLosPorcentajesCompletos){
+      notaCalculada = sumaPonderada / (totalPorcentaje / 100);
+    } else {
+      notaCalculada = sumaPonderada;
+    }
+  }
+
+  notaFinal.textContent = formatearNumero(notaCalculada);
+  notaFinal.style.color = notaCalculada >= 40 ? "#0a8f3c" : "#c40000";
 }
 /* =========================
    CALCULAR PORCENTAJE TOTAL
