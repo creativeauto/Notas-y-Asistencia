@@ -13,24 +13,18 @@ h1{
 
 .grid{
   display:grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap:40px;
-  max-width:1300px;
+  grid-template-columns: repeat(3, 1fr);
+  gap:30px;
+  max-width:1200px;
   margin:auto;
 }
 
 .card{
   background:white;
-  border-radius:16px;
-  box-shadow:0 10px 30px rgba(0,0,0,0.08);
-  display:flex;
-  overflow:hidden;
-  min-height:280px;
-}
-
-.card-content{
+  border-radius:14px;
+  box-shadow:0 8px 25px rgba(0,0,0,0.07);
   padding:20px;
-  flex:1;
+  position:relative;
 }
 
 .ramo-titulo{
@@ -57,7 +51,6 @@ th{
   background:#c40000;
   color:white;
   padding:8px;
-  font-weight:500;
 }
 
 td{
@@ -66,10 +59,9 @@ td{
 }
 
 .eval-nombre{
-  width:50px;
+  width:45px;
   border:none;
   background:transparent;
-  font-size:14px;
 }
 
 .eval-nombre:focus{
@@ -86,12 +78,6 @@ td{
   text-align:center;
 }
 
-.porcentaje:focus,
-.nota:focus{
-  outline:none;
-  border-color:#c40000;
-}
-
 button{
   margin-top:15px;
   padding:6px 12px;
@@ -100,8 +86,6 @@ button{
   color:white;
   border-radius:6px;
   cursor:pointer;
-  font-size:13px;
-  transition:0.2s;
 }
 
 button:hover{
@@ -109,12 +93,10 @@ button:hover{
 }
 
 .final-box{
-  width:100px;
-  background:#f0f0f3;
-  display:flex;
-  align-items:center;
-  justify-content:center;
+  position:absolute;
+  top:20px;
+  right:20px;
   font-size:26px;
   font-weight:bold;
-  transition:0.2s;
+  color:#c40000;
 }
