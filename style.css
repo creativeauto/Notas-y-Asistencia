@@ -2,20 +2,20 @@ body{
   font-family: "Segoe UI", sans-serif;
   background:#f3f4f8;
   margin:0;
-  padding:40px;
+  padding:30px; /* antes 40px */
 }
 
 h1{
   text-align:center;
-  margin-bottom:40px;
+  margin-bottom:30px; /* antes 40px */
   font-weight:600;
 }
 
 .grid{
   display:grid;
   grid-template-columns: repeat(3, 1fr);
-  gap:30px;
-  max-width:1100px;
+  gap:20px; /* antes 30px */
+  max-width:1500px; /* antes 1250px */
   margin:auto;
 }
 
@@ -23,16 +23,16 @@ h1{
   background:white;
   border-radius:14px;
   box-shadow:0 8px 25px rgba(0,0,0,0.07);
-  padding:20px;
+  padding:15px; /* antes 20px */
   position:relative;
 }
 
 .ramo-titulo{
-  font-size:18px;
+  font-size:17px; /* un poquito más compacto */
   font-weight:600;
   border:none;
   background:transparent;
-  margin-bottom:15px;
+  margin-bottom:10px; /* antes 15px */
   width:100%;
 }
 
@@ -44,20 +44,20 @@ h1{
 table{
   width:100%;
   border-collapse:collapse;
-  font-size:14px;
+  font-size:13px; /* antes 14px */
   table-layout:auto;
 }
 
 th{
   background:#c40000;
   color:white;
-  padding:6px 8px;
+  padding:5px 8px; /* antes 6px 8px */
   white-space:normal;
   word-break:break-word;
 }
 
 td{
-  padding:6px 8px;
+  padding:5px 8px; /* antes 6px 8px */
   border-bottom:1px solid #eee;
 }
 
@@ -75,15 +75,15 @@ td{
 .porcentaje,
 .nota{
   width:60px;
-  padding:4px;
+  padding:3px; /* antes 4px */
   border:1px solid #ccc;
   border-radius:6px;
   text-align:center;
 }
 
 button{
-  margin-top:15px;
-  padding:6px 12px;
+  margin-top:10px; /* antes 15px */
+  padding:5px 10px; /* un poco más compacto */
   border:none;
   background:#c40000;
   color:white;
@@ -97,9 +97,9 @@ button:hover{
 
 .final-box{
   position:absolute;
-  top:20px;
-  right:20px;
-  font-size:26px;
+  top:15px; /* antes 20px */
+  right:15px; /* antes 20px */
+  font-size:24px; /* antes 26px */
   font-weight:bold;
   color:#c40000;
 }
