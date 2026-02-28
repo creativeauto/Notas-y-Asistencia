@@ -20,6 +20,14 @@ function crearRamo(nombre){
         </tr>
       </thead>
       <tbody class="evaluaciones"></tbody>
+<tfoot>
+  <tr>
+    <td><strong>Total</strong></td>
+    <td class="total-porcentaje">0%</td>
+    <td></td>
+    <td></td>
+  </tr>
+</tfoot>
     </table>
     <button class="add-btn">+ Añadir evaluación</button>
     <div class="final-box">0.0</div>
@@ -49,11 +57,11 @@ function crearEvaluacion(numero, card){
     <td><button class="delete-btn">🗑</button></td>
   `;
 
-  // recalcular cuando escribes
   tr.querySelectorAll(".porcentaje, .nota").forEach(input=>{
     input.addEventListener("input", ()=>{
-      calcular(card);
-    });
+  calcular(card);
+actualizarTotalPorcentaje(card);
+});
   });
 
   tr.querySelector(".delete-btn").addEventListener("click", ()=>{
@@ -86,9 +94,28 @@ function calcular(card){
 
     if(!isNaN(n) && !isNaN(p)){
       total += n*p;
-    }
-  }
+      function actualizarTotalPorcentaje(card){
+  const porcentajes = card.querySelectorAll(".porcentaje");
+  const totalBox = card.querySelector(".total-porcentaje");
 
+  let total = 0;
+
+  porcentajes.forEach(input=>{
+    const p = parseFloat(input.value);
+    if(!isNaN(p)){
+      total += p;
+    }
+  });
+
+  totalBox.textContent = total + "%";
+
+  if(total === 100){
+    totalBox.style.color = "#0a8f3c";
+  } else {
+    totalBox.style.color = "#c40000";
+  }
+}
+      
   finalBox.textContent = total.toFixed(1);
   finalBox.style.color = total >= 4 ? "#0a8f3c" : "#c40000";
 }
