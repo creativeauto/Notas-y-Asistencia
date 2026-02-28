@@ -1,63 +1,63 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-<meta charset="UTF-8">
-<title>Notas por Ramo</title>
-
+  <meta charset="UTF-8">
+  <title>Calculadora de Notas</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
 <h1>Calculadora de Ramo</h1>
 
 <div class="grid">
 
-  <!-- 6 tarjetas -->
-  <div class="card"> <div class="card-content"> <input class="ramo-titulo" value="Ramo 1"> 
-    <table>
-      <tr><th>Eval</th><th>%</th><th>Nota</th></tr>
-      <tr><td>P1</td><td><input value="25" class="porcentaje"></td><td><input class="nota"></td></tr>
-      <tr><td>P2</td><td><input value="25" class="porcentaje"></td><td><input class="nota"></td></tr>
-      <tr><td>P3</td><td><input value="30" class="porcentaje"></td><td><input class="nota"></td></tr>
-      <tr><td>P4</td><td><input value="20" class="porcentaje"></td><td><input class="nota"></td></tr>
-    </table>
-    <button onclick="calcular(this)">Calcular</button>
-  </div>
-  <div class="final-box">0.0</div>
+  <!-- Ramo -->
+  <div class="card">
+    <div class="card-content">
+
+      <input class="ramo-titulo" value="Ramo 1">
+
+      <table>
+        <tr>
+          <th>Eval</th>
+          <th>%</th>
+          <th>Nota</th>
+        </tr>
+
+        <tr>
+          <td><input class="eval-nombre" value="P1"></td>
+          <td><input type="number" value="25" class="porcentaje"></td>
+          <td><input type="number" step="0.1" class="nota"></td>
+        </tr>
+
+        <tr>
+          <td><input class="eval-nombre" value="P2"></td>
+          <td><input type="number" value="25" class="porcentaje"></td>
+          <td><input type="number" step="0.1" class="nota"></td>
+        </tr>
+
+        <tr>
+          <td><input class="eval-nombre" value="P3"></td>
+          <td><input type="number" value="30" class="porcentaje"></td>
+          <td><input type="number" step="0.1" class="nota"></td>
+        </tr>
+
+        <tr>
+          <td><input class="eval-nombre" value="P4"></td>
+          <td><input type="number" value="20" class="porcentaje"></td>
+          <td><input type="number" step="0.1" class="nota"></td>
+        </tr>
+      </table>
+
+      <button onclick="calcular(this)">Calcular</button>
+
+    </div>
+
+    <div class="final-box">0.0</div>
   </div>
 
-  <!-- duplicamos 5 más -->
-  <!-- Puedes cambiar nombres después -->
-
-  <div class="card"> <div class="card-content"><div class="ramo-titulo">Ramo 2</div>
-    <table>
-      <tr><th>Eval</th><th>%</th><th>Nota</th></tr>
-      <tr><td>P1</td><td><input value="25" class="porcentaje"></td><td><input class="nota"></td></tr>
-      <tr><td>P2</td><td><input value="25" class="porcentaje"></td><td><input class="nota"></td></tr>
-      <tr><td>P3</td><td><input value="30" class="porcentaje"></td><td><input class="nota"></td></tr>
-      <tr><td>P4</td><td><input value="20" class="porcentaje"></td><td><input class="nota"></td></tr>
-    </table>
-    <button onclick="calcular(this)">Calcular</button>
-  </div>
-  <div class="final-box">0.0</div>
-  </div>
-
-  <div class="card"> <div class="card-content"><div class="ramo-titulo">Ramo 3</div>
-    <table>
-      <tr><th>Eval</th><th>%</th><th>Nota</th></tr>
-      <tr><td>P1</td><td><input value="25" class="porcentaje"></td><td><input class="nota"></td></tr>
-      <tr><td>P2</td><td><input value="25" class="porcentaje"></td><td><input class="nota"></td></tr>
-      <tr><td>P3</td><td><input value="30" class="porcentaje"></td><td><input class="nota"></td></tr>
-      <tr><td>P4</td><td><input value="20" class="porcentaje"></td><td><input class="nota"></td></tr>
-    </table>
-    <button onclick="calcular(this)">Calcular</button>
-  </div>
-  <div class="final-box">0.0</div>
-  </div>
-
-  <div class="card"> <div class="card-content"><div class="ramo-titulo">Ramo 4</div>...</div><div class="final-box">0.0</div></div>
-  <div class="card"> <div class="card-content"><div class="ramo-titulo">Ramo 5</div>...</div><div class="final-box">0.0</div></div>
-  <div class="card"> <div class="card-content"><div class="ramo-titulo">Ramo 6</div>...</div><div class="final-box">0.0</div></div>
+  <!-- DUPLICA ESTE BLOQUE 5 VECES MÁS -->
+  <!-- Solo cambia el value="Ramo 1" por Ramo 2, Ramo 3... -->
 
 </div>
 
@@ -73,12 +73,19 @@ function calcular(btn){
   for(let i=0;i<notas.length;i++){
     let p = parseFloat(porcentajes[i].value)/100;
     let n = parseFloat(notas[i].value);
+
     if(!isNaN(n)){
       total += n*p;
     }
   }
 
   finalBox.textContent = total.toFixed(1);
+
+  if(total >= 4){
+    finalBox.style.color = "#0a8f3c";
+  } else {
+    finalBox.style.color = "#c40000";
+  }
 }
 </script>
 
