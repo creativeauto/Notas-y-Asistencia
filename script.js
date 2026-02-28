@@ -22,7 +22,6 @@ function crearRamo(nombre){
       <tbody class="evaluaciones"></tbody>
     </table>
     <button class="add-btn">+ Añadir evaluación</button>
-    <button class="calc-btn">Calcular</button>
     <div class="final-box">0.0</div>
   `;
 
@@ -30,21 +29,17 @@ function crearRamo(nombre){
 
   // Crear 4 evaluaciones iniciales
   for(let j=1; j<=4; j++){
-    tbody.appendChild(crearEvaluacion(j));
+    tbody.appendChild(crearEvaluacion(j, card));
   }
 
   card.querySelector(".add-btn").addEventListener("click", ()=>{
-    tbody.appendChild(crearEvaluacion(tbody.children.length + 1));
-  });
-
-  card.querySelector(".calc-btn").addEventListener("click", ()=>{
-    calcular(card);
+    tbody.appendChild(crearEvaluacion(tbody.children.length + 1, card));
   });
 
   return card;
 }
 
-function crearEvaluacion(numero){
+function crearEvaluacion(numero, card){
   const tr = document.createElement("tr");
 
   tr.innerHTML = `
@@ -54,10 +49,18 @@ function crearEvaluacion(numero){
     <td><button class="delete-btn">🗑</button></td>
   `;
 
+  // recalcular cuando escribes
+  tr.querySelectorAll(".porcentaje, .nota").forEach(input=>{
+    input.addEventListener("input", ()=>{
+      calcular(card);
+    });
+  });
+
   tr.querySelector(".delete-btn").addEventListener("click", ()=>{
     const tbody = tr.parentElement;
     tr.remove();
     renumerar(tbody);
+    calcular(card);
   });
 
   return tr;
@@ -80,6 +83,7 @@ function calcular(card){
   for(let i=0;i<notas.length;i++){
     const p = parseFloat(porcentajes[i].value)/100;
     const n = parseFloat(notas[i].value);
+
     if(!isNaN(n) && !isNaN(p)){
       total += n*p;
     }
