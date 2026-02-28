@@ -1,5 +1,8 @@
 const grid = document.getElementById("grid");
 
+function formatearNumero(num){
+  return Number.isInteger(num) ? num : num.toFixed(1);
+}
 /* =========================
    CARGAR DATOS AL INICIAR
 ========================= */
@@ -187,12 +190,7 @@ function calcular(card){
     const n = parseFloat(notas[i].value);
 
     if(!isNaN(n)){
-     
-      if(n >= 40){
-        notas[i].style.color = "#0a8f3c"; // verde
-      } else {
-        notas[i].style.color = "#c40000"; // rojo
-      }
+      notas[i].style.color = n >= 40 ? "#0a8f3c" : "#c40000";
     } else {
       notas[i].style.color = "";
     }
@@ -202,21 +200,18 @@ function calcular(card){
     }
   }
 
-  notaFinal.textContent = total.toFixed(1);
-
-  if(total >= 40){
-    notaFinal.style.color = "#0a8f3c";
-  } else {
-    notaFinal.style.color = "#c40000";
-  }
+  notaFinal.textContent = formatearNumero(total);
+  notaFinal.style.color = total >= 40 ? "#0a8f3c" : "#c40000";
 }
 /* =========================
-   ACTUALIZAR TOTAL %
+   CALCULAR PORCENTAJE TOTAL
 ========================= */
 
 function actualizarTotalPorcentaje(card){
   const porcentajes = card.querySelectorAll(".porcentaje");
   const totalBox = card.querySelector(".total-porcentaje");
+
+  if(!totalBox) return;
 
   let total = 0;
 
@@ -227,9 +222,13 @@ function actualizarTotalPorcentaje(card){
     }
   });
 
-  totalBox.textContent = total.toFixed(1) + "%";
-  totalBox.style.color =
-    (total >= 99.9 && total <= 100.1) ? "#0a8f3c" : "#c40000";
+  totalBox.textContent = formatearNumero(total) + "%";
+
+  if(total >= 99.9 && total <= 100.1){
+    totalBox.style.color = "#0a8f3c";
+  } else {
+    totalBox.style.color = "#c40000";
+  }
 }
 
 /* =========================
