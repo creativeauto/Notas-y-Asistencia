@@ -23,6 +23,14 @@ function crearRamo(nombre){
   card.className = "card";
 
   card.innerHTML = `
+    <div class="menu-container">
+      <button class="menu-btn">⋮</button>
+      <div class="menu-dropdown">
+        <div class="menu-item reiniciar">Reiniciar ramo</div>
+        <div class="menu-item eliminar">Eliminar ramo</div>
+      </div>
+    </div>
+
     <input class="ramo-titulo" value="${nombre}">
     <table>
       <thead>
@@ -47,6 +55,50 @@ function crearRamo(nombre){
     <div class="final-box">0.0</div>
   `;
 
+  /* ===== MENÚ FUNCIONAL ===== */
+
+  const menuBtn = card.querySelector(".menu-btn");
+  const dropdown = card.querySelector(".menu-dropdown");
+
+  menuBtn.addEventListener("click", (e)=>{
+    e.stopPropagation();
+    document.querySelectorAll(".menu-dropdown").forEach(d => {
+      if(d !== dropdown) d.style.display = "none";
+    });
+    dropdown.style.display =
+      dropdown.style.display === "block" ? "none" : "block";
+  });
+
+  document.addEventListener("click", ()=>{
+    dropdown.style.display = "none";
+  });
+
+  // Eliminar ramo
+  card.querySelector(".eliminar").addEventListener("click", ()=>{
+    card.remove();
+    guardarDatos();
+    actualizarBotonesAgregar();
+  });
+
+  // Reiniciar ramo
+  card.querySelector(".reiniciar").addEventListener("click", ()=>{
+    if(!confirm("¿Seguro que quieres reiniciar este ramo?")) return;
+
+    const tbody = card.querySelector(".evaluaciones");
+    tbody.innerHTML = "";
+
+    for(let j=1; j<=4; j++){
+      tbody.appendChild(crearEvaluacion(j, card));
+    }
+
+    card.querySelector(".ramo-titulo").value = "Ramo";
+    calcular(card);
+    actualizarTotalPorcentaje(card);
+    guardarDatos();
+  });
+
+  /* ===== FIN MENÚ ===== */
+
   const tbody = card.querySelector(".evaluaciones");
 
   for(let j=1; j<=4; j++){
@@ -59,7 +111,6 @@ function crearRamo(nombre){
     guardarDatos();
   });
 
-  // Guardar si cambian el nombre del ramo
   card.querySelector(".ramo-titulo").addEventListener("input", ()=>{
     guardarDatos();
   });
@@ -171,7 +222,7 @@ function actualizarTotalPorcentaje(card){
 function guardarDatos(){
   const ramos = [];
 
-  document.querySelectorAll(".card").forEach(card=>{
+  document.querySelectorAll(".card:not(.add-ramo-card)").forEach(card=>{
     const ramo = {
       titulo: card.querySelector(".ramo-titulo").value,
       evaluaciones: []
@@ -197,7 +248,6 @@ function guardarDatos(){
 
 function cargarDatos(){
   const datosGuardados = localStorage.getItem("calculadoraRamos");
-
   if(!datosGuardados) return;
 
   const ramos = JSON.parse(datosGuardados);
@@ -210,35 +260,36 @@ function cargarDatos(){
 
     ramo.evaluaciones.forEach((evalData, index)=>{
       const tr = crearEvaluacion(index+1, card);
-
       tr.querySelector(".eval-nombre").value = evalData.nombre;
       tr.querySelector(".porcentaje").value = evalData.porcentaje;
       tr.querySelector(".nota").value = evalData.nota;
-
       tbody.appendChild(tr);
     });
 
     calcular(card);
     actualizarTotalPorcentaje(card);
-        grid.appendChild(card);
+    grid.appendChild(card);
   });
 
   actualizarBotonesAgregar();
 }
+
+/* =========================
+   ENTER VERTICAL
+========================= */
+
 function activarEnterVertical(){
   document.addEventListener("keydown", function(e){
     if(e.key !== "Enter") return;
 
     const active = document.activeElement;
-
     if(!active.matches(".porcentaje, .nota, .eval-nombre, .ramo-titulo")) return;
 
     e.preventDefault();
 
-    // Si es el título del ramo
     if(active.classList.contains("ramo-titulo")){
       const nextCard = active.closest(".card").nextElementSibling;
-      if(nextCard){
+      if(nextCard && !nextCard.classList.contains("add-ramo-card")){
         nextCard.querySelector(".ramo-titulo").focus();
       }
       return;
@@ -251,7 +302,6 @@ function activarEnterVertical(){
     const columnIndex = [...tr.children].indexOf(td);
     const filas = [...tbody.querySelectorAll("tr")];
     const rowIndex = filas.indexOf(tr);
-
     const nextRow = filas[rowIndex + 1];
 
     if(nextRow){
@@ -264,13 +314,16 @@ function activarEnterVertical(){
   });
 }
 activarEnterVertical();
+
+/* =========================
+   BOTONES + RAMO
+========================= */
+
 function crearBotonAgregarRamo(){
   const btnCard = document.createElement("div");
   btnCard.className = "card add-ramo-card";
 
-  btnCard.innerHTML = `
-    <button class="add-ramo-btn">+</button>
-  `;
+  btnCard.innerHTML = `<button class="add-ramo-btn">+</button>`;
 
   btnCard.querySelector(".add-ramo-btn").addEventListener("click", ()=>{
     grid.insertBefore(crearRamo("Nuevo Ramo"), btnCard);
@@ -280,10 +333,9 @@ function crearBotonAgregarRamo(){
 
   return btnCard;
 }
+
 function actualizarBotonesAgregar(){
   document.querySelectorAll(".add-ramo-card").forEach(el => el.remove());
-
-  // Crear 2 nuevos
   grid.appendChild(crearBotonAgregarRamo());
   grid.appendChild(crearBotonAgregarRamo());
 }
