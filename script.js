@@ -41,6 +41,7 @@ function crearRamo(nombre){
 
   card.querySelector(".add-btn").addEventListener("click", ()=>{
     tbody.appendChild(crearEvaluacion(tbody.children.length + 1, card));
+    actualizarTotalPorcentaje(card);
   });
 
   actualizarTotalPorcentaje(card);
@@ -90,12 +91,12 @@ function calcular(card){
 
   let total = 0;
 
-  for(let i=0;i<notas.length;i++){
-    const p = parseFloat(porcentajes[i].value)/100;
+  for(let i=0; i<notas.length; i++){
+    const p = parseFloat(porcentajes[i].value) / 100;
     const n = parseFloat(notas[i].value);
 
     if(!isNaN(n) && !isNaN(p)){
-      total += n*p;
+      total += n * p;
     }
   }
 
@@ -116,9 +117,9 @@ function actualizarTotalPorcentaje(card){
     }
   });
 
-  totalBox.textContent = total + "%";
+  totalBox.textContent = total.toFixed(1) + "%";
 
-  if(total === 100){
+  if(total >= 99.9 && total <= 100.1){
     totalBox.style.color = "#0a8f3c";
   } else {
     totalBox.style.color = "#c40000";
