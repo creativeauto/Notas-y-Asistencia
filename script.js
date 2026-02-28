@@ -12,6 +12,8 @@ if(grid.children.length === 0){
   }
 }
 
+actualizarBotonesAgregar();
+
 /* =========================
    CREAR RAMO
 ========================= */
@@ -218,8 +220,10 @@ function cargarDatos(){
 
     calcular(card);
     actualizarTotalPorcentaje(card);
-    grid.appendChild(card);
+        grid.appendChild(card);
   });
+
+  actualizarBotonesAgregar();
 }
 function activarEnterVertical(){
   document.addEventListener("keydown", function(e){
@@ -260,3 +264,26 @@ function activarEnterVertical(){
   });
 }
 activarEnterVertical();
+function crearBotonAgregarRamo(){
+  const btnCard = document.createElement("div");
+  btnCard.className = "card add-ramo-card";
+
+  btnCard.innerHTML = `
+    <button class="add-ramo-btn">+</button>
+  `;
+
+  btnCard.querySelector(".add-ramo-btn").addEventListener("click", ()=>{
+    grid.insertBefore(crearRamo("Nuevo Ramo"), btnCard);
+    guardarDatos();
+    actualizarBotonesAgregar();
+  });
+
+  return btnCard;
+}
+function actualizarBotonesAgregar(){
+  document.querySelectorAll(".add-ramo-card").forEach(el => el.remove());
+
+  // Crear 2 nuevos
+  grid.appendChild(crearBotonAgregarRamo());
+  grid.appendChild(crearBotonAgregarRamo());
+}
