@@ -15,7 +15,7 @@ h1{
   display:grid;
   grid-template-columns: repeat(3, 1fr);
   gap:30px;
-  max-width:1400px; /* antes 1200px */
+  max-width:1250px; /* antes 1400px */
   margin:auto;
 }
 
@@ -45,24 +45,24 @@ table{
   width:100%;
   border-collapse:collapse;
   font-size:14px;
-  table-layout:auto; /* añadido */
+  table-layout:auto;
 }
 
 th{
   background:#c40000;
   color:white;
-  padding:6px 8px; /* antes 8px */
-  white-space:normal; /* añadido */
-  word-break:break-word; /* añadido */
+  padding:6px 8px;
+  white-space:normal;
+  word-break:break-word;
 }
 
 td{
-  padding:6px 8px; /* antes 8px */
+  padding:6px 8px;
   border-bottom:1px solid #eee;
 }
 
 .eval-nombre{
-  width:120px; /* antes 45px */
+  width:120px;
   border:none;
   background:transparent;
 }
