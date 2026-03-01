@@ -126,7 +126,7 @@ thead::before{
 th{
   background:transparent; /* quitamos fondo individual */
   color:#555;
-  padding:14px 8px; /* altura de la barra */
+  padding:10px 8px; /* altura de la barra */
   font-weight:600;
   text-transform:uppercase;
   font-size:12px;
