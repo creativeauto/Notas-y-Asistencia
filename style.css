@@ -173,3 +173,40 @@ button:hover{
   background:#9e0000;
   transform:scale(1.1);
 }
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+}
+
+.info-btn {
+  background-color: #6c63ff;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: bold;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  transition: 0.2s ease;
+}
+
+.info-btn:hover {
+  transform: scale(1.05);
+  background-color: #5848e5;
+}
+
+.info-panel {
+  max-height: 0;
+  overflow: hidden;
+  background: #f9f9f9;
+  padding: 0 20px;
+  transition: max-height 0.4s ease;
+  border-bottom: 1px solid #ddd;
+}
+
+.info-panel.active {
+  max-height: 300px;
+  padding: 15px 20px;
+}
