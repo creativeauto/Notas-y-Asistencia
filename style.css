@@ -11,29 +11,42 @@ h1{
   font-weight:600;
 }
 
+/* ===== GRID ===== */
+
 .grid{
   display:grid;
   grid-template-columns: repeat(3, 1fr);
-  gap:20px;
+  gap:24px;
   max-width:1500px;
   margin:auto;
 }
 
+/* ===== CARD ===== */
+
 .card{
   background:white;
-  border-radius:14px;
-  box-shadow:0 8px 25px rgba(0,0,0,0.07);
-  padding:15px;
+  border-radius:18px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.06);
+  padding:0;
   position:relative;
-  overflow:visible;
+  overflow:hidden;
+}
+
+/* Header interno del ramo */
+.card-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:18px 20px;
+  border-bottom:1px solid #f0f0f0;
 }
 
 /* ===== MENÚ ===== */
 
 .menu-container{
   position:absolute;
-  top:0.3px;
-  right:8px;
+  top:14px;
+  right:14px;
   z-index:50;
 }
 
@@ -61,8 +74,8 @@ h1{
   right:0;
   top:28px;
   background:white;
-  border-radius:8px;
-  box-shadow:0 5px 15px rgba(0,0,0,0.15);
+  border-radius:10px;
+  box-shadow:0 8px 20px rgba(0,0,0,0.15);
   overflow:hidden;
   min-width:150px;
   z-index:100;
@@ -85,12 +98,12 @@ h1{
 /* ===== TÍTULO ===== */
 
 .ramo-titulo{
-  font-size:17px;
+  font-size:18px;
   font-weight:600;
   border:none;
   background:transparent;
-  margin-bottom:10px;
   width:100%;
+  padding:18px 20px 8px 20px;
 }
 
 .ramo-titulo:focus{
@@ -102,58 +115,78 @@ h1{
 
 table{
   width:100%;
-  border-collapse:collapse;
+  border-collapse:separate;
+  border-spacing:0;
   font-size:13px;
   table-layout:auto;
 }
 
 th{
-  background:#be021c;
-  color:white;
-  padding:5px 8px;
-  white-space:normal;
-  word-break:break-word;
+  background:#f5f5f7;
+  color:#555;
+  padding:10px 8px;
+  font-weight:600;
+  text-transform:uppercase;
+  font-size:12px;
+  letter-spacing:.5px;
+  border-bottom:1px solid #eee;
 }
 
 td{
-  padding:5px 8px;
-  border-bottom:1px solid #eee;
+  padding:12px 8px;
+  border-bottom:1px solid #f0f0f0;
+}
+
+tr:hover td{
+  background:#fafafa;
 }
 
 .eval-nombre{
   width:120px;
   border:none;
   background:transparent;
+  font-weight:500;
 }
 
 .eval-nombre:focus{
   outline:none;
-  border-bottom:1px solid #c40000;
+  border-bottom:1px solid #be021c;
 }
 
 .porcentaje,
 .nota{
   width:60px;
-  padding:3px;
-  border:1px solid #ccc;
-  border-radius:6px;
+  padding:5px;
+  border:1px solid #ddd;
+  border-radius:8px;
   text-align:center;
+  transition:0.2s;
 }
 
-/* ===== BOTONES ===== */
+.porcentaje:focus,
+.nota:focus{
+  outline:none;
+  border:1px solid #be021c;
+  box-shadow:0 0 0 2px rgba(190,2,28,0.1);
+}
+
+/* ===== BOTONES GENERALES ===== */
 
 button{
-  margin-top:10px;
-  padding:5px 10px;
+  margin-top:12px;
+  padding:6px 12px;
   border:none;
   background:#be021c;
   color:white;
-  border-radius:6px;
+  border-radius:8px;
   cursor:pointer;
+  transition:0.2s ease;
+  font-weight:500;
 }
 
 button:hover{
-  background:#9e0000;
+  background:#9f0016;
+  transform:scale(1.03);
 }
 
 /* ===== BOTONES + RAMO ===== */
@@ -164,6 +197,7 @@ button:hover{
   align-items:center;
   background:#fff5f5;
   border:2px dashed #c40000;
+  border-radius:18px;
 }
 
 .add-ramo-btn{
@@ -179,9 +213,12 @@ button:hover{
 }
 
 .add-ramo-btn:hover{
-  background:#9e0000;
+  background:#9f0016;
   transform:scale(1.1);
 }
+
+/* ===== INFO HEADER ===== */
+
 .header {
   display: flex;
   justify-content: space-between;
@@ -199,13 +236,14 @@ button:hover{
   font-weight: bold;
   box-shadow: 0 4px 10px rgba(0,0,0,0.15);
   transition: 0.2s ease;
-   margin-top: -12px; 
+  margin-top: -12px; 
 }
 
 .info-btn:hover {
   transform: scale(1.05);
   background-color: #5848e5;
 }
+
 .info-icon {
   width: 18px;
   height: 18px;
@@ -226,40 +264,21 @@ button:hover{
   padding: 0 20px;
   transition: max-height 0.4s ease;
   border-bottom: 1px solid #ddd;
+  font-size: 13px;
 }
 
 .info-panel.active {
   max-height: 300px;
   padding: 15px 20px;
 }
-.info-panel {
-  font-size: 13px;
-}
+
 .info-panel ul {
   margin-top: 5px;
   padding-left: 18px;
 }
-/* ===== RESPONSIVE ===== */
 
-@media (max-width: 1100px){
-  .grid{
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
+/* ===== DELETE BUTTON ===== */
 
-@media (max-width: 700px){
-  .grid{
-    grid-template-columns: 1fr;
-  }
-
-  body{
-    padding:15px;
-  }
-
-  h1{
-    font-size:20px;
-  }
-}
 .delete-btn{
   background:#be021c;
   border:none;
@@ -282,4 +301,26 @@ button:hover{
 .delete-btn svg{
   width:16px;
   height:16px;
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media (max-width: 1100px){
+  .grid{
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 700px){
+  .grid{
+    grid-template-columns: 1fr;
+  }
+
+  body{
+    padding:15px;
+  }
+
+  h1{
+    font-size:20px;
+  }
 }
