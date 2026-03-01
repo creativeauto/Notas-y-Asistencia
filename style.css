@@ -199,7 +199,7 @@ button:hover{
   font-weight: bold;
   box-shadow: 0 4px 10px rgba(0,0,0,0.15);
   transition: 0.2s ease;
-   margin-top: -9px; 
+   margin-top: -12px; 
 }
 
 .info-btn:hover {
