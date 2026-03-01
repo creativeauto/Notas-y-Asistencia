@@ -11,41 +11,86 @@ h1{
   font-weight:600;
 }
 
-/* ===== GRID ===== */
-
 .grid{
   display:grid;
   grid-template-columns: repeat(3, 1fr);
-  gap:24px;
+  gap:20px;
   max-width:1500px;
   margin:auto;
 }
-
-/* ===== CARD ===== */
 
 .card{
   background:white;
   border-radius:14px;
   box-shadow:0 8px 25px rgba(0,0,0,0.07);
-  padding:0; /* quitamos padding general */
+  padding:15px;
   position:relative;
-  overflow:hidden; /* importante para que el header respete bordes */
+  overflow:visible;
 }
 
-/* contenido interno del card */
-.card-inner{
-  padding:15px;
+/* ===== MENÚ ===== */
+
+.menu-container{
+  position:absolute;
+  top:0.3px;
+  right:8px;
+  z-index:50;
+}
+
+.menu-btn{
+  background:transparent;
+  border:none;
+  cursor:pointer;
+  padding:6px;
+  color:#777;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:8px;
+  transition:0.2s ease;
+}
+
+.menu-btn:hover{
+  background:#f3f3f3;
+  color:#111;
+}
+
+.menu-dropdown{
+  display:none;
+  position:absolute;
+  right:0;
+  top:28px;
+  background:white;
+  border-radius:8px;
+  box-shadow:0 5px 15px rgba(0,0,0,0.15);
+  overflow:hidden;
+  min-width:150px;
+  z-index:100;
+}
+
+.menu-item{
+  padding:10px;
+  cursor:pointer;
+  font-size:14px;
+}
+
+.menu-item:hover{
+  background:#f3f3f3;
+}
+
+.menu-item.eliminar{
+  color:#be021c;
 }
 
 /* ===== TÍTULO ===== */
 
 .ramo-titulo{
-  font-size:18px;
+  font-size:17px;
   font-weight:600;
   border:none;
   background:transparent;
+  margin-bottom:10px;
   width:100%;
-  padding:18px 20px 10px 20px;
 }
 
 .ramo-titulo:focus{
@@ -63,87 +108,52 @@ table{
 }
 
 th{
-  background:#f5f5f7;
-  color:#555;
-  padding:6px 8px;
-  font-weight:600;
-  text-transform:uppercase;
-  font-size:12px;
-  letter-spacing:.5px;
-  border-bottom:1px solid #eee;
-}
-
-th:first-child{
-  padding-left:20px;
-}
-
-th:last-child{
-  padding-right:20px;
+  background:#be021c;
+  color:white;
+  padding:5px 8px;
+  white-space:normal;
+  word-break:break-word;
 }
 
 td{
-  padding:6px 8px;
+  padding:5px 8px;
   border-bottom:1px solid #eee;
-}
-
-td:first-child{
-  padding-left:20px;
-}
-
-td:last-child{
-  padding-right:20px;
-}
-
-tr:hover td{
-  background:#fafafa;
 }
 
 .eval-nombre{
   width:120px;
   border:none;
   background:transparent;
-  font-weight:500;
 }
 
 .eval-nombre:focus{
   outline:none;
-  border-bottom:1px solid #be021c;
+  border-bottom:1px solid #c40000;
 }
 
 .porcentaje,
 .nota{
   width:60px;
-  padding:5px;
-  border:1px solid #ddd;
-  border-radius:8px;
+  padding:3px;
+  border:1px solid #ccc;
+  border-radius:6px;
   text-align:center;
-  transition:0.2s;
 }
 
-.porcentaje:focus,
-.nota:focus{
-  outline:none;
-  border:1px solid #be021c;
-  box-shadow:0 0 0 2px rgba(190,2,28,0.1);
-}
-
-/* ===== BOTONES GENERALES ===== */
+/* ===== BOTONES ===== */
 
 button{
-  margin-top:12px;
-  padding:6px 12px;
+  margin-top:10px;
+  padding:5px 10px;
   border:none;
   background:#be021c;
   color:white;
-  border-radius:8px;
+  border-radius:6px;
   cursor:pointer;
-  transition:0.2s ease;
-  font-weight:500;
 }
 
 button:hover{
-  background:#9f0016;
-  transform:scale(1.03);
+  background:#9e0000;
 }
 
 /* ===== BOTONES + RAMO ===== */
@@ -154,7 +164,6 @@ button:hover{
   align-items:center;
   background:#fff5f5;
   border:2px dashed #c40000;
-  border-radius:18px;
 }
 
 .add-ramo-btn{
@@ -170,12 +179,9 @@ button:hover{
 }
 
 .add-ramo-btn:hover{
-  background:#9f0016;
+  background:#9e0000;
   transform:scale(1.1);
 }
-
-/* ===== INFO HEADER ===== */
-
 .header {
   display: flex;
   justify-content: space-between;
@@ -193,14 +199,13 @@ button:hover{
   font-weight: bold;
   box-shadow: 0 4px 10px rgba(0,0,0,0.15);
   transition: 0.2s ease;
-  margin-top: -12px; 
+   margin-top: -12px; 
 }
 
 .info-btn:hover {
   transform: scale(1.05);
   background-color: #5848e5;
 }
-
 .info-icon {
   width: 18px;
   height: 18px;
@@ -221,21 +226,40 @@ button:hover{
   padding: 0 20px;
   transition: max-height 0.4s ease;
   border-bottom: 1px solid #ddd;
-  font-size: 13px;
 }
 
 .info-panel.active {
   max-height: 300px;
   padding: 15px 20px;
 }
-
+.info-panel {
+  font-size: 13px;
+}
 .info-panel ul {
   margin-top: 5px;
   padding-left: 18px;
 }
+/* ===== RESPONSIVE ===== */
 
-/* ===== DELETE BUTTON ===== */
+@media (max-width: 1100px){
+  .grid{
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
 
+@media (max-width: 700px){
+  .grid{
+    grid-template-columns: 1fr;
+  }
+
+  body{
+    padding:15px;
+  }
+
+  h1{
+    font-size:20px;
+  }
+}
 .delete-btn{
   background:#be021c;
   border:none;
@@ -258,26 +282,4 @@ button:hover{
 .delete-btn svg{
   width:16px;
   height:16px;
-}
-
-/* ===== RESPONSIVE ===== */
-
-@media (max-width: 1100px){
-  .grid{
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 700px){
-  .grid{
-    grid-template-columns: 1fr;
-  }
-
-  body{
-    padding:15px;
-  }
-
-  h1{
-    font-size:20px;
-  }
 }
