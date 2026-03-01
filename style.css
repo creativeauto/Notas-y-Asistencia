@@ -237,11 +237,9 @@ button:hover{
   }
 }
 
-@media (max-width: 600px){
-
+@media (max-width: 700px){
   .grid{
-    grid-template-columns: repeat(2, 1fr); /* Fuerza 2 columnas */
-    gap:12px; /* Reduce espacio entre cards */
+    grid-template-columns: 1fr;
   }
 
   body{
@@ -250,9 +248,5 @@ button:hover{
 
   h1{
     font-size:20px;
-  }
-
-  .card{
-    padding:12px; /* Hace que quepan mejor */
   }
 }
