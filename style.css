@@ -238,11 +238,21 @@ button:hover{
 }
 
 @media (max-width: 600px){
+
+  .grid{
+    grid-template-columns: repeat(2, 1fr); /* Fuerza 2 columnas */
+    gap:12px; /* Reduce espacio entre cards */
+  }
+
   body{
     padding:15px;
   }
 
   h1{
     font-size:20px;
+  }
+
+  .card{
+    padding:12px; /* Hace que quepan mejor */
   }
 }
