@@ -7,7 +7,19 @@
 </head>
 <body>
 
-<h1>Calculadora de Ramo</h1>
+<div class="header">
+  <h1>Calculadora de Notas</h1>
+  <button id="infoBtn" class="info-btn">ℹ️ INFO</button>
+</div>
+
+<div id="infoPanel" class="info-panel">
+  <p><strong>Uso de la calculadora:</strong></p>
+  <ul>
+    <li>Las notas deben ingresarse como números enteros en escala 0–100 (ej: 56 y no 5,6).</li>
+    <li>Si el total de porcentajes es menor a 100% y toda la columna de notas está completa, el promedio se re-escala automáticamente (ej: casos de eximición).</li>
+    <li>Si faltan notas o porcentajes, el promedio se calcula parcialmente y no se re-escala.</li>
+  </ul>
+</div>
 
 <div class="grid" id="grid"></div>
 
