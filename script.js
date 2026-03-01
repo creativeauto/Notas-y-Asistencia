@@ -393,3 +393,9 @@ function actualizarBotonesAgregar(){
   grid.appendChild(crearBotonAgregarRamo());
   grid.appendChild(crearBotonAgregarRamo());
 }
+const infoBtn = document.getElementById("infoBtn");
+const infoPanel = document.getElementById("infoPanel");
+
+infoBtn.addEventListener("click", () => {
+  infoPanel.classList.toggle("active");
+});
