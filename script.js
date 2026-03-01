@@ -10,7 +10,7 @@ function formatearNumero(num){
 cargarDatos();
 
 if(grid.children.length === 0){
-  for(let i=1; i<=6; i++){
+  for(let i=1; i<=5; i++){
     grid.appendChild(crearRamo("Ramo " + i));
   }
 }
