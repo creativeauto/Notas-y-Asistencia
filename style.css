@@ -79,7 +79,7 @@ h1{
 }
 
 .menu-item.eliminar{
-  color:#c40000;
+  color:#be021c;
 }
 
 /* ===== TÍTULO ===== */
@@ -95,7 +95,7 @@ h1{
 
 .ramo-titulo:focus{
   outline:none;
-  border-bottom:2px solid #c40000;
+  border-bottom:2px solid #be021c;
 }
 
 /* ===== TABLA ===== */
@@ -108,7 +108,7 @@ table{
 }
 
 th{
-  background:#c40000;
+  background:#be021c;
   color:white;
   padding:5px 8px;
   white-space:normal;
@@ -146,7 +146,7 @@ button{
   margin-top:10px;
   padding:5px 10px;
   border:none;
-  background:#c40000;
+  background:#be021c;
   color:white;
   border-radius:6px;
   cursor:pointer;
@@ -171,7 +171,7 @@ button:hover{
   width:70px;
   height:70px;
   border-radius:50%;
-  background:#c40000;
+  background:#be021c;
   color:white;
   border:none;
   cursor:pointer;
@@ -211,7 +211,7 @@ button:hover{
   height: 18px;
   border-radius: 50%;
   background: white;
-  color: #c40000;
+  color: #be021c;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -261,7 +261,7 @@ button:hover{
   }
 }
 .delete-btn{
-  background:#e10600;
+  background:#be021c;
   border:none;
   width:34px;
   height:34px;
@@ -275,7 +275,7 @@ button:hover{
 }
 
 .delete-btn:hover{
-  background:#b00000;
+  background:#be021c;
   transform:scale(1.05);
 }
 
