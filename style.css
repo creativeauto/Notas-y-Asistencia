@@ -27,72 +27,14 @@ h1{
   background:white;
   border-radius:14px;
   box-shadow:0 8px 25px rgba(0,0,0,0.07);
-  padding:15px; 
+  padding:0; /* quitamos padding general */
   position:relative;
-  overflow:visible;
+  overflow:hidden; /* importante para que el header respete bordes */
 }
 
-/* Header interno del ramo */
-.card-header{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:18px 20px;
-  border-bottom:1px solid #f0f0f0;
-}
-
-/* ===== MENÚ ===== */
-
-.menu-container{
-  position:absolute;
-  top:14px;
-  right:14px;
-  z-index:50;
-}
-
-.menu-btn{
-  background:transparent;
-  border:none;
-  cursor:pointer;
-  padding:6px;
-  color:#777;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  border-radius:8px;
-  transition:0.2s ease;
-}
-
-.menu-btn:hover{
-  background:#f3f3f3;
-  color:#111;
-}
-
-.menu-dropdown{
-  display:none;
-  position:absolute;
-  right:0;
-  top:28px;
-  background:white;
-  border-radius:10px;
-  box-shadow:0 8px 20px rgba(0,0,0,0.15);
-  overflow:hidden;
-  min-width:150px;
-  z-index:100;
-}
-
-.menu-item{
-  padding:10px;
-  cursor:pointer;
-  font-size:14px;
-}
-
-.menu-item:hover{
-  background:#f3f3f3;
-}
-
-.menu-item.eliminar{
-  color:#be021c;
+/* contenido interno del card */
+.card-inner{
+  padding:15px;
 }
 
 /* ===== TÍTULO ===== */
@@ -103,7 +45,7 @@ h1{
   border:none;
   background:transparent;
   width:100%;
-  padding:18px 20px 8px 20px;
+  padding:18px 20px 10px 20px;
 }
 
 .ramo-titulo:focus{
@@ -123,7 +65,7 @@ table{
 th{
   background:#f5f5f7;
   color:#555;
-  padding:6px 8px; /* más compacto */
+  padding:6px 8px;
   font-weight:600;
   text-transform:uppercase;
   font-size:12px;
@@ -131,9 +73,25 @@ th{
   border-bottom:1px solid #eee;
 }
 
+th:first-child{
+  padding-left:20px;
+}
+
+th:last-child{
+  padding-right:20px;
+}
+
 td{
-  padding:6px 8px; /* vuelve al tamaño original */
+  padding:6px 8px;
   border-bottom:1px solid #eee;
+}
+
+td:first-child{
+  padding-left:20px;
+}
+
+td:last-child{
+  padding-right:20px;
 }
 
 tr:hover td{
@@ -167,24 +125,6 @@ tr:hover td{
   outline:none;
   border:1px solid #be021c;
   box-shadow:0 0 0 2px rgba(190,2,28,0.1);
-}
-/* Hace que la cabecera ocupe todo el ancho visual del card */
-table thead tr th:first-child{
-  border-top-left-radius:14px;
-}
-
-table thead tr th:last-child{
-  border-top-right-radius:14px;
-}
-
-table thead{
-  position:relative;
-  left:-15px;
-  width:calc(100% + 30px);
-}
-
-table thead th{
-  padding:8px 8px;
 }
 
 /* ===== BOTONES GENERALES ===== */
