@@ -148,7 +148,17 @@ function crearEvaluacion(numero, card){
     <td><input class="eval-nombre" value="Evaluación ${numero}"></td>
     <td><input type="number" class="porcentaje"></td>
     <td><input type="number" class="nota"></td>
-    <td><button class="delete-btn">🗑</button></td>
+    <td>
+  <button class="delete-btn">
+    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="3 6 5 6 21 6"></polyline>
+      <path d="M19 6l-1 14H6L5 6"></path>
+      <path d="M10 11v6"></path>
+      <path d="M14 11v6"></path>
+      <path d="M9 6V4h6v2"></path>
+    </svg>
+  </button>
+</td>
   `;
 
   tr.querySelectorAll(".porcentaje, .nota, .eval-nombre").forEach(input=>{
