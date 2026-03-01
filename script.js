@@ -391,7 +391,6 @@ function crearBotonAgregarRamo(){
 function actualizarBotonesAgregar(){
   document.querySelectorAll(".add-ramo-card").forEach(el => el.remove());
   grid.appendChild(crearBotonAgregarRamo());
-  grid.appendChild(crearBotonAgregarRamo());
 }
 const infoBtn = document.getElementById("infoBtn");
 const infoPanel = document.getElementById("infoPanel");
