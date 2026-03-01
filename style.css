@@ -168,6 +168,24 @@ tr:hover td{
   border:1px solid #be021c;
   box-shadow:0 0 0 2px rgba(190,2,28,0.1);
 }
+/* Hace que la cabecera ocupe todo el ancho visual del card */
+table thead tr th:first-child{
+  border-top-left-radius:14px;
+}
+
+table thead tr th:last-child{
+  border-top-right-radius:14px;
+}
+
+table thead{
+  position:relative;
+  left:-15px;
+  width:calc(100% + 30px);
+}
+
+table thead th{
+  padding:8px 8px;
+}
 
 /* ===== BOTONES GENERALES ===== */
 
