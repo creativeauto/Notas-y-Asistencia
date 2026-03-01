@@ -27,7 +27,14 @@ function crearRamo(nombre){
 
   card.innerHTML = `
     <div class="menu-container">
-      <button class="menu-btn">⋮</button>
+     <button class="menu-btn">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+    <circle cx="7" cy="7" r="2"></circle>
+    <circle cx="17" cy="7" r="2"></circle>
+    <circle cx="7" cy="17" r="2"></circle>
+    <circle cx="17" cy="17" r="2"></circle>
+  </svg>
+</button>
       <div class="menu-dropdown">
         <div class="menu-item reiniciar">Reiniciar ramo</div>
         <div class="menu-item eliminar">Eliminar ramo</div>
