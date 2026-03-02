@@ -3,7 +3,6 @@ body{
   background:#f3f4f8;
   margin:0;
   padding:30px;
-  box-sizing:border-box;
 }
 
 h1{
@@ -310,6 +309,4 @@ button:hover{
   width:16px;
   height:16px;
 }
-html, body{
-  overflow-x:hidden;
-}
+
