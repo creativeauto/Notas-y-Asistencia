@@ -129,7 +129,7 @@ th{
   z-index:1;
   background:transparent; /* importante */
   color:#555;
-  padding:10px 8px; /* mismo tamaño original */
+  padding:12px 8px; /* mismo tamaño original */
   font-weight:600;
   text-transform:uppercase;
   font-size:12px;
