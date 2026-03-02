@@ -310,3 +310,6 @@ button:hover{
   width:16px;
   height:16px;
 }
+html, body{
+  overflow-x:hidden;
+}
