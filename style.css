@@ -107,33 +107,25 @@ table{
   table-layout:auto;
 }
 
-/* Fondo extendido para la barra gris */
+/* Quitamos pseudo-elemento problemático */
 thead{
-  position:relative;
+  background:#f5f5f7;
 }
 
-thead::before{
-  content:"";
-  position:absolute;
-  left:-15px;   /* compensa padding del card */
-  right:-15px;  /* compensa padding del card */
-  top:0;
-  bottom:0;
+/* Extendemos fondo sin usar ::before */
+thead tr{
   background:#f5f5f7;
-  z-index:0;
 }
 
 th{
-  background:transparent; /* quitamos fondo individual */
+  background:#f5f5f7; /* fondo directo, no por pseudo-elemento */
   color:#555;
-  padding:10px 8px; /* altura de la barra */
+  padding:10px 8px;
   font-weight:600;
   text-transform:uppercase;
   font-size:12px;
   letter-spacing:.5px;
   border-bottom:1px solid #eee;
-  position:relative;
-  z-index:1; /* para que el texto quede sobre el fondo */
 }
 
 td{
