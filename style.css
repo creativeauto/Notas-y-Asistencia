@@ -216,7 +216,7 @@ button:hover{
 }
 
 .info-btn {
-  background-color: #6c63ff;
+  background-color: #f7f5ca;
   color: white;
   border: none;
   padding: 8px 14px;
@@ -230,7 +230,7 @@ button:hover{
 
 .info-btn:hover {
   transform: scale(1.05);
-  background-color: #5848e5;
+  background-color: #eceab8;
 }
 .info-icon {
   width: 18px;
