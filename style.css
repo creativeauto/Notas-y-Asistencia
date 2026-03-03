@@ -252,9 +252,6 @@ button:hover{
   padding: 0 20px;
   transition: max-height 0.4s ease;
   border-bottom: 1px solid #ddd;
-
-  margin-left: -2px;
-  margin-right: -60px;
 }
 .info-panel.active {
   max-height: 300px;
@@ -311,4 +308,26 @@ button:hover{
   width:16px;
   height:16px;
 }
+/* ===== ESCRITORIO ===== */
+@media (min-width: 1024px){
+  .info-panel{
+    margin-left: -2px;
+    margin-right: -110px;
+  }
+}
 
+/* ===== TABLET ===== */
+@media (min-width: 768px) and (max-width: 1023px){
+  .info-panel{
+    margin-left: -2px;
+    margin-right: -50px; /* ajusta si quieres */
+  }
+}
+
+/* ===== CELULAR ===== */
+@media (max-width: 767px){
+  .info-panel{
+    margin-left: -2px;
+    margin-right: -30px; /* más suave para que no se rompa */
+  }
+}
