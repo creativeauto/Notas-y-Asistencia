@@ -4,32 +4,11 @@
 <meta charset="UTF-8">
 <title>Calculadora de Notas</title>
 <link rel="stylesheet" href="style.css">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
+
 <body>
 
-<div class="header">
-  <h1>Calculadora de Notas</h1>
-  <button id="infoBtn" class="info-btn">
-  <span class="info-icon">i</span>
-  
-</button>
-</div>
-
-<div id="infoPanel" class="info-panel">
-  <p><strong>Uso de la calculadora:</strong></p>
-  <ul>
-    <li>Las notas deben ingresarse como números enteros en escala 0-70 (ej: 56 y no 5,6).</li>
-    <li>Si el total de porcentajes es menor a 100% y toda la columna de notas está completa, el promedio se re-escala automáticamente (ej: casos de eximición).</li>
-    <li>Si faltan notas o porcentajes, el promedio se calcula parcialmente y no se re-escala.</li>
-  </ul>
-</div>
-
-<div class="grid" id="grid"></div>
-
-<script src="script.js"></script>
-</body>
-</html>
 <div class="tabs-container">
 
   <!-- Botones pestañas -->
@@ -40,13 +19,34 @@
 
   <!-- Contenido Calculadora -->
   <div class="tab-content active" id="calculadora">
-    <!-- AQUÍ VA TU CALCULADORA ACTUAL -->
+
+    <div class="header">
+      <h1>Calculadora de Notas</h1>
+      <button id="infoBtn" class="info-btn">
+        <span class="info-icon">i</span>
+      </button>
+    </div>
+
+    <div id="infoPanel" class="info-panel">
+      <p><strong>Uso de la calculadora:</strong></p>
+      <ul>
+        <li>Las notas deben ingresarse como números enteros en escala 0-70 (ej: 56 y no 5,6).</li>
+        <li>Si el total de porcentajes es menor a 100% y toda la columna de notas está completa, el promedio se re-escala automáticamente.</li>
+        <li>Si faltan notas o porcentajes, el promedio se calcula parcialmente y no se re-escala.</li>
+      </ul>
+    </div>
+
+    <div class="grid" id="grid"></div>
+
   </div>
 
   <!-- Contenido Asistencia -->
   <div class="tab-content" id="asistencia">
-    <!-- AQUÍ VA TU FUTURO CUADRO DE ASISTENCIA -->
     <p>Aquí irá el tracker de asistencia 👀</p>
   </div>
 
 </div>
+
+<script src="script.js"></script>
+</body>
+</html>
