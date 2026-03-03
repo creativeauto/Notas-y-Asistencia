@@ -415,3 +415,22 @@ const infoPanel = document.getElementById("infoPanel");
 infoBtn.addEventListener("click", () => {
   infoPanel.classList.toggle("active");
 });
+const tabs = document.querySelectorAll(".tab-btn");
+const contents = document.querySelectorAll(".tab-content");
+
+tabs.forEach(btn => {
+  btn.addEventListener("click", () => {
+
+    // Quitar active de todo
+    tabs.forEach(b => b.classList.remove("active"));
+    contents.forEach(c => c.classList.remove("active"));
+
+    // Activar botón
+    btn.classList.add("active");
+
+    // Activar contenido correspondiente
+    const tabId = btn.getAttribute("data-tab");
+    document.getElementById(tabId).classList.add("active");
+
+  });
+});
