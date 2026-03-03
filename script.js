@@ -434,4 +434,41 @@ tabs.forEach(btn => {
 
   });
 });
+document.addEventListener("DOMContentLoaded", () => {
+  // Cargar estado de asistencia desde localStorage
+  let asistencia = JSON.parse(localStorage.getItem("asistencia_ramos")) || {};
 
+  // Función para guardar estado
+  const guardarAsistencia = () => {
+    localStorage.setItem("asistencia_ramos", JSON.stringify(asistencia));
+    actualizarContadores();
+  };
+
+  // Función para actualizar contadores
+  const actualizarContadores = () => {
+    const totalRamos = Object.keys(estado).length; // total de ramos
+    const ramosAsistidos = Object.values(asistencia).filter(a => a === true).length;
+    const totalCR = Object.values(estado).reduce((sum, r) => sum + r.creditos, 0); // suma de créditos
+    const crAsistidos = Object.keys(asistencia)
+      .filter(k => asistencia[k])
+      .reduce((sum, k) => sum + (estado[k]?.creditos || 0), 0);
+
+    document.getElementById("contadorRamos").textContent = `${ramosAsistidos}/${totalRamos} ramos`;
+    document.getElementById("contadorCR").textContent = `${crAsistidos}/${totalCR} cr`;
+  };
+
+  // Inicializar botones de asistencia
+  document.querySelectorAll(".ramo").forEach(div => {
+    const nombre = div.dataset.ramo;
+    // Marcar asistencia si ya estaba
+    if (asistencia[nombre]) div.classList.add("asistido");
+
+    div.addEventListener("click", e => {
+      asistencia[nombre] = !asistencia[nombre];
+      div.classList.toggle("asistido");
+      guardarAsistencia();
+    });
+  });
+
+  actualizarContadores();
+});
