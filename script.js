@@ -508,6 +508,50 @@ function agregarClase(nombre, estado) {
 }
 
 function eliminarClase(nombre, index) {
+Indent mode
+
+Spaces
+Indent size
+
+2
+Line wrap mode
+
+No wrap
+Editing script.js file contents
+Selection deleted
+495
+496
+497
+498
+499
+500
+501
+502
+503
+504
+505
+506
+507
+508
+509
+510
+511
+512
+513
+514
+515
+516
+517
+518
+519
+520
+521
+522
+523
+524
+525
+526
+
   asistencia[nombre].splice(index,1);
   render();
 }
@@ -519,10 +563,6 @@ function reiniciarRamo(nombre) {
 
 function eliminarRamo(nombre) {
   delete asistencia[nombre];
-  render();
-}
-
-render();
   render();
 }
 
