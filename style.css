@@ -331,3 +331,41 @@ button:hover{
     margin-right: -25px; /* más suave para que no se rompa */
   }
 }
+/* ===== TABS ===== */
+
+.tabs-container{
+  margin-top:20px;
+}
+
+.tabs{
+  display:flex;
+  gap:10px;
+  margin-bottom:15px;
+}
+
+.tab-btn{
+  padding:8px 16px;
+  border:none;
+  background:#e9e9ef;
+  cursor:pointer;
+  border-radius:20px;
+  font-weight:bold;
+  transition:0.2s ease;
+}
+
+.tab-btn.active{
+  background:#f7f5ca; /* tu color */
+  color:#333;
+}
+
+.tab-btn:hover{
+  transform:scale(1.05);
+}
+
+.tab-content{
+  display:none;
+}
+
+.tab-content.active{
+  display:block;
+}
