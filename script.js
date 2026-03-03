@@ -434,3 +434,91 @@ tabs.forEach(btn => {
 
   });
 });
+let asistencia = JSON.parse(localStorage.getItem("asistencia")) || {};
+
+const listaRamos = document.getElementById("listaRamos");
+const crearRamoBtn = document.getElementById("crearRamo");
+
+function guardar() {
+  localStorage.setItem("asistencia", JSON.stringify(asistencia));
+}
+
+function render() {
+  listaRamos.innerHTML = "";
+
+  Object.keys(asistencia).forEach(nombre => {
+    const clases = asistencia[nombre];
+
+    const total = clases.length;
+    const presentes = clases.filter(c => c.estado === "Presente").length;
+    const porcentaje = total ? Math.round((presentes/total)*100) : 0;
+
+    const div = document.createElement("div");
+    div.className = "ramo";
+
+    div.innerHTML = `
+      <h3>${nombre}</h3>
+      <div class="resumen">
+        ${presentes} / ${total} clases - ${porcentaje}%
+      </div>
+
+      <table class="tabla-asistencia">
+        <tr>
+          <th>Fecha</th>
+          <th>Estado</th>
+          <th></th>
+        </tr>
+        ${clases.map((c,i)=>`
+          <tr>
+            <td>${c.fecha}</td>
+            <td>${c.estado}</td>
+            <td><button onclick="eliminarClase('${nombre}',${i})">🗑</button></td>
+          </tr>
+        `).join("")}
+      </table>
+
+      <div class="botones-ramo">
+        <button onclick="agregarClase('${nombre}','Presente')">➕ Presente</button>
+        <button onclick="agregarClase('${nombre}','Ausente')">➖ Ausente</button>
+        <button onclick="reiniciarRamo('${nombre}')">🔄 Reiniciar</button>
+        <button onclick="eliminarRamo('${nombre}')">❌ Eliminar</button>
+      </div>
+    `;
+
+    listaRamos.appendChild(div);
+  });
+
+  guardar();
+}
+
+crearRamoBtn.addEventListener("click", () => {
+  const nombre = document.getElementById("nuevoRamo").value.trim();
+  if(!nombre || asistencia[nombre]) return;
+
+  asistencia[nombre] = [];
+  document.getElementById("nuevoRamo").value = "";
+  render();
+});
+
+function agregarClase(nombre, estado) {
+  const hoy = new Date().toLocaleDateString();
+  asistencia[nombre].push({ fecha: hoy, estado });
+  render();
+}
+
+function eliminarClase(nombre, index) {
+  asistencia[nombre].splice(index,1);
+  render();
+}
+
+function reiniciarRamo(nombre) {
+  asistencia[nombre] = [];
+  render();
+}
+
+function eliminarRamo(nombre) {
+  delete asistencia[nombre];
+  render();
+}
+
+render();
