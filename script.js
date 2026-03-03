@@ -434,6 +434,7 @@ tabs.forEach(btn => {
 
   });
 });
+
 let asistencia = JSON.parse(localStorage.getItem("asistencia")) || {};
 
 const listaRamos = document.getElementById("listaRamos");
@@ -518,6 +519,10 @@ function reiniciarRamo(nombre) {
 
 function eliminarRamo(nombre) {
   delete asistencia[nombre];
+  render();
+}
+
+render();
   render();
 }
 
