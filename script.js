@@ -446,6 +446,8 @@ for(let i=1;i<=5;i++){
   asistenciaGrid.appendChild(crearRamoAsistencia("Ramo "+i));
 }
 
+actualizarBotonAgregarAsistencia();
+
 }
 
 function crearRamoAsistencia(nombre){
@@ -528,5 +530,38 @@ faltas.addEventListener("input",calcularAsistencia);
 requerido.addEventListener("input",calcularAsistencia);
 
 return card;
+
+}
+function crearBotonAgregarRamoAsistencia(){
+
+  const btnCard = document.createElement("div");
+  btnCard.className = "card add-ramo-card";
+
+  btnCard.innerHTML = `<button class="add-ramo-btn">+</button>`;
+
+  btnCard.querySelector(".add-ramo-btn").addEventListener("click", ()=>{
+
+    asistenciaGrid.insertBefore(
+      crearRamoAsistencia("Nuevo Ramo"),
+      btnCard
+    );
+
+    actualizarBotonAgregarAsistencia();
+
+  });
+
+  return btnCard;
+
+}
+
+function actualizarBotonAgregarAsistencia(){
+
+  asistenciaGrid
+    .querySelectorAll(".add-ramo-card")
+    .forEach(el => el.remove());
+
+  asistenciaGrid.appendChild(
+    crearBotonAgregarRamoAsistencia()
+  );
 
 }
