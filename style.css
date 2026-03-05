@@ -379,8 +379,10 @@ button:hover{
   width:100%;
 }
 
-/* inputs de números (clases, %, faltas) */
-#asistenciaGrid input[type="number"]{
+/* inputs numéricos de asistencia */
+#asistenciaGrid .clases,
+#asistenciaGrid .porcentaje-apr,
+#asistenciaGrid .faltas{
   width:60px;
   padding:3px;
   border:1px solid #ccc;
@@ -388,7 +390,7 @@ button:hover{
   text-align:center;
 }
 
-/* título del ramo (igual que la calculadora) */
+/* título del ramo (igual que calculadora) */
 #asistenciaGrid .ramo-titulo{
   font-size:17px;
   font-weight:600;
