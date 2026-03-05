@@ -497,7 +497,7 @@ Eliminar ramo
 <tr>
 
 <td>
-<input type="number" class="clases porcentaje">
+<input type="number" class="clases nota">
 </td>
 
 <td>
@@ -505,7 +505,7 @@ Eliminar ramo
 </td>
 
 <td>
-<input type="number" class="faltas porcentaje">
+<input type="number" class="faltas nota">
 </td>
 
 </tr>
