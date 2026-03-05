@@ -457,7 +457,18 @@ card.className="card";
 
 card.innerHTML=`
 
+<div class="card-header">
+
 <input class="ramo-titulo" value="${nombre}">
+
+<button class="menu-btn">⋮</button>
+
+<div class="menu-dropdown">
+<button class="reiniciar">Reiniciar ramo</button>
+<button class="eliminar">Eliminar ramo</button>
+</div>
+
+</div>
 
 <table>
 <thead>
@@ -499,6 +510,59 @@ const faltas=card.querySelector(".faltas");
 const requerido=card.querySelector(".porcentaje-apr");
 const resultado=card.querySelector(".resultado");
 
+/* ===== MENU ===== */
+
+const menuBtn = card.querySelector(".menu-btn");
+const dropdown = card.querySelector(".menu-dropdown");
+
+menuBtn.addEventListener("click",(e)=>{
+e.stopPropagation();
+
+document.querySelectorAll(".menu-dropdown").forEach(d=>{
+if(d!==dropdown)d.style.display="none";
+});
+
+dropdown.style.display=
+dropdown.style.display==="block"?"none":"block";
+
+});
+
+document.addEventListener("click",()=>{
+dropdown.style.display="none";
+});
+
+card.querySelector(".eliminar").addEventListener("click",()=>{
+
+const nombreRamo=
+card.querySelector(".ramo-titulo")?.value||"este ramo";
+
+const confirmar=
+confirm(`¿Eliminar ${nombreRamo}?`);
+
+if(confirmar){
+card.remove();
+actualizarBotonAgregarAsistencia();
+}
+
+});
+
+card.querySelector(".reiniciar").addEventListener("click",()=>{
+
+const confirmar=
+confirm("¿Reiniciar asistencia?");
+
+if(!confirmar)return;
+
+clases.value="";
+faltas.value="";
+requerido.value="";
+resultado.textContent="0%";
+resultado.style.color="";
+
+});
+
+/* ===== CALCULO ===== */
+
 function calcularAsistencia(){
 
 const c=parseFloat(clases.value);
@@ -532,36 +596,37 @@ requerido.addEventListener("input",calcularAsistencia);
 return card;
 
 }
+
 function crearBotonAgregarRamoAsistencia(){
 
-  const btnCard = document.createElement("div");
-  btnCard.className = "card add-ramo-card";
+const btnCard=document.createElement("div");
+btnCard.className="card add-ramo-card";
 
-  btnCard.innerHTML = `<button class="add-ramo-btn">+</button>`;
+btnCard.innerHTML=`<button class="add-ramo-btn">+</button>`;
 
-  btnCard.querySelector(".add-ramo-btn").addEventListener("click", ()=>{
+btnCard.querySelector(".add-ramo-btn").addEventListener("click",()=>{
 
-    asistenciaGrid.insertBefore(
-      crearRamoAsistencia("Nuevo Ramo"),
-      btnCard
-    );
+asistenciaGrid.insertBefore(
+crearRamoAsistencia("Nuevo Ramo"),
+btnCard
+);
 
-    actualizarBotonAgregarAsistencia();
+actualizarBotonAgregarAsistencia();
 
-  });
+});
 
-  return btnCard;
+return btnCard;
 
 }
 
 function actualizarBotonAgregarAsistencia(){
 
-  asistenciaGrid
-    .querySelectorAll(".add-ramo-card")
-    .forEach(el => el.remove());
+asistenciaGrid
+.querySelectorAll(".add-ramo-card")
+.forEach(el=>el.remove());
 
-  asistenciaGrid.appendChild(
-    crearBotonAgregarRamoAsistencia()
-  );
+asistenciaGrid.appendChild(
+crearBotonAgregarRamoAsistencia()
+);
 
 }
