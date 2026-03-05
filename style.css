@@ -381,56 +381,6 @@ button:hover{
   width:100%;
   box-sizing:border-box;
 }
-/* ===== MENÚ ===== */
 
-.menu-container{
-  position:absolute;
-  top:0.3px;
-  right:8px;
-  z-index:50;
-}
 
-.menu-btn{
-  background:transparent;
-  border:none;
-  cursor:pointer;
-  padding:6px;
-  color:#777;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  border-radius:8px;
-  transition:0.2s ease;
-}
-
-.menu-btn:hover{
-  background:#f3f3f3;
-  color:#111;
-}
-
-.menu-dropdown{
-  display:none;
-  position:absolute;
-  right:0;
-  top:28px;
-  background:white;
-  border-radius:8px;
-  box-shadow:0 5px 15px rgba(0,0,0,0.15);
-  overflow:hidden;
-  min-width:150px;
-  z-index:100;
-}
-
-.menu-item{
-  padding:10px;
-  cursor:pointer;
-  font-size:14px;
-}
-
-.menu-item:hover{
-  background:#f3f3f3;
-}
-
-.menu-item.eliminar{
-  color:#be021c;
 }
