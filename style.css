@@ -378,7 +378,7 @@ button:hover{
   width:100%;
 }
 
-#asistenciaGrid input{
+#asistenciaGrid input[type="number"]{
   width:60px;
   padding:3px;
   border:1px solid #ccc;
