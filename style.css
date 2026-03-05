@@ -373,14 +373,15 @@ button:hover{
 /* =========================
    SISTEMA DE ASISTENCIA
 ========================= */
+
 #asistenciaGrid table{
   width:100%;
 }
 
 #asistenciaGrid input{
-  width:100%;
-  box-sizing:border-box;
-}
-
-
+  width:60px;
+  padding:3px;
+  border:1px solid #ccc;
+  border-radius:6px;
+  text-align:center;
 }
