@@ -370,4 +370,14 @@ button:hover{
 .tab-content.active{
   display:block;
 }
+/* =========================
+   SISTEMA DE ASISTENCIA
+========================= */
+#asistenciaGrid table{
+  width:100%;
+}
 
+#asistenciaGrid input{
+  width:100%;
+  box-sizing:border-box;
+}
