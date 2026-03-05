@@ -550,7 +550,7 @@ const nombreRamo=
 card.querySelector(".ramo-titulo")?.value||"este ramo";
 
 const confirmar=
-confirm(`¿Eliminar ${nombreRamo}?`);
+confirm(`¿Estás seguro de que quieres eliminar ${nombreRamo}?`);
 
 if(confirmar){
 card.remove();
@@ -562,7 +562,7 @@ actualizarBotonAgregarAsistencia();
 card.querySelector(".reiniciar").addEventListener("click",()=>{
 
 const confirmar=
-confirm("¿Reiniciar asistencia?");
+confirm("¿Estás seguro de que quieres reiniciar ${nombreRamo}?");
 
 if(!confirmar)return;
 
