@@ -457,15 +457,25 @@ card.className="card";
 
 card.innerHTML=`
 
-<div class="card-header">
+<div style="position:relative">
 
 <input class="ramo-titulo" value="${nombre}">
+
+<div class="menu-container">
 
 <button class="menu-btn">⋮</button>
 
 <div class="menu-dropdown">
-<button class="reiniciar">Reiniciar ramo</button>
-<button class="eliminar">Eliminar ramo</button>
+
+<div class="menu-item reiniciar">
+Reiniciar ramo
+</div>
+
+<div class="menu-item eliminar">
+Eliminar ramo
+</div>
+
+</div>
 </div>
 
 </div>
@@ -504,7 +514,7 @@ card.innerHTML=`
 </table>
 
 `;
-
+  
 const clases=card.querySelector(".clases");
 const faltas=card.querySelector(".faltas");
 const requerido=card.querySelector(".porcentaje-apr");
