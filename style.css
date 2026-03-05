@@ -370,6 +370,7 @@ button:hover{
 .tab-content.active{
   display:block;
 }
+
 /* =========================
    SISTEMA DE ASISTENCIA
 ========================= */
@@ -378,6 +379,7 @@ button:hover{
   width:100%;
 }
 
+/* inputs de números (clases, %, faltas) */
 #asistenciaGrid input[type="number"]{
   width:60px;
   padding:3px;
@@ -385,8 +387,8 @@ button:hover{
   border-radius:6px;
   text-align:center;
 }
-/* ===== ARREGLAR TITULO EN ASISTENCIA ===== */
 
+/* título del ramo (igual que la calculadora) */
 #asistenciaGrid .ramo-titulo{
   font-size:17px;
   font-weight:600;
