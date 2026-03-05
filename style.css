@@ -385,3 +385,19 @@ button:hover{
   border-radius:6px;
   text-align:center;
 }
+/* ===== ARREGLAR TITULO EN ASISTENCIA ===== */
+
+#asistenciaGrid .ramo-titulo{
+  font-size:17px;
+  font-weight:600;
+  border:none;
+  background:transparent;
+  margin-bottom:10px;
+  width:100%;
+  padding:0;
+}
+
+#asistenciaGrid .ramo-titulo:focus{
+  outline:none;
+  border-bottom:2px solid #be021c;
+}
