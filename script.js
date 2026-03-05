@@ -547,7 +547,7 @@ dropdown.style.display="none";
 card.querySelector(".eliminar").addEventListener("click",()=>{
 
 const nombreRamo=
-card.querySelector(".ramo-titulo")?.value||"este ramo";
+card.querySelector(".ramo-titulo")?.value || "este ramo";
 
 const confirmar=
 confirm(`¿Estás seguro de que quieres eliminar ${nombreRamo}?`);
@@ -561,10 +561,13 @@ actualizarBotonAgregarAsistencia();
 
 card.querySelector(".reiniciar").addEventListener("click",()=>{
 
-const confirmar=
-confirm("¿Estás seguro de que quieres reiniciar ${nombreRamo}?");
+const nombreRamo=
+card.querySelector(".ramo-titulo")?.value || "este ramo";
 
-if(!confirmar)return;
+const confirmar=
+confirm(`¿Estás seguro de que quieres reiniciar ${nombreRamo}?`);
+
+if(!confirmar) return;
 
 clases.value="";
 faltas.value="";
