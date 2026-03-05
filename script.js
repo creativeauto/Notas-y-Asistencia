@@ -497,19 +497,15 @@ Eliminar ramo
 <tr>
 
 <td>
-<input type="number" class="clases">
+<input type="number" class="clases porcentaje">
 </td>
 
 <td>
-<input type="number" class="porcentaje-apr">
+<input type="number" class="porcentaje-apr porcentaje">
 </td>
 
 <td>
-<input type="number" class="faltas">
-</td>
-
-<td class="resultado">
-0%
+<input type="number" class="faltas porcentaje">
 </td>
 
 </tr>
