@@ -434,41 +434,99 @@ tabs.forEach(btn => {
 
   });
 });
-document.addEventListener("DOMContentLoaded", () => {
-  // Cargar estado de asistencia desde localStorage
-  let asistencia = JSON.parse(localStorage.getItem("asistencia_ramos")) || {};
+/* =========================
+   SISTEMA DE ASISTENCIA
+========================= */
 
-  // Función para guardar estado
-  const guardarAsistencia = () => {
-    localStorage.setItem("asistencia_ramos", JSON.stringify(asistencia));
-    actualizarContadores();
-  };
+const asistenciaGrid = document.getElementById("asistenciaGrid");
 
-  // Función para actualizar contadores
-  const actualizarContadores = () => {
-    const totalRamos = Object.keys(estado).length; // total de ramos
-    const ramosAsistidos = Object.values(asistencia).filter(a => a === true).length;
-    const totalCR = Object.values(estado).reduce((sum, r) => sum + r.creditos, 0); // suma de créditos
-    const crAsistidos = Object.keys(asistencia)
-      .filter(k => asistencia[k])
-      .reduce((sum, k) => sum + (estado[k]?.creditos || 0), 0);
+if(asistenciaGrid){
 
-    document.getElementById("contadorRamos").textContent = `${ramosAsistidos}/${totalRamos} ramos`;
-    document.getElementById("contadorCR").textContent = `${crAsistidos}/${totalCR} cr`;
-  };
+for(let i=1;i<=5;i++){
+  asistenciaGrid.appendChild(crearRamoAsistencia("Ramo "+i));
+}
 
-  // Inicializar botones de asistencia
-  document.querySelectorAll(".ramo").forEach(div => {
-    const nombre = div.dataset.ramo;
-    // Marcar asistencia si ya estaba
-    if (asistencia[nombre]) div.classList.add("asistido");
+}
 
-    div.addEventListener("click", e => {
-      asistencia[nombre] = !asistencia[nombre];
-      div.classList.toggle("asistido");
-      guardarAsistencia();
-    });
-  });
+function crearRamoAsistencia(nombre){
 
-  actualizarContadores();
-});
+const card=document.createElement("div");
+card.className="card";
+
+card.innerHTML=`
+
+<input class="ramo-titulo" value="${nombre}">
+
+<table>
+<thead>
+<tr>
+<th>Clases</th>
+<th>% Req</th>
+<th>Faltas</th>
+<th>Asistencia</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+
+<td>
+<input type="number" class="clases">
+</td>
+
+<td>
+<input type="number" class="porcentaje-apr">
+</td>
+
+<td>
+<input type="number" class="faltas">
+</td>
+
+<td class="resultado">
+0%
+</td>
+
+</tr>
+</tbody>
+</table>
+
+`;
+
+const clases=card.querySelector(".clases");
+const faltas=card.querySelector(".faltas");
+const requerido=card.querySelector(".porcentaje-apr");
+const resultado=card.querySelector(".resultado");
+
+function calcularAsistencia(){
+
+const c=parseFloat(clases.value);
+const f=parseFloat(faltas.value);
+const r=parseFloat(requerido.value);
+
+if(isNaN(c)||c===0){
+
+resultado.textContent="0%";
+return;
+
+}
+
+const asistencia=((c-f)/c)*100;
+
+resultado.textContent=formatearNumero(asistencia)+"%";
+
+if(!isNaN(r)){
+
+resultado.style.color=
+asistencia>=r ? "#0a8f3c" : "#c40000";
+
+}
+
+}
+
+clases.addEventListener("input",calcularAsistencia);
+faltas.addEventListener("input",calcularAsistencia);
+requerido.addEventListener("input",calcularAsistencia);
+
+return card;
+
+}
