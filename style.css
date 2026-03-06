@@ -408,3 +408,18 @@ margin-top:3px;
 #asistenciaGrid td{
   vertical-align: middle;
 }
+
+/* ===== FIX EXTRA iOS TABLAS ===== */
+
+#asistenciaGrid table{
+  table-layout: fixed;
+}
+
+#asistenciaGrid td{
+  min-width:60px;
+}
+
+#asistenciaGrid input[type="number"]{
+  width:100%;
+  min-width:40px;
+}
