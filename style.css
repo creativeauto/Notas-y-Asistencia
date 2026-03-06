@@ -394,3 +394,17 @@ button:hover{
 font-size:12px;
 margin-top:3px;
 }
+/* ===== FIX SAFARI iOS INPUTS EN TABLAS ===== */
+
+#asistenciaGrid input[type="number"],
+#asistenciaGrid input{
+  -webkit-appearance: none;
+  appearance: none;
+  min-height: 24px;
+  line-height: normal;
+}
+
+/* evita que safari colapse celdas */
+#asistenciaGrid td{
+  vertical-align: middle;
+}
