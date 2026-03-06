@@ -377,16 +377,11 @@ button:hover{
 #asistenciaGrid table{ 
   width:100%; 
 }
-#asistenciaGrid input[type="number"] {
+#asistenciaGrid input{
   width: 100%;
   box-sizing: border-box;
   border: 1px solid #ccc;
   border-radius: 6px;
   padding: 4px;
-  text-align: center;
-}
-
-/* Esto no afecta a las celdas de porcentaje */
-#asistenciaGrid td.porcentaje {
   text-align: center;
 }
