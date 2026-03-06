@@ -380,7 +380,11 @@ button:hover{
 #asistenciaGrid input[type="number"]{
   width:100%;
   box-sizing:border-box;
-  
+  padding:3px;
+  border:1px solid #ccc;
+  border-radius:6px;
+  text-align:center;
+}
 .resultado{
   font-weight:600;
   text-align:center;
