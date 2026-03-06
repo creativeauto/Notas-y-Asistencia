@@ -442,13 +442,70 @@ const asistenciaGrid = document.getElementById("asistenciaGrid");
 
 if(asistenciaGrid){
 
+cargarAsistencia();
+
+if(asistenciaGrid.children.length===0){
 for(let i=1;i<=5;i++){
   asistenciaGrid.appendChild(crearRamoAsistencia("Ramo "+i));
+}
 }
 
 actualizarBotonAgregarAsistencia();
 
 }
+
+/* ===== GUARDAR ASISTENCIA ===== */
+
+function guardarAsistencia(){
+
+const ramos=[];
+
+document.querySelectorAll("#asistenciaGrid .card:not(.add-ramo-card)").forEach(card=>{
+
+const ramo={
+
+titulo:card.querySelector(".ramo-titulo").value,
+clases:card.querySelector(".clases").value,
+faltas:card.querySelector(".faltas").value,
+requerido:card.querySelector(".porcentaje-apr").value
+
+};
+
+ramos.push(ramo);
+
+});
+
+localStorage.setItem("asistenciaRamos",JSON.stringify(ramos));
+
+}
+
+/* ===== CARGAR ASISTENCIA ===== */
+
+function cargarAsistencia(){
+
+const datosGuardados=localStorage.getItem("asistenciaRamos");
+
+if(!datosGuardados) return;
+
+const ramos=JSON.parse(datosGuardados);
+
+asistenciaGrid.innerHTML="";
+
+ramos.forEach(ramo=>{
+
+const card=crearRamoAsistencia(ramo.titulo);
+
+card.querySelector(".clases").value=ramo.clases;
+card.querySelector(".faltas").value=ramo.faltas;
+card.querySelector(".porcentaje-apr").value=ramo.requerido;
+
+asistenciaGrid.appendChild(card);
+
+});
+
+}
+
+/* ========================= */
 
 function crearRamoAsistencia(nombre){
 
@@ -523,6 +580,10 @@ const faltas=card.querySelector(".faltas");
 const requerido=card.querySelector(".porcentaje-apr");
 const resultado=card.querySelector(".resultado");
 
+/* ===== GUARDAR TITULO ===== */
+
+card.querySelector(".ramo-titulo").addEventListener("input",guardarAsistencia);
+
 /* ===== MENU ===== */
 
 const menuBtn = card.querySelector(".menu-btn");
@@ -554,6 +615,7 @@ confirm(`¿Estás seguro de que quieres eliminar ${nombreRamo}?`);
 
 if(confirmar){
 card.remove();
+guardarAsistencia();
 actualizarBotonAgregarAsistencia();
 }
 
@@ -574,6 +636,8 @@ faltas.value="";
 requerido.value="";
 resultado.textContent="0%";
 resultado.style.color="";
+
+guardarAsistencia();
 
 });
 
@@ -605,9 +669,22 @@ asistencia>=r ? "#0a8f3c" : "#c40000";
 
 }
 
-clases.addEventListener("input",calcularAsistencia);
-faltas.addEventListener("input",calcularAsistencia);
-requerido.addEventListener("input",calcularAsistencia);
+/* ===== INPUTS ===== */
+
+clases.addEventListener("input",()=>{
+calcularAsistencia();
+guardarAsistencia();
+});
+
+faltas.addEventListener("input",()=>{
+calcularAsistencia();
+guardarAsistencia();
+});
+
+requerido.addEventListener("input",()=>{
+calcularAsistencia();
+guardarAsistencia();
+});
 
 return card;
 
@@ -629,6 +706,7 @@ crearRamoAsistencia("Nuevo Ramo"),
 btnCard
 );
 
+guardarAsistencia();
 actualizarBotonAgregarAsistencia();
 
 });
