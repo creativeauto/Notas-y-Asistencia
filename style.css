@@ -391,3 +391,9 @@ button:hover{
   padding:4px;
   text-align:center;
 }
+#asistenciaGrid input[type="number"]{
+  border:1px solid #ccc;
+  border-radius:6px;
+  padding:3px;
+  text-align:center;
+}
