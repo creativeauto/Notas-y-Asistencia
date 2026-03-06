@@ -383,3 +383,11 @@ button:hover{
   width:100%;
   box-sizing:border-box;
 }
+#asistenciaGrid input{
+  width:100%;
+  box-sizing:border-box;
+  border:1px solid #ccc;
+  border-radius:6px;
+  padding:4px;
+  text-align:center;
+}
