@@ -112,16 +112,16 @@ thead{
   position:relative;
 }
 
-/* Barra gris que se extiende hasta los bordes del cuadro blanco */
 thead::before{
   content:"";
   position:absolute;
   top:0;
   bottom:0;
-  left:-15px; /* mismo valor que el padding del .card */
-  width:calc(100% + 30px); /* 15px + 15px */
+  left:-15px;
+  width:calc(100% + 30px);
   background:#f5f5f7;
   z-index:0;
+  pointer-events:none;
 }
 
 th{
