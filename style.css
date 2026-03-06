@@ -394,32 +394,3 @@ button:hover{
 font-size:12px;
 margin-top:3px;
 }
-
-/* ===== FIX INPUTS iOS ===== */
-
-table input{
-width:100%;
-min-height:36px;
-padding:6px 10px;
-box-sizing:border-box;
-border-radius:10px;
-border:1px solid #ccc;
-font-size:16px;
-background:white;
-}
-
-input{
--webkit-appearance:none;
-appearance:none;
-}
-
-/* asegurar que la tabla no se rompa en safari */
-
-table{
-width:100%;
-border-collapse:collapse;
-}
-
-td{
-padding:6px;
-}
