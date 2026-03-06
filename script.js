@@ -665,8 +665,17 @@ const faltasMaximas = Math.floor(c*(100-r)/100);
 const restantes = faltasMaximas - f;
 
 if(restantes > 0){
+
+if(restantes === 1){
+faltasRestantes.textContent = "Puedes faltar 1 clase más";
+}
+
+else{
 faltasRestantes.textContent = "Puedes faltar " + restantes + " clases más";
+}
+
 faltasRestantes.style.color = "#666";
+
 }
 
 else if(restantes === 0){
