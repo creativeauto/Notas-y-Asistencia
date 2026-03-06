@@ -567,6 +567,7 @@ Eliminar ramo
 
 <td>
 <span class="resultado">0%</span>
+<div class="faltas-restantes"></div>
 </td>
 
 </tr>
@@ -579,7 +580,7 @@ const clases=card.querySelector(".clases");
 const faltas=card.querySelector(".faltas");
 const requerido=card.querySelector(".porcentaje-apr");
 const resultado=card.querySelector(".resultado");
-
+const faltasRestantes = card.querySelector(".faltas-restantes");
 /* ===== GUARDAR TITULO ===== */
 
 card.querySelector(".ramo-titulo").addEventListener("input",guardarAsistencia);
@@ -657,7 +658,27 @@ return;
 }
 
 const asistencia=((c-f)/c)*100;
+if(!isNaN(r)){
 
+const faltasMaximas = Math.floor(c*(100-r)/100);
+const restantes = faltasMaximas - f;
+
+if(restantes > 0){
+faltasRestantes.textContent = "Puedes faltar " + restantes + " clases más";
+faltasRestantes.style.color = "#666";
+}
+
+else if(restantes === 0){
+faltasRestantes.textContent = "No puedes faltar más";
+faltasRestantes.style.color = "#c47a00";
+}
+
+else{
+faltasRestantes.textContent = "Ya superaste el límite de faltas";
+faltasRestantes.style.color = "#c40000";
+}
+
+}
 resultado.textContent=formatearNumero(asistencia)+"%";
 
 if(!isNaN(r)){
