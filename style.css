@@ -377,11 +377,7 @@ button:hover{
 #asistenciaGrid table{ 
   width:100%; 
 }
-#asistenciaGrid input{
-  width: 100%;
-  box-sizing: border-box;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  padding: 4px;
-  text-align: center;
-}
+#asistenciaGrid input[type="number"]{
+  width:100%;
+  box-sizing:border-box;
+
