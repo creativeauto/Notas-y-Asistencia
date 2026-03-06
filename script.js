@@ -496,7 +496,7 @@ ramos.forEach(ramo=>{
 const card=crearRamoAsistencia(ramo.titulo);
 
 card.querySelector(".clases").value=ramo.clases;
-card.querySelector(".faltas").value=ramo.faltas;
+card.querySelector(".faltas").value=ramo.faltas || 0;
 card.querySelector(".porcentaje-apr").value=ramo.requerido;
 
 asistenciaGrid.appendChild(card);
@@ -563,7 +563,7 @@ Eliminar ramo
 </td>
 
 <td>
-<input type="number" class="faltas">
+<input type="number" class="faltas" value="0">
 </td>
 
 <td>
@@ -582,6 +582,7 @@ const faltas=card.querySelector(".faltas");
 const requerido=card.querySelector(".porcentaje-apr");
 const resultado=card.querySelector(".resultado");
 const faltasRestantes = card.querySelector(".faltas-restantes");
+
 /* ===== GUARDAR TITULO ===== */
 
 card.querySelector(".ramo-titulo").addEventListener("input",guardarAsistencia);
@@ -634,10 +635,11 @@ confirm(`¿Estás seguro de que quieres reiniciar ${nombreRamo}?`);
 if(!confirmar) return;
 
 clases.value="";
-faltas.value="";
+faltas.value="0";
 requerido.value="";
 resultado.textContent="0%";
 resultado.style.color="";
+faltasRestantes.textContent="";
 
 guardarAsistencia();
 
@@ -648,17 +650,19 @@ guardarAsistencia();
 function calcularAsistencia(){
 
 const c=parseFloat(clases.value);
-const f=parseFloat(faltas.value);
+const f=parseFloat(faltas.value) || 0;
 const r=parseFloat(requerido.value);
 
 if(isNaN(c)||c===0){
 
 resultado.textContent="0%";
+faltasRestantes.textContent="";
 return;
 
 }
 
 const asistencia=((c-f)/c)*100;
+
 if(!isNaN(r)){
 
 const faltasMaximas = Math.floor(c*(100-r)/100);
@@ -689,6 +693,7 @@ faltasRestantes.style.color = "#c40000";
 }
 
 }
+
 resultado.textContent=formatearNumero(asistencia)+"%";
 
 if(!isNaN(r)){
