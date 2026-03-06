@@ -374,7 +374,9 @@ button:hover{
 /* =========================
    SISTEMA DE ASISTENCIA
 ========================= */
-
+#asistenciaGrid table{ 
+  width:100%; 
+}
 #asistenciaGrid input[type="number"] {
   width: 100%;
   box-sizing: border-box;
