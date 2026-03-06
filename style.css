@@ -126,7 +126,7 @@ table::before{
   top:0;
   left:-15px;
   width:calc(100% + 30px);
-  height:30px; /* altura de la barra gris */
+  height:37px; /* altura de la barra gris */
   background:#f5f5f7;
   z-index:0;
 }
