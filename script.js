@@ -500,6 +500,7 @@ card.querySelector(".faltas").value=ramo.faltas;
 card.querySelector(".porcentaje-apr").value=ramo.requerido;
 
 asistenciaGrid.appendChild(card);
+card.querySelector(".clases").dispatchEvent(new Event("input"));
 
 });
 
