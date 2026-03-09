@@ -328,7 +328,7 @@ button:hover{
   cursor:pointer;
   transition:0.2s ease;
   color:white;
-  transform: translateY(-3px);
+  transform: translateY(-4px);
 }
 
 .delete-btn:hover{
