@@ -485,15 +485,18 @@ margin-top:3px;
 }
 
 .title-group h1{
-  font-size:32px;
+  font-family: "Manrope", sans-serif;
+  font-size:36px;
   font-weight:700;
   margin:0;
-  letter-spacing:-0.5px;
+  letter-spacing:-0.8px;
   color:#111;
 }
 
 .subtitle{
-  font-size:14px;
+  font-family: "Manrope", sans-serif;
+  font-size:15px;
   color:#6b7280;
-  margin-top:4px;
+  margin-top:6px;
+  font-weight:500;
 }
