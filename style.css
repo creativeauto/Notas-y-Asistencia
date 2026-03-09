@@ -90,7 +90,8 @@ h1{
   border:none;
   background:transparent;
   margin-bottom:10px;
-  width: calc(100% - 35px);
+  width:100%;
+  padding-right:40px;
 }
 }
 
