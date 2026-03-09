@@ -331,7 +331,7 @@ button:hover{
 @media (min-width: 1024px){
   .info-panel{
     margin-left: -2px;
-    margin-right: -110px;
+    margin-right: -2px;
   }
 }
 
@@ -339,7 +339,7 @@ button:hover{
 @media (min-width: 768px) and (max-width: 1023px){
   .info-panel{
     margin-left: -2px;
-    margin-right: -50px; /* ajusta si quieres */
+    margin-right: -2px; /* ajusta si quieres */
   }
 }
 
@@ -347,7 +347,7 @@ button:hover{
 @media (max-width: 767px){
   .info-panel{
     margin-left: -2px;
-    margin-right: -25px; /* más suave para que no se rompa */
+    margin-right: -2px; /* más suave para que no se rompa */
   }
 }
 /* ===== TABS ===== */
