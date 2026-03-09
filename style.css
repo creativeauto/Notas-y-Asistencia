@@ -319,15 +319,16 @@ button:hover{
 .delete-btn{
   background:#be021c;
   border:none;
-  width:30px;
-  height:30px;
-  border-radius:9px;
+  width:34px;
+  height:34px;
+  border-radius:10px;
   display:flex;
   align-items:center;
   justify-content:center;
   cursor:pointer;
   transition:0.2s ease;
   color:white;
+  transform: translateY(-3px);
 }
 
 .delete-btn:hover{
@@ -340,9 +341,6 @@ button:hover{
   height:16px;
 }
 
-#grid td:nth-child(4) .delete-btn{
-  margin-top:-3px;
-}
 /* ===== TABS ===== */
 
 .tabs-container{
