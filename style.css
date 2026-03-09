@@ -169,20 +169,20 @@ tr:hover td{
   border-radius:6px;
   text-align:center;
 }
-/* distribución de columnas */
-th:nth-child(1), td:nth-child(1){
+/* distribución de columnas *//* SOLO para la calculadora */
+#grid th:nth-child(1), #grid td:nth-child(1){
   width:55%;
 }
 
-th:nth-child(2), td:nth-child(2){
+#grid th:nth-child(2), #grid td:nth-child(2){
   width:15%;
 }
 
-th:nth-child(3), td:nth-child(3){
+#grid th:nth-child(3), #grid td:nth-child(3){
   width:15%;
 }
 
-th:nth-child(4), td:nth-child(4){
+#grid th:nth-child(4), #grid td:nth-child(4){
   width:15%;
 }
 /* ===== BOTONES ===== */
