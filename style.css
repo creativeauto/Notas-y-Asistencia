@@ -85,13 +85,13 @@ h1{
 /* ===== TÍTULO ===== */
 
 .ramo-titulo{
-  font-size:17px;
+  font-size:16px;
   font-weight:600;
   border:none;
   background:transparent;
   margin-bottom:10px;
   width:100%;
-  padding-right:45px;
+  padding-right:35px;
   box-sizing:border-box;
 }
 
