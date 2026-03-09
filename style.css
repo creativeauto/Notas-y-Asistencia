@@ -90,7 +90,8 @@ h1{
   border:none;
   background:transparent;
   margin-bottom:10px;
-  width:100%;
+  width: calc(100% - 35px);
+}
 }
 
 .ramo-titulo:focus{
