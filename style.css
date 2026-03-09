@@ -92,12 +92,12 @@ h1{
   margin-bottom:10px;
   width:100%;
 }
-}
 
 .ramo-titulo:focus{
   outline:none;
   border-bottom:2px solid #be021c;
 }
+
 
 /* ===== TABLA ===== */
 
