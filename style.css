@@ -311,9 +311,9 @@ button:hover{
 .delete-btn{
   background:#be021c;
   border:none;
-  width:34px;
-  height:34px;
-  border-radius:10px;
+  width:26px;
+  height:26px;
+  border-radius:8px;
   display:flex;
   align-items:center;
   justify-content:center;
@@ -328,8 +328,8 @@ button:hover{
 }
 
 .delete-btn svg{
-  width:16px;
-  height:16px;
+  width:12px;
+  height:12px;
 }
 /* ===== TABS ===== */
 
