@@ -58,7 +58,7 @@ h1{
 .menu-dropdown{
   display:none;
   position:absolute;
-  left:-120px;
+  right:0;
   top:28px;
   background:white;
   border-radius:8px;
