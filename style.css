@@ -33,7 +33,7 @@ h1{
 .menu-container{
   position:absolute;
   top:0.3px;
-  right:50px;
+  right:8px;
   z-index:50;
 }
 
@@ -58,7 +58,7 @@ h1{
 .menu-dropdown{
   display:none;
   position:absolute;
-  right:0;
+  right:-30px;
   top:28px;
   background:white;
   border-radius:8px;
