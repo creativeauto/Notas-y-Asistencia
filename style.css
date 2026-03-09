@@ -168,30 +168,6 @@ tr:hover td{
   border-radius:6px;
   text-align:center;
 }
-/* distribución columnas tabla notas */
-
-#grid table th:nth-child(1),
-#grid table td:nth-child(1){
-  width:45%;
-}
-
-#grid table th:nth-child(2),
-#grid table td:nth-child(2){
-  width:15%;
-  text-align:center;
-}
-
-#grid table th:nth-child(3),
-#grid table td:nth-child(3){
-  width:20%;
-  text-align:center;
-}
-
-#grid table th:nth-child(4),
-#grid table td:nth-child(4){
-  width:20%;
-  text-align:center;
-}
 /* ===== BOTONES ===== */
 
 button{
