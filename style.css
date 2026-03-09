@@ -33,7 +33,7 @@ h1{
 .menu-container{
   position:absolute;
   top:0.3px;
-  right:2px;
+  right:50px;
   z-index:50;
 }
 
