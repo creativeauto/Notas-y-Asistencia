@@ -107,7 +107,7 @@ table{
   width:100%;
   border-collapse:collapse;
   font-size:13px;
-  table-layout:auto;
+  table-layout:fixed;
 }
 
 table{
