@@ -100,7 +100,6 @@ h1{
   border-bottom:2px solid #be021c;
 }
 
-
 /* ===== TABLA ===== */
 
 table{
@@ -140,7 +139,14 @@ th{
   border-bottom:1px solid #eee;
 }
 
-td{
+/* SOLO calculadora (notas) */
+#grid td{
+  padding:3px 8px;
+  border-bottom:1px solid #eee;
+}
+
+/* asistencia mantiene el tamaño original */
+#asistenciaGrid td{
   padding:6px 8px;
   border-bottom:1px solid #eee;
 }
@@ -169,7 +175,9 @@ tr:hover td{
   border-radius:6px;
   text-align:center;
 }
-/* distribución de columnas *//* SOLO para la calculadora */
+
+/* distribución de columnas */
+/* SOLO para la calculadora */
 #grid th:nth-child(1), #grid td:nth-child(1){
   width:55%;
 }
