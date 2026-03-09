@@ -311,9 +311,9 @@ button:hover{
 .delete-btn{
   background:#be021c;
   border:none;
-  width:24px;
-  height:24px;
-  border-radius:8px;
+  width:34px;
+  height:34px;
+  border-radius:10px;
   display:flex;
   align-items:center;
   justify-content:center;
