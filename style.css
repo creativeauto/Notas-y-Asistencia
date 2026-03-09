@@ -340,8 +340,8 @@ button:hover{
   height:16px;
 }
 
-#grid td:nth-child(4){
-  vertical-align: middle;
+#grid td:nth-child(4) .delete-btn{
+  margin-top:-3px;
 }
 /* ===== TABS ===== */
 
