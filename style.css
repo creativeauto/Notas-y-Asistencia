@@ -162,7 +162,8 @@ tr:hover td{
 
 .porcentaje,
 .nota{
-  width:60px;
+  width:100%;
+  max-width:65px;
   padding:3px;
   border:1px solid #ccc;
   border-radius:6px;
@@ -170,22 +171,19 @@ tr:hover td{
 }
 /* distribución de columnas */
 th:nth-child(1), td:nth-child(1){
-  width: 60%;
+  width:55%;
 }
 
 th:nth-child(2), td:nth-child(2){
-  width: 15%;
-  text-align:center;
+  width:15%;
 }
 
 th:nth-child(3), td:nth-child(3){
-  width: 15%;
-  text-align:center;
+  width:15%;
 }
 
 th:nth-child(4), td:nth-child(4){
-  width: 10%;
-  text-align:center;
+  width:15%;
 }
 /* ===== BOTONES ===== */
 
