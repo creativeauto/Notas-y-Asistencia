@@ -168,6 +168,25 @@ tr:hover td{
   border-radius:6px;
   text-align:center;
 }
+/* distribución de columnas */
+th:nth-child(1), td:nth-child(1){
+  width: 60%;
+}
+
+th:nth-child(2), td:nth-child(2){
+  width: 15%;
+  text-align:center;
+}
+
+th:nth-child(3), td:nth-child(3){
+  width: 15%;
+  text-align:center;
+}
+
+th:nth-child(4), td:nth-child(4){
+  width: 10%;
+  text-align:center;
+}
 /* ===== BOTONES ===== */
 
 button{
