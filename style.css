@@ -283,6 +283,10 @@ button:hover{
   margin-top: 5px;
   padding-left: 18px;
 }
+.info-panel{
+  margin-left:-2px;
+  margin-right:-2px;
+}
 /* ===== RESPONSIVE ===== */
 
 @media (max-width: 1100px){
@@ -326,29 +330,6 @@ button:hover{
 .delete-btn svg{
   width:16px;
   height:16px;
-}
-/* ===== ESCRITORIO ===== */
-@media (min-width: 1024px){
-  .info-panel{
-    margin-left: -2px;
-    margin-right: -2px;
-  }
-}
-
-/* ===== TABLET ===== */
-@media (min-width: 768px) and (max-width: 1023px){
-  .info-panel{
-    margin-left: -2px;
-    margin-right: -2px; /* ajusta si quieres */
-  }
-}
-
-/* ===== CELULAR ===== */
-@media (max-width: 767px){
-  .info-panel{
-    margin-left: -2px;
-    margin-right: -2px; /* más suave para que no se rompa */
-  }
 }
 /* ===== TABS ===== */
 
