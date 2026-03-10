@@ -367,17 +367,17 @@ button:hover{
   transition:color .25s ease;
 }
 
-/* TEXTO BLANCO EN HOVER */
+/* HOVER */
 .tab-btn:hover{
   color:white;
 }
 
-/* TAB ACTIVA */
+/* TAB ACTIVA (NEGRO CUANDO NO HAY HOVER) */
 .tab-btn.active{
-  color:white;
+  color:#111;
 }
 
-/* LINEA ROJA (base) */
+/* LINEA ROJA BASE */
 .tab-btn::after{
   content:"";
   position:absolute;
@@ -393,7 +393,7 @@ button:hover{
   transition:transform .25s ease;
 }
 
-/* APARECE LA LINEA EN HOVER Y ACTIVA */
+/* APARECE LINEA */
 .tab-btn:hover::after,
 .tab-btn.active::after{
   transform:scaleX(1);
