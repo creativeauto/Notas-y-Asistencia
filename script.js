@@ -1,4 +1,4 @@
-const grid = document.getElementById("grid"); 
+const grid = document.getElementById("grid");  
 
 function formatearNumero(num){
   return Number.isInteger(num) ? num : num.toFixed(1);
@@ -174,9 +174,8 @@ function crearEvaluacion(numero, card){
   return tr;
 }
 
-
 /* =========================
-   RENUMERAR (VERSIÓN PRO)
+   RENUMERAR
 ========================= */
 
 function renumerar(tbody){
@@ -193,9 +192,11 @@ function renumerar(tbody){
     }
   });
 }
+
 /* =========================
    CALCULAR NOTA FINAL
 ========================= */
+
 function calcular(card){
   const porcentajes = card.querySelectorAll(".porcentaje");
   const notas = card.querySelectorAll(".nota");
@@ -215,12 +216,10 @@ function calcular(card){
     const p = parseFloat(pValue);
     const n = parseFloat(nValue);
 
-    // Verificar si falta algo
     if(pValue === "" || nValue === ""){
       tablaCompleta = false;
     }
 
-    // Color individual de notas
     if(!isNaN(n)){
       notas[i].style.color = n >= 40 ? "#0a8f3c" : "#c40000";
     } else {
@@ -249,7 +248,6 @@ function calcular(card){
   notaFinal.textContent = formatearNumero(notaCalculada);
   notaFinal.style.color = notaCalculada >= 40 ? "#0a8f3c" : "#c40000";
 
-  // 🔥 Mostrar mensaje solo si se re-escala
   if(seReescala){
     mensaje.textContent = "Promedio re-escalado";
     mensaje.style.fontSize = "12px";
@@ -259,6 +257,7 @@ function calcular(card){
     mensaje.textContent = "";
   }
 }
+
 /* =========================
    CALCULAR PORCENTAJE TOTAL
 ========================= */
@@ -314,7 +313,6 @@ function guardarDatos(){
   localStorage.setItem("calculadoraRamos", JSON.stringify(ramos));
 }
 
-
 /* =========================
    CARGAR DATOS
 ========================= */
@@ -324,16 +322,62 @@ function cargarDatos(){
 
   grid.innerHTML = "";
 
-  // Si NO hay datos guardados → crear 5 ramos iniciales
   if(!datosGuardados){
     for(let i = 1; i <= 5; i++){
       const card = crearRamo(`Ramo ${i}`);
       grid.appendChild(card);
     }
-
-    actualizarBotonesAgregar();
     return;
   }
+
+  const ramos = JSON.parse(datosGuardados);
+
+  ramos.forEach(ramo=>{
+    const card = crearRamo(ramo.titulo);
+    const tbody = card.querySelector(".evaluaciones");
+
+    tbody.innerHTML = "";
+
+    ramo.evaluaciones.forEach((ev, index)=>{
+      const tr = crearEvaluacion(index+1, card);
+
+      tr.querySelector(".eval-nombre").value = ev.nombre;
+      tr.querySelector(".porcentaje").value = ev.porcentaje;
+      tr.querySelector(".nota").value = ev.nota;
+
+      tbody.appendChild(tr);
+    });
+
+    grid.appendChild(card);
+
+    calcular(card);
+    actualizarTotalPorcentaje(card);
+  });
+}
+
+/* =========================
+   BOTON + RAMO
+========================= */
+
+function crearBotonAgregarRamo(){
+  const btnCard = document.createElement("div");
+  btnCard.className = "card add-ramo-card";
+
+  btnCard.innerHTML = `<button class="add-ramo-btn">+</button>`;
+
+  btnCard.querySelector(".add-ramo-btn").addEventListener("click", ()=>{
+    const nuevo = crearRamo("Nuevo Ramo");
+    grid.insertBefore(nuevo, btnCard);
+    guardarDatos();
+  });
+
+  return btnCard;
+}
+
+function actualizarBotonesAgregar(){
+  document.querySelectorAll(".add-ramo-card").forEach(el=>el.remove());
+  grid.appendChild(crearBotonAgregarRamo());
+}
 
   // Si SÍ hay datos → cargar ramos guardados
   const ramos = JSON.parse(datosGuardados);
