@@ -482,12 +482,14 @@ margin-top:3px;
 .title-group{
   display:flex;
   flex-direction:column;
+  margin-top:10px;
 }
 
 .title-group h1{
-  font-size:26px;
+  font-size:32px;
   font-weight:700;
   margin:0;
+  margin-left:-2px;
   letter-spacing:-0.5px;
   color:#111;
 }
@@ -496,4 +498,5 @@ margin-top:3px;
   font-size:14px;
   color:#6b7280;
   margin-top:4px;
+  margin-left:-2px;
 }
