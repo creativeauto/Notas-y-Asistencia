@@ -409,14 +409,28 @@ function actualizarBotonesAgregar(){
   document.querySelectorAll(".add-ramo-card").forEach(el => el.remove());
   grid.appendChild(crearBotonAgregarRamo());
 }
+
 const infoBtn = document.getElementById("infoBtn");
 const infoPanel = document.getElementById("infoPanel");
 
 infoBtn.addEventListener("click", () => {
   infoPanel.classList.toggle("active");
 });
+
+
 const tabs = document.querySelectorAll(".tab-btn");
 const contents = document.querySelectorAll(".tab-content");
+const indicator = document.querySelector(".tab-indicator");
+
+
+function moveIndicator(el){
+  const rect = el.getBoundingClientRect();
+  const parentRect = el.parentElement.getBoundingClientRect();
+
+  indicator.style.width = rect.width + "px";
+  indicator.style.left = (rect.left - parentRect.left) + "px";
+}
+
 
 tabs.forEach(btn => {
   btn.addEventListener("click", () => {
@@ -432,7 +446,16 @@ tabs.forEach(btn => {
     const tabId = btn.getAttribute("data-tab");
     document.getElementById(tabId).classList.add("active");
 
+    // mover linea roja
+    moveIndicator(btn);
+
   });
+});
+
+
+window.addEventListener("load", () => {
+  const active = document.querySelector(".tab-btn.active");
+  if(active) moveIndicator(active);
 });
 /* =========================
    SISTEMA DE ASISTENCIA
@@ -762,27 +785,3 @@ crearBotonAgregarRamoAsistencia()
 );
 
 }
-const tabs = document.querySelectorAll(".tab-btn");
-const indicator = document.querySelector(".tab-indicator");
-
-function moveIndicator(el){
-  const rect = el.getBoundingClientRect();
-  const parentRect = el.parentElement.getBoundingClientRect();
-
-  indicator.style.width = rect.width + "px";
-  indicator.style.left = (rect.left - parentRect.left) + "px";
-}
-
-tabs.forEach(tab=>{
-  tab.addEventListener("click", ()=>{
-    tabs.forEach(t=>t.classList.remove("active"));
-    tab.classList.add("active");
-
-    moveIndicator(tab);
-  });
-});
-
-window.addEventListener("load", ()=>{
-  const active = document.querySelector(".tab-btn.active");
-  if(active) moveIndicator(active);
-});
