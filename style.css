@@ -215,8 +215,8 @@ button:hover{
   display:flex;
   justify-content:center;
   align-items:center;
-  background:#fff5f5;
-  border:2px dashed #c40000;
+  background:#f7f5ca;
+  border:2px dashed #be021c;
 }
 
 .add-ramo-btn{
