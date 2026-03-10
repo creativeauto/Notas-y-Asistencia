@@ -395,13 +395,26 @@ button:hover{
 
 /* HOVER SOLO EN DISPOSITIVOS CON MOUSE */
 @media (hover:hover){
-  
+
   .tab-btn:hover{
     color:white;
   }
 
   .tab-btn:hover::after{
     transform:scaleX(1);
+  }
+
+}
+
+/* DESACTIVA HOVER EN CELULARES */
+@media (hover:none){
+
+  .tab-btn:hover{
+    color:#6b7280;
+  }
+
+  .tab-btn:hover::after{
+    transform:scaleX(0);
   }
 
 }
