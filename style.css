@@ -397,8 +397,8 @@ button:hover{
 @media (any-hover:hover){
 
   .tab-btn:hover{
-    background:#be021c;
-    color:white;
+    background:#f7f5ca;
+    color:#2D1B47;
   }
 
   .tab-btn:hover::after{
