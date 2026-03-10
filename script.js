@@ -762,3 +762,11 @@ crearBotonAgregarRamoAsistencia()
 );
 
 }
+// Evita hover pegado en móviles
+if (window.matchMedia("(hover: none)").matches) {
+  document.querySelectorAll(".tab-btn").forEach(btn => {
+    btn.addEventListener("touchend", () => {
+      btn.blur(); // quita el estado hover/focus después del tap
+    });
+  });
+}
