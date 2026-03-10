@@ -379,37 +379,6 @@ function actualizarBotonesAgregar(){
   grid.appendChild(crearBotonAgregarRamo());
 }
 
-  // Si SÍ hay datos → cargar ramos guardados
-  const ramos = JSON.parse(datosGuardados);
-
-  ramos.forEach(ramo=>{
-    const card = crearRamo(ramo.titulo);
-
-    const tbody = card.querySelector(".evaluaciones");
-    tbody.innerHTML = "";
-
-    ramo.evaluaciones.forEach((evalData, index)=>{
-      const tr = crearEvaluacion(index+1, card);
-
-      const nombreInput = tr.querySelector(".eval-nombre");
-      const porcentajeInput = tr.querySelector(".porcentaje");
-      const notaInput = tr.querySelector(".nota");
-
-      if(nombreInput) nombreInput.value = evalData.nombre;
-      if(porcentajeInput) porcentajeInput.value = evalData.porcentaje;
-      if(notaInput) notaInput.value = evalData.nota;
-
-      tbody.appendChild(tr);
-    });
-
-    calcular(card);
-    actualizarTotalPorcentaje(card);
-
-    grid.appendChild(card);
-  });
-
-  actualizarBotonesAgregar();
-}
 /* =========================
    ENTER VERTICAL
 ========================= */
