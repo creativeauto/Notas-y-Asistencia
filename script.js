@@ -295,15 +295,15 @@ function guardarDatos(){
 
   document.querySelectorAll(".card:not(.add-ramo-card)").forEach(card=>{
     const ramo = {
-      titulo: card.querySelector(".ramo-titulo").value,
+      titulo: card.querySelector(".ramo-titulo")?.value || "",
       evaluaciones: []
     };
 
     card.querySelectorAll("tbody tr").forEach(tr=>{
       ramo.evaluaciones.push({
-        nombre: tr.querySelector(".eval-nombre").value,
-        porcentaje: tr.querySelector(".porcentaje").value,
-        nota: tr.querySelector(".nota").value
+        nombre: tr.querySelector(".eval-nombre")?.value || "",
+        porcentaje: tr.querySelector(".porcentaje")?.value || "",
+        nota: tr.querySelector(".nota")?.value || ""
       });
     });
 
@@ -312,6 +312,7 @@ function guardarDatos(){
 
   localStorage.setItem("calculadoraRamos", JSON.stringify(ramos));
 }
+
 
 /* =========================
    CARGAR DATOS
@@ -322,29 +323,40 @@ function cargarDatos(){
   if(!datosGuardados) return;
 
   const ramos = JSON.parse(datosGuardados);
+
   grid.innerHTML = "";
 
   ramos.forEach(ramo=>{
     const card = crearRamo(ramo.titulo);
+
     const tbody = card.querySelector(".evaluaciones");
     tbody.innerHTML = "";
 
     ramo.evaluaciones.forEach((evalData, index)=>{
       const tr = crearEvaluacion(index+1, card);
-      tr.querySelector(".eval-nombre").value = evalData.nombre;
-      tr.querySelector(".porcentaje").value = evalData.porcentaje;
-      tr.querySelector(".nota").value = evalData.nota;
+
+      const nombreInput = tr.querySelector(".eval-nombre");
+      const porcentajeInput = tr.querySelector(".porcentaje");
+      const notaInput = tr.querySelector(".nota");
+
+      if(nombreInput) nombreInput.value = evalData.nombre;
+      if(porcentajeInput) porcentajeInput.value = evalData.porcentaje;
+      if(notaInput) notaInput.value = evalData.nota;
+
       tbody.appendChild(tr);
     });
 
     calcular(card);
     actualizarTotalPorcentaje(card);
+
     grid.appendChild(card);
   });
 
   actualizarBotonesAgregar();
-}
 
+  // asegura que el estado cargado quede guardado correctamente
+  guardarDatos();
+}
 /* =========================
    ENTER VERTICAL
 ========================= */
