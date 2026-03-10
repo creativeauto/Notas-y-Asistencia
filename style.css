@@ -364,18 +364,12 @@ button:hover{
   background:none;
   color:#6b7280;
   position:relative;
-  transition:color .25s ease;
+  transition:all .25s ease;
 }
 
 /* TAB ACTIVA */
 .tab-btn.active{
   color:#111;
-}
-
-/* FORZAR SIN FONDO */
-.tab-btn,
-.tab-btn.active{
-  background:none !important;
 }
 
 /* LINEA ROJA */
@@ -399,15 +393,25 @@ button:hover{
   transform:scaleX(1);
 }
 
-/* HOVER SOLO EN COMPUTADOR */
+/* EFECTOS SOLO EN COMPUTADOR */
 @media (any-hover:hover){
 
   .tab-btn:hover{
+    background:#be021c;
     color:white;
   }
 
   .tab-btn:hover::after{
     transform:scaleX(1);
+  }
+
+}
+
+/* CELULAR: aseguramos que nunca haya fondo */
+@media (hover:none){
+
+  .tab-btn{
+    background:none !important;
   }
 
 }
