@@ -8,10 +8,15 @@ function formatearNumero(num){
    CARGAR DATOS AL INICIAR
 ========================= */
 
-document.addEventListener("DOMContentLoaded", () => {
-  cargarDatos();
-  actualizarBotonesAgregar();
-});
+const hayDatos = cargarDatos();
+
+if(!hayDatos){
+  for(let i=1;i<=5;i++){
+    grid.appendChild(crearRamo("Ramo " + i));
+  }
+}
+
+actualizarBotonesAgregar();
 
 /* =========================
    CREAR RAMO
