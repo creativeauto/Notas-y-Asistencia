@@ -353,10 +353,11 @@ button:hover{
   gap:18px;
   border-bottom:1px solid #e5e7eb;
   margin-bottom:10px;
+  position:relative; /* necesario para la linea deslizante */
 }
 
 .tab-btn{
-  padding:10px 3px; 
+  padding:10px 10px;
   border:none;
   cursor:pointer;
   font-weight:600;
@@ -364,33 +365,12 @@ button:hover{
   background:none;
   color:#6b7280;
   position:relative;
-  transition:all .25s ease;
+  transition:color .25s ease, background .25s ease;
 }
 
 /* TAB ACTIVA */
 .tab-btn.active{
   color:#111;
-}
-
-/* LINEA ROJA */
-.tab-btn::after{
-  content:"";
-  position:absolute;
-  bottom:-1px;
-  left:-6px;
-  width:calc(100% + 12px);
-  height:3px;
-  background:#be021c;
-  border-radius:2px;
-
-  transform:scaleX(0);
-  transform-origin:center;
-  transition:transform .25s ease;
-}
-
-/* LINEA ACTIVA */
-.tab-btn.active::after{
-  transform:scaleX(1);
 }
 
 /* EFECTOS SOLO EN COMPUTADOR */
@@ -399,10 +379,6 @@ button:hover{
   .tab-btn:hover{
     background:#f7f5ca;
     color:#2D1B47;
-  }
-
-  .tab-btn:hover::after{
-    transform:scaleX(1);
   }
 
 }
@@ -415,6 +391,18 @@ button:hover{
   }
 
 }
+
+/* LINEA ROJA DESLIZANTE */
+.tab-indicator{
+  position:absolute;
+  bottom:-1px;
+  height:3px;
+  background:#be021c;
+  border-radius:2px;
+  transition:all .35s cubic-bezier(.4,0,.2,1);
+}
+
+/* CONTENIDO TABS */
 
 .tab-content{
   display:none;
