@@ -364,26 +364,39 @@ button:hover{
   background:none;
   color:#6b7280;
   position:relative;
-  transition:0.2s ease;
+  transition:color .25s ease;
 }
 
+/* TEXTO BLANCO EN HOVER */
 .tab-btn:hover{
-  color:#111;
+  color:white;
 }
 
+/* TAB ACTIVA */
 .tab-btn.active{
-  color:#111;
+  color:white;
 }
 
-.tab-btn.active::after{
+/* LINEA ROJA (base) */
+.tab-btn::after{
   content:"";
   position:absolute;
   bottom:-1px;
-  left:-6px;             
-  width:calc(100% + 12px); 
+  left:-6px;
+  width:calc(100% + 12px);
   height:3px;
   background:#be021c;
   border-radius:2px;
+
+  transform:scaleX(0);
+  transform-origin:center;
+  transition:transform .25s ease;
+}
+
+/* APARECE LA LINEA EN HOVER Y ACTIVA */
+.tab-btn:hover::after,
+.tab-btn.active::after{
+  transform:scaleX(1);
 }
 
 .tab-content{
