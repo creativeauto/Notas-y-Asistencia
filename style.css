@@ -367,17 +367,12 @@ button:hover{
   transition:color .25s ease;
 }
 
-/* HOVER */
-.tab-btn:hover{
-  color:white;
-}
-
-/* TAB ACTIVA (NEGRO CUANDO NO HAY HOVER) */
+/* TAB ACTIVA */
 .tab-btn.active{
   color:#111;
 }
 
-/* LINEA ROJA BASE */
+/* LINEA ROJA */
 .tab-btn::after{
   content:"";
   position:absolute;
@@ -393,10 +388,22 @@ button:hover{
   transition:transform .25s ease;
 }
 
-/* APARECE LINEA */
-.tab-btn:hover::after,
+/* LINEA ACTIVA */
 .tab-btn.active::after{
   transform:scaleX(1);
+}
+
+/* HOVER SOLO EN DISPOSITIVOS CON MOUSE */
+@media (hover:hover){
+  
+  .tab-btn:hover{
+    color:white;
+  }
+
+  .tab-btn:hover::after{
+    transform:scaleX(1);
+  }
+
 }
 
 .tab-content{
