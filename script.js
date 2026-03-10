@@ -784,5 +784,5 @@ tabs.forEach(tab=>{
 
 window.addEventListener("load", ()=>{
   const active = document.querySelector(".tab-btn.active");
-  moveIndicator(active);
+  if(active) moveIndicator(active);
 });
