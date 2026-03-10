@@ -356,7 +356,7 @@ button:hover{
 }
 
 .tab-btn{
-  padding:10px 0;
+  padding:10px 6px; /* un poco de padding lateral */
   border:none;
   cursor:pointer;
   font-weight:600;
@@ -378,9 +378,9 @@ button:hover{
 .tab-btn.active::after{
   content:"";
   position:absolute;
-  left:0;
   bottom:-1px;
-  width:100%;
+  left:-6px;             
+  width:calc(100% + 12px); 
   height:3px;
   background:#be021c;
   border-radius:2px;
@@ -393,7 +393,6 @@ button:hover{
 .tab-content.active{
   display:block;
 }
-
 /* =========================
    SISTEMA DE ASISTENCIA
 ========================= */
