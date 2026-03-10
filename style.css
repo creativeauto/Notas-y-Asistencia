@@ -372,6 +372,12 @@ button:hover{
   color:#111;
 }
 
+/* FORZAR SIN FONDO */
+.tab-btn,
+.tab-btn.active{
+  background:none !important;
+}
+
 /* LINEA ROJA */
 .tab-btn::after{
   content:"";
@@ -393,7 +399,7 @@ button:hover{
   transform:scaleX(1);
 }
 
-/* HOVER SOLO EN DISPOSITIVOS CON MOUSE */
+/* HOVER SOLO EN COMPUTADOR */
 @media (any-hover:hover){
 
   .tab-btn:hover{
