@@ -333,11 +333,22 @@ function guardarDatos(){
 
 function cargarDatos(){
   const datosGuardados = localStorage.getItem("calculadoraRamos");
-  if(!datosGuardados) return;
-
-  const ramos = JSON.parse(datosGuardados);
 
   grid.innerHTML = "";
+
+  // Si NO hay datos guardados → crear 5 ramos iniciales
+  if(!datosGuardados){
+    for(let i = 1; i <= 5; i++){
+      const card = crearRamo(`Ramo ${i}`);
+      grid.appendChild(card);
+    }
+
+    actualizarBotonesAgregar();
+    return;
+  }
+
+  // Si SÍ hay datos → cargar ramos guardados
+  const ramos = JSON.parse(datosGuardados);
 
   ramos.forEach(ramo=>{
     const card = crearRamo(ramo.titulo);
@@ -366,9 +377,6 @@ function cargarDatos(){
   });
 
   actualizarBotonesAgregar();
-
-  // asegura que el estado cargado quede guardado correctamente
-  guardarDatos();
 }
 /* =========================
    ENTER VERTICAL
