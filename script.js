@@ -149,16 +149,16 @@ function crearEvaluacion(numero, card){
     <td><input type="number" class="porcentaje"></td>
     <td><input type="number" class="nota"></td>
     <td>
-  <button class="delete-btn">
-    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <polyline points="3 6 5 6 21 6"></polyline>
-      <path d="M19 6l-1 14H6L5 6"></path>
-      <path d="M10 11v6"></path>
-      <path d="M14 11v6"></path>
-      <path d="M9 6V4h6v2"></path>
-    </svg>
-  </button>
-</td>
+      <button class="delete-btn">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="3 6 5 6 21 6"></polyline>
+          <path d="M19 6l-1 14H6L5 6"></path>
+          <path d="M10 11v6"></path>
+          <path d="M14 11v6"></path>
+          <path d="M9 6V4h6v2"></path>
+        </svg>
+      </button>
+    </td>
   `;
 
   tr.querySelectorAll(".porcentaje, .nota, .eval-nombre").forEach(input=>{
@@ -171,8 +171,11 @@ function crearEvaluacion(numero, card){
 
   tr.querySelector(".delete-btn").addEventListener("click", ()=>{
     const tbody = tr.parentElement;
+
     tr.remove();
+
     renumerar(tbody);
+
     calcular(card);
     actualizarTotalPorcentaje(card);
     guardarDatos();
@@ -181,14 +184,24 @@ function crearEvaluacion(numero, card){
   return tr;
 }
 
+
 /* =========================
-   RENUMERAR
+   RENUMERAR (VERSIÓN PRO)
 ========================= */
 
 function renumerar(tbody){
   const filas = tbody.querySelectorAll("tr");
+
   filas.forEach((fila, index)=>{
-    fila.querySelector(".eval-nombre").value = "Evaluación " + (index + 1);
+    const input = fila.querySelector(".eval-nombre");
+    const nombreActual = input.value.trim();
+
+    // Detecta nombres automáticos tipo "Evaluación 1", "Evaluación 2", etc.
+    const esAutomatico = /^Evaluación \d+$/.test(nombreActual);
+
+    if(esAutomatico){
+      input.value = `Evaluación ${index + 1}`;
+    }
   });
 }
 
