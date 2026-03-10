@@ -426,31 +426,8 @@ function activarEnterVertical(){
     }
   });
 }
+
 activarEnterVertical();
-
-/* =========================
-   BOTONES + RAMO
-========================= */
-
-function crearBotonAgregarRamo(){
-  const btnCard = document.createElement("div");
-  btnCard.className = "card add-ramo-card";
-
-  btnCard.innerHTML = `<button class="add-ramo-btn">+</button>`;
-
-  btnCard.querySelector(".add-ramo-btn").addEventListener("click", ()=>{
-    grid.insertBefore(crearRamo("Nuevo Ramo"), btnCard);
-    guardarDatos();
-    actualizarBotonesAgregar();
-  });
-
-  return btnCard;
-}
-
-function actualizarBotonesAgregar(){
-  document.querySelectorAll(".add-ramo-card").forEach(el => el.remove());
-  grid.appendChild(crearBotonAgregarRamo());
-}
 
 const infoBtn = document.getElementById("infoBtn");
 const infoPanel = document.getElementById("infoPanel");
@@ -459,11 +436,9 @@ infoBtn.addEventListener("click", () => {
   infoPanel.classList.toggle("active");
 });
 
-
 const tabs = document.querySelectorAll(".tab-btn");
 const contents = document.querySelectorAll(".tab-content");
 const indicator = document.querySelector(".tab-indicator");
-
 
 function moveIndicator(el){
   const rect = el.getBoundingClientRect();
@@ -473,27 +448,21 @@ function moveIndicator(el){
   indicator.style.left = (rect.left - parentRect.left) + "px";
 }
 
-
 tabs.forEach(btn => {
   btn.addEventListener("click", () => {
 
-    // Quitar active de todo
     tabs.forEach(b => b.classList.remove("active"));
     contents.forEach(c => c.classList.remove("active"));
 
-    // Activar botón
     btn.classList.add("active");
 
-    // Activar contenido correspondiente
     const tabId = btn.getAttribute("data-tab");
     document.getElementById(tabId).classList.add("active");
 
-    // mover linea roja
     moveIndicator(btn);
 
   });
 });
-
 
 window.addEventListener("load", () => {
   const active = document.querySelector(".tab-btn.active");
