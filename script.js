@@ -1,4 +1,4 @@
-const grid = document.getElementById("grid");
+const grid = document.getElementById("grid"); 
 
 function formatearNumero(num){
   return Number.isInteger(num) ? num : num.toFixed(1);
@@ -8,15 +8,20 @@ function formatearNumero(num){
    CARGAR DATOS AL INICIAR
 ========================= */
 
-const hayDatos = cargarDatos();
+document.addEventListener("DOMContentLoaded", () => {
 
-if(!hayDatos){
-  for(let i=1;i<=5;i++){
-    grid.appendChild(crearRamo("Ramo " + i));
+  const hayDatos = cargarDatos();
+
+  if(!hayDatos){
+    for(let i=1;i<=5;i++){
+      grid.appendChild(crearRamo("Ramo " + i));
+    }
   }
-}
 
-actualizarBotonesAgregar();
+  actualizarBotonesAgregar();
+
+});
+
 
 /* =========================
    CREAR RAMO
@@ -193,7 +198,6 @@ function renumerar(tbody){
     const input = fila.querySelector(".eval-nombre");
     const nombreActual = input.value.trim();
 
-    // Detecta nombres automáticos tipo "Evaluación 1", "Evaluación 2", etc.
     const esAutomatico = /^Evaluación \d+$/.test(nombreActual);
 
     if(esAutomatico){
@@ -201,7 +205,6 @@ function renumerar(tbody){
     }
   });
 }
-
 /* =========================
    CALCULAR NOTA FINAL
 ========================= */
