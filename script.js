@@ -293,7 +293,7 @@ function actualizarTotalPorcentaje(card){
 function guardarDatos(){
   const ramos = [];
 
-  document.querySelectorAll(".card:not(.add-ramo-card)").forEach(card=>{
+  grid.querySelectorAll(".card:not(.add-ramo-card)").forEach(card=>{
     const ramo = {
       titulo: card.querySelector(".ramo-titulo")?.value || "",
       evaluaciones: []
