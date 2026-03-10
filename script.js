@@ -318,27 +318,32 @@ function guardarDatos(){
 ========================= */
 
 function cargarDatos(){
+
   const datosGuardados = localStorage.getItem("calculadoraRamos");
 
   grid.innerHTML = "";
 
-  if(!datosGuardados){
+  if(!datosGuardados || JSON.parse(datosGuardados).length === 0){
+
     for(let i = 1; i <= 5; i++){
       const card = crearRamo(`Ramo ${i}`);
       grid.appendChild(card);
     }
+
     return;
   }
 
   const ramos = JSON.parse(datosGuardados);
 
   ramos.forEach(ramo=>{
+
     const card = crearRamo(ramo.titulo);
     const tbody = card.querySelector(".evaluaciones");
 
     tbody.innerHTML = "";
 
     ramo.evaluaciones.forEach((ev, index)=>{
+
       const tr = crearEvaluacion(index+1, card);
 
       tr.querySelector(".eval-nombre").value = ev.nombre;
@@ -346,13 +351,16 @@ function cargarDatos(){
       tr.querySelector(".nota").value = ev.nota;
 
       tbody.appendChild(tr);
+
     });
 
     grid.appendChild(card);
 
     calcular(card);
     actualizarTotalPorcentaje(card);
+
   });
+
 }
 
 /* =========================
