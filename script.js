@@ -323,16 +323,26 @@ function cargarDatos(){
 
   grid.innerHTML = "";
 
-  if(!datosGuardados || JSON.parse(datosGuardados).length === 0){
+if(!datosGuardados){
 
-    for(let i = 1; i <= 5; i++){
-      const card = crearRamo(`Ramo ${i}`);
-      grid.appendChild(card);
-    }
-
-    return;
+  for(let i = 1; i <= 5; i++){
+    const card = crearRamo(`Ramo ${i}`);
+    grid.appendChild(card);
   }
 
+  guardarDatos(); // guarda los 5 iniciales
+  return;
+}
+const ramos = JSON.parse(datosGuardados);
+
+if(ramos.length === 0){
+  for(let i = 1; i <= 5; i++){
+    const card = crearRamo(`Ramo ${i}`);
+    grid.appendChild(card);
+  }
+  guardarDatos();
+  return;
+}
   const ramos = JSON.parse(datosGuardados);
 
   ramos.forEach(ramo=>{
