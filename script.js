@@ -762,11 +762,27 @@ crearBotonAgregarRamoAsistencia()
 );
 
 }
-// Evita hover pegado en móviles
-if (window.matchMedia("(hover: none)").matches) {
-  document.querySelectorAll(".tab-btn").forEach(btn => {
-    btn.addEventListener("touchend", () => {
-      btn.blur(); // quita el estado hover/focus después del tap
-    });
-  });
+const tabs = document.querySelectorAll(".tab-btn");
+const indicator = document.querySelector(".tab-indicator");
+
+function moveIndicator(el){
+  const rect = el.getBoundingClientRect();
+  const parentRect = el.parentElement.getBoundingClientRect();
+
+  indicator.style.width = rect.width + "px";
+  indicator.style.left = (rect.left - parentRect.left) + "px";
 }
+
+tabs.forEach(tab=>{
+  tab.addEventListener("click", ()=>{
+    tabs.forEach(t=>t.classList.remove("active"));
+    tab.classList.add("active");
+
+    moveIndicator(tab);
+  });
+});
+
+window.addEventListener("load", ()=>{
+  const active = document.querySelector(".tab-btn.active");
+  moveIndicator(active);
+});
