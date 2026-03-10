@@ -323,27 +323,29 @@ function cargarDatos(){
 
   grid.innerHTML = "";
 
-if(!datosGuardados){
+  if(!datosGuardados){
 
-  for(let i = 1; i <= 5; i++){
-    const card = crearRamo(`Ramo ${i}`);
-    grid.appendChild(card);
+    for(let i = 1; i <= 5; i++){
+      const card = crearRamo(`Ramo ${i}`);
+      grid.appendChild(card);
+    }
+
+    guardarDatos();
+    return;
   }
 
-  guardarDatos(); // guarda los 5 iniciales
-  return;
-}
-const ramos = JSON.parse(datosGuardados);
-
-if(ramos.length === 0){
-  for(let i = 1; i <= 5; i++){
-    const card = crearRamo(`Ramo ${i}`);
-    grid.appendChild(card);
-  }
-  guardarDatos();
-  return;
-}
   const ramos = JSON.parse(datosGuardados);
+
+  if(ramos.length === 0){
+
+    for(let i = 1; i <= 5; i++){
+      const card = crearRamo(`Ramo ${i}`);
+      grid.appendChild(card);
+    }
+
+    guardarDatos();
+    return;
+  }
 
   ramos.forEach(ramo=>{
 
@@ -354,7 +356,7 @@ if(ramos.length === 0){
 
     ramo.evaluaciones.forEach((ev, index)=>{
 
-      const tr = crearEvaluacion(index+1, card);
+      const tr = crearEvaluacion(index + 1, card);
 
       tr.querySelector(".eval-nombre").value = ev.nombre;
       tr.querySelector(".porcentaje").value = ev.porcentaje;
