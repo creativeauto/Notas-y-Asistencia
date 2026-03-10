@@ -3,18 +3,12 @@ const grid = document.getElementById("grid");
 function formatearNumero(num){
   return Number.isInteger(num) ? num : num.toFixed(1);
 }
+
 /* =========================
    CARGAR DATOS AL INICIAR
 ========================= */
 
 cargarDatos();
-
-if(grid.children.length === 0){
-  for(let i=1; i<=5; i++){
-    grid.appendChild(crearRamo("Ramo " + i));
-  }
-}
-
 actualizarBotonesAgregar();
 
 /* =========================
@@ -67,8 +61,6 @@ function crearRamo(nombre){
     <button class="add-btn">+ Añadir evaluación</button>
   `;
 
-  /* ===== MENÚ ===== */
-
   const menuBtn = card.querySelector(".menu-btn");
   const dropdown = card.querySelector(".menu-dropdown");
 
@@ -85,7 +77,6 @@ function crearRamo(nombre){
     dropdown.style.display = "none";
   });
 
-  // Eliminar ramo
   card.querySelector(".eliminar").addEventListener("click", () => {
     const nombreRamo = card.querySelector(".ramo-titulo")?.value || "este ramo";
     const confirmar = confirm(`¿Estás seguro de que quieres eliminar ${nombreRamo}?`);
@@ -96,7 +87,6 @@ function crearRamo(nombre){
     }
   });
 
-  // Reiniciar ramo
   card.querySelector(".reiniciar").addEventListener("click", () => {
     const nombreRamo = card.querySelector(".ramo-titulo")?.value || "este ramo";
     const confirmar = confirm(`¿Estás seguro de que quieres reiniciar ${nombreRamo}?`);
