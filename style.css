@@ -353,7 +353,7 @@ button:hover{
   gap:18px;
   border-bottom:1px solid #e5e7eb;
   margin-bottom:10px;
-  position:relative; /* necesario para la linea deslizante */
+  position:relative;
 }
 
 .tab-btn{
@@ -364,7 +364,6 @@ button:hover{
   font-size:15px;
   background:none;
   color:#6b7280;
-  position:relative;
   transition:color .25s ease, background .25s ease;
 }
 
@@ -383,7 +382,7 @@ button:hover{
 
 }
 
-/* CELULAR: aseguramos que nunca haya fondo */
+/* CELULAR */
 @media (hover:none){
 
   .tab-btn{
@@ -392,7 +391,7 @@ button:hover{
 
 }
 
-/* LINEA ROJA DESLIZANTE */
+/* LINEA DESLIZANTE */
 .tab-indicator{
   position:absolute;
   bottom:-1px;
@@ -402,7 +401,7 @@ button:hover{
   transition:all .35s cubic-bezier(.4,0,.2,1);
 }
 
-/* CONTENIDO TABS */
+/* CONTENIDO */
 
 .tab-content{
   display:none;
