@@ -808,3 +808,131 @@ crearBotonAgregarRamoAsistencia()
 );
 
 }
+/* =========================
+SWIPE ENTRE PESTAÑAS PRO
+========================= */
+
+const tabsContainer = document.querySelector(".tabs-container");
+
+let touchStartX = 0;
+let touchEndX = 0;
+let touchStartY = 0;
+
+tabsContainer.addEventListener("touchstart", e => {
+
+const touch = e.changedTouches[0];
+
+touchStartX = touch.screenX;
+touchStartY = touch.screenY;
+
+});
+
+tabsContainer.addEventListener("touchend", e => {
+
+const touch = e.changedTouches[0];
+
+touchEndX = touch.screenX;
+
+detectarSwipe();
+
+});
+
+function detectarSwipe(){
+
+const diffX = touchStartX - touchEndX;
+
+/* sensibilidad mínima para evitar swipes accidentales */
+if(Math.abs(diffX) < 70) return;
+
+const tabs = [...document.querySelectorAll(".tab-btn")];
+const activa = document.querySelector(".tab-btn.active");
+const index = tabs.indexOf(activa);
+
+/* swipe izquierda */
+if(diffX > 0){
+
+```
+const siguiente = tabs[index + 1];
+
+if(siguiente){
+  cambiarTabSwipe(siguiente, "left");
+}
+```
+
+}
+
+/* swipe derecha */
+if(diffX < 0){
+
+```
+const anterior = tabs[index - 1];
+
+if(anterior){
+  cambiarTabSwipe(anterior, "right");
+}
+```
+
+}
+
+}
+
+/* =========================
+CAMBIO DE TAB CON ANIMACIÓN
+========================= */
+
+function cambiarTabSwipe(btn, direccion){
+
+const tabs = document.querySelectorAll(".tab-btn");
+const contents = document.querySelectorAll(".tab-content");
+
+const actualContent = document.querySelector(".tab-content.active");
+const tabId = btn.getAttribute("data-tab");
+const nuevoContent = document.getElementById(tabId);
+
+/* animación salida */
+actualContent.style.transition = "transform .35s ease, opacity .35s ease";
+
+actualContent.style.transform =
+direccion === "left"
+? "translateX(-40px)"
+: "translateX(40px)";
+
+actualContent.style.opacity = "0";
+
+setTimeout(()=>{
+
+```
+tabs.forEach(b => b.classList.remove("active"));
+contents.forEach(c => {
+  c.classList.remove("active");
+  c.style.transform = "";
+  c.style.opacity = "";
+  c.style.transition = "";
+});
+
+btn.classList.add("active");
+nuevoContent.classList.add("active");
+
+/* animación entrada */
+
+nuevoContent.style.opacity = "0";
+
+nuevoContent.style.transform =
+  direccion === "left"
+    ? "translateX(40px)"
+    : "translateX(-40px)";
+
+setTimeout(()=>{
+
+  nuevoContent.style.transition = "transform .35s ease, opacity .35s ease";
+  nuevoContent.style.opacity = "1";
+  nuevoContent.style.transform = "translateX(0)";
+
+},10);
+
+moveIndicator(btn);
+```
+
+},200);
+
+}
