@@ -855,3 +855,6 @@ if(diffX > 0){
 }, {passive:true});
 
 });
+document.addEventListener("touchstart", () => {
+  alert("touch detectado");
+});
