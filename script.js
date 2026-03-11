@@ -809,116 +809,49 @@ crearBotonAgregarRamoAsistencia()
 
 }
 /* =========================
-SWIPE ENTRE PESTAÑAS PRO
+SWIPE ENTRE PESTAÑAS
 ========================= */
 
 window.addEventListener("load", () => {
 
-/* =========================
-SWIPE ENTRE PESTAÑAS PRO
-========================= */
+const container = document.querySelector(".tabs-container");
 
-const tabsContainer = document.querySelector(".tabs-container");
+let startX = 0;
+let startY = 0;
 
-let touchStartX = 0;
-let touchEndX = 0;
+container.addEventListener("touchstart", (e) => {
+const t = e.touches[0];
+startX = t.clientX;
+startY = t.clientY;
+}, {passive:true});
 
-tabsContainer.addEventListener("touchstart", e => {
+container.addEventListener("touchend", (e) => {
 
-  const touch = e.changedTouches[0];
-  touchStartX = touch.screenX;
+```
+const t = e.changedTouches[0];
+const diffX = t.clientX - startX;
+const diffY = t.clientY - startY;
 
-});
+/* evita activar swipe cuando el usuario scrollea verticalmente */
+if(Math.abs(diffX) < 80 || Math.abs(diffX) < Math.abs(diffY)) return;
 
-tabsContainer.addEventListener("touchend", e => {
+const tabs = [...document.querySelectorAll(".tab-btn")];
+const active = document.querySelector(".tab-btn.active");
+const index = tabs.indexOf(active);
 
-  const touch = e.changedTouches[0];
-  touchEndX = touch.screenX;
-
-  detectarSwipe();
-
-});
-
-function detectarSwipe(){
-
-  const diffX = touchStartX - touchEndX;
-
-  if(Math.abs(diffX) < 70) return;
-
-  const tabs = [...document.querySelectorAll(".tab-btn")];
-  const activa = document.querySelector(".tab-btn.active");
-  const index = tabs.indexOf(activa);
-
-  if(diffX > 0){
-
-    const siguiente = tabs[index + 1];
-    if(siguiente) cambiarTabSwipe(siguiente, "left");
-
-  }
-
-  if(diffX < 0){
-
-    const anterior = tabs[index - 1];
-    if(anterior) cambiarTabSwipe(anterior, "right");
-
-  }
-
+/* swipe izquierda */
+if(diffX < 0){
+  const next = tabs[index+1];
+  if(next) next.click();
 }
 
-/* =========================
-CAMBIO DE TAB CON ANIMACIÓN
-========================= */
-
-function cambiarTabSwipe(btn, direccion){
-
-  const tabs = document.querySelectorAll(".tab-btn");
-  const contents = document.querySelectorAll(".tab-content");
-
-  const actualContent = document.querySelector(".tab-content.active");
-  const tabId = btn.getAttribute("data-tab");
-  const nuevoContent = document.getElementById(tabId);
-
-  actualContent.style.transition = "transform .35s ease, opacity .35s ease";
-
-  actualContent.style.transform =
-    direccion === "left"
-      ? "translateX(-40px)"
-      : "translateX(40px)";
-
-  actualContent.style.opacity = "0";
-
-  setTimeout(()=>{
-
-    tabs.forEach(b => b.classList.remove("active"));
-    contents.forEach(c => {
-      c.classList.remove("active");
-      c.style.transform = "";
-      c.style.opacity = "";
-      c.style.transition = "";
-    });
-
-    btn.classList.add("active");
-    nuevoContent.classList.add("active");
-
-    nuevoContent.style.opacity = "0";
-
-    nuevoContent.style.transform =
-      direccion === "left"
-        ? "translateX(40px)"
-        : "translateX(-40px)";
-
-    setTimeout(()=>{
-
-      nuevoContent.style.transition = "transform .35s ease, opacity .35s ease";
-      nuevoContent.style.opacity = "1";
-      nuevoContent.style.transform = "translateX(0)";
-
-    },10);
-
-    moveIndicator(btn);
-
-  },200);
-
+/* swipe derecha */
+if(diffX > 0){
+  const prev = tabs[index-1];
+  if(prev) prev.click();
 }
+```
+
+}, {passive:true});
 
 });
