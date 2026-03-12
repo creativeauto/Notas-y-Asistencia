@@ -903,3 +903,49 @@ card.draggable = true;
 });
 
 });
+/* =========================
+   CAMBIAR TAB CON SWIPE
+========================= */
+
+const tabsContainer = document.querySelector(".tabs-container");
+
+let startX = 0;
+let startY = 0;
+
+tabsContainer.addEventListener("touchstart", e => {
+
+startX = e.touches[0].clientX;
+startY = e.touches[0].clientY;
+
+});
+
+tabsContainer.addEventListener("touchend", e => {
+
+const endX = e.changedTouches[0].clientX;
+const endY = e.changedTouches[0].clientY;
+
+const diffX = endX - startX;
+const diffY = endY - startY;
+
+if(Math.abs(diffX) < 60) return;        // swipe muy corto
+if(Math.abs(diffX) < Math.abs(diffY)) return; // era scroll vertical
+
+const active = document.querySelector(".tab-btn.active");
+
+if(diffX < 0){
+  // swipe izquierda → siguiente tab
+  const next = active.nextElementSibling;
+  if(next && next.classList.contains("tab-btn")){
+    next.click();
+  }
+}
+
+if(diffX > 0){
+  // swipe derecha → tab anterior
+  const prev = active.previousElementSibling;
+  if(prev && prev.classList.contains("tab-btn")){
+    prev.click();
+  }
+}
+
+});
