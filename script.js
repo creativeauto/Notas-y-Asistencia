@@ -816,3 +816,69 @@ if(infoBtnAsistencia){
     infoPanelAsistencia.classList.toggle("active");
   });
 }
+/* =========================
+   ORDENAR TARJETAS (DRAG)
+========================= */
+
+activarDrag(grid);
+activarDrag(asistenciaGrid);
+
+function activarDrag(container){
+
+if(!container) return;
+
+let dragging = null;
+
+container.addEventListener("mousedown", e=>{
+
+const card = e.target.closest(".card");
+
+if(!card || card.classList.contains("add-ramo-card")) return;
+
+dragging = card;
+card.classList.add("dragging");
+
+});
+
+document.addEventListener("mouseup", ()=>{
+
+if(dragging){
+dragging.classList.remove("dragging");
+dragging = null;
+
+guardarDatos();
+guardarAsistencia();
+}
+
+});
+
+container.addEventListener("mousemove", e=>{
+
+if(!dragging) return;
+
+const cards = [...container.querySelectorAll(".card:not(.dragging):not(.add-ramo-card)")];
+
+let closest = null;
+let closestOffset = Number.NEGATIVE_INFINITY;
+
+cards.forEach(card=>{
+
+const box = card.getBoundingClientRect();
+const offset = e.clientY - box.top - box.height/2;
+
+if(offset < 0 && offset > closestOffset){
+closestOffset = offset;
+closest = card;
+}
+
+});
+
+if(closest){
+container.insertBefore(dragging, closest);
+}else{
+container.appendChild(dragging);
+}
+
+});
+
+}
