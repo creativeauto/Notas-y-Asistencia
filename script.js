@@ -808,3 +808,11 @@ crearBotonAgregarRamoAsistencia()
 );
 
 }
+const infoBtnAsistencia = document.getElementById("infoBtnAsistencia");
+const infoPanelAsistencia = document.getElementById("infoPanelAsistencia");
+
+if(infoBtnAsistencia){
+  infoBtnAsistencia.addEventListener("click", () => {
+    infoPanelAsistencia.classList.toggle("active");
+  });
+}
