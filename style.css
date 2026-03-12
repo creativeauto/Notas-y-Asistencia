@@ -547,3 +547,15 @@ margin-top:3px;
   opacity:0.6;
   transform:scale(1.03);
 }
+.tab-content{
+  display:none;
+  opacity:0;
+  transform:translateX(30px);
+  transition:opacity .35s ease, transform .35s ease;
+}
+
+.tab-content.active{
+  display:block;
+  opacity:1;
+  transform:translateX(0);
+}
