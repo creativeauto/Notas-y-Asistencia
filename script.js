@@ -817,17 +817,17 @@ if(infoBtnAsistencia){
   });
 }
 /* =========================
-   DRAG & DROP MEJORADO
+   DRAG & DROP GRID (tipo Notion)
 ========================= */
 
-activarDragDrop(grid);
-activarDragDrop(asistenciaGrid);
+activarDragGrid(grid);
+activarDragGrid(asistenciaGrid);
 
-function activarDragDrop(container){
+function activarDragGrid(container){
 
 if(!container) return;
 
-let dragged = null;
+let dragging = null;
 
 container.addEventListener("dragstart", e => {
 
@@ -835,16 +835,16 @@ const card = e.target.closest(".card");
 
 if(!card || card.classList.contains("add-ramo-card")) return;
 
-dragged = card;
+dragging = card;
 card.classList.add("dragging");
 
 });
 
 container.addEventListener("dragend", () => {
 
-if(dragged){
-dragged.classList.remove("dragging");
-dragged = null;
+if(dragging){
+dragging.classList.remove("dragging");
+dragging = null;
 
 guardarDatos();
 guardarAsistencia();
@@ -856,35 +856,36 @@ container.addEventListener("dragover", e => {
 
 e.preventDefault();
 
-const after = getCardAfter(container, e.clientY);
-const dragging = container.querySelector(".dragging");
-
 if(!dragging) return;
 
-if(after == null){
-container.appendChild(dragging);
-}else{
-container.insertBefore(dragging, after);
+const afterElement = getClosestCard(container, e.clientX, e.clientY);
+
+if(afterElement){
+container.insertBefore(dragging, afterElement);
 }
 
 });
 
 }
 
-function getCardAfter(container, y){
+function getClosestCard(container, x, y){
 
 const cards = [...container.querySelectorAll(".card:not(.dragging):not(.add-ramo-card)")];
 
 let closest = null;
-let closestOffset = Number.NEGATIVE_INFINITY;
+let closestDistance = Infinity;
 
 cards.forEach(card => {
 
-const box = card.getBoundingClientRect();
-const offset = y - (box.top + box.height/2);
+const rect = card.getBoundingClientRect();
 
-if(offset < 0 && offset > closestOffset){
-closestOffset = offset;
+const cardCenterX = rect.left + rect.width / 2;
+const cardCenterY = rect.top + rect.height / 2;
+
+const distance = Math.hypot(x - cardCenterX, y - cardCenterY);
+
+if(distance < closestDistance){
+closestDistance = distance;
 closest = card;
 }
 
