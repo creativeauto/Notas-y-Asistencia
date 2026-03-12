@@ -18,7 +18,7 @@ actualizarBotonesAgregar();
 function crearRamo(nombre){
   const card = document.createElement("div");
   card.className = "card";
-
+card.draggable = true;
   card.innerHTML = `
     <div class="menu-container">
      <button class="menu-btn">
@@ -558,7 +558,7 @@ function crearRamoAsistencia(nombre){
 
 const card=document.createElement("div");
 card.className="card";
-
+card.draggable = true;
 card.innerHTML=`
 
 <input class="ramo-titulo" value="${nombre}">
@@ -817,19 +817,19 @@ if(infoBtnAsistencia){
   });
 }
 /* =========================
-   ORDENAR TARJETAS (DRAG)
+   DRAG & DROP TARJETAS
 ========================= */
 
-activarDrag(grid);
-activarDrag(asistenciaGrid);
+activarDragDrop(grid);
+activarDragDrop(asistenciaGrid);
 
-function activarDrag(container){
+function activarDragDrop(container){
 
 if(!container) return;
 
 let dragging = null;
 
-container.addEventListener("mousedown", e=>{
+container.addEventListener("dragstart", e => {
 
 const card = e.target.closest(".card");
 
@@ -840,7 +840,7 @@ card.classList.add("dragging");
 
 });
 
-document.addEventListener("mouseup", ()=>{
+container.addEventListener("dragend", () => {
 
 if(dragging){
 dragging.classList.remove("dragging");
@@ -852,33 +852,40 @@ guardarAsistencia();
 
 });
 
-container.addEventListener("mousemove", e=>{
+container.addEventListener("dragover", e => {
 
-if(!dragging) return;
+e.preventDefault();
+
+const afterElement = getDragAfterElement(container, e.clientY);
+const draggingCard = container.querySelector(".dragging");
+
+if(!draggingCard) return;
+
+if(afterElement == null){
+container.appendChild(draggingCard);
+}else{
+container.insertBefore(draggingCard, afterElement);
+}
+
+});
+
+}
+
+function getDragAfterElement(container, y){
 
 const cards = [...container.querySelectorAll(".card:not(.dragging):not(.add-ramo-card)")];
 
-let closest = null;
-let closestOffset = Number.NEGATIVE_INFINITY;
-
-cards.forEach(card=>{
+return cards.reduce((closest, card) => {
 
 const box = card.getBoundingClientRect();
-const offset = e.clientY - box.top - box.height/2;
+const offset = y - box.top - box.height / 2;
 
-if(offset < 0 && offset > closestOffset){
-closestOffset = offset;
-closest = card;
-}
-
-});
-
-if(closest){
-container.insertBefore(dragging, closest);
+if(offset < 0 && offset > closest.offset){
+return { offset: offset, element: card };
 }else{
-container.appendChild(dragging);
+return closest;
 }
 
-});
+}, { offset: Number.NEGATIVE_INFINITY }).element;
 
 }
