@@ -950,3 +950,37 @@ zone.addEventListener("touchend", (e) => {
 }, { passive: true });
 
 });
+/* =========================
+   EFECTO DESLIZAR VISUAL
+========================= */
+
+const contents = document.querySelectorAll(".tab-content");
+
+let dragStartX = 0;
+
+contents.forEach(content => {
+
+content.addEventListener("touchstart", e => {
+
+dragStartX = e.touches[0].clientX;
+content.style.transition = "none";
+
+});
+
+content.addEventListener("touchmove", e => {
+
+const currentX = e.touches[0].clientX;
+const diff = currentX - dragStartX;
+
+content.style.transform = `translateX(${diff}px)`;
+
+});
+
+content.addEventListener("touchend", () => {
+
+content.style.transition = "transform .3s ease";
+content.style.transform = "translateX(0)";
+
+});
+
+});
