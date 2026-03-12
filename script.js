@@ -907,24 +907,28 @@ card.draggable = true;
    SWIPE ENTRE TABS
 ========================= */
 
-let touchStartX = 0;
-let touchStartY = 0;
+let swipeStartX = 0;
+let swipeStartY = 0;
 
-document.addEventListener("touchstart", (e) => {
-  touchStartX = e.touches[0].clientX;
-  touchStartY = e.touches[0].clientY;
+const swipeZones = document.querySelectorAll(".tab-content");
+
+swipeZones.forEach(zone => {
+
+zone.addEventListener("touchstart", (e) => {
+  swipeStartX = e.touches[0].clientX;
+  swipeStartY = e.touches[0].clientY;
 }, { passive: true });
 
-document.addEventListener("touchend", (e) => {
+zone.addEventListener("touchend", (e) => {
 
-  const touchEndX = e.changedTouches[0].clientX;
-  const touchEndY = e.changedTouches[0].clientY;
+  const endX = e.changedTouches[0].clientX;
+  const endY = e.changedTouches[0].clientY;
 
-  const diffX = touchEndX - touchStartX;
-  const diffY = touchEndY - touchStartY;
+  const diffX = endX - swipeStartX;
+  const diffY = endY - swipeStartY;
 
-  if(Math.abs(diffX) < 80) return;              // swipe muy corto
-  if(Math.abs(diffX) < Math.abs(diffY)) return; // era scroll vertical
+  if(Math.abs(diffX) < 80) return;
+  if(Math.abs(diffX) < Math.abs(diffY)) return;
 
   const active = document.querySelector(".tab-btn.active");
   if(!active) return;
@@ -944,3 +948,5 @@ document.addEventListener("touchend", (e) => {
   }
 
 }, { passive: true });
+
+});
