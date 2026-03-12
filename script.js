@@ -817,7 +817,7 @@ if(infoBtnAsistencia){
   });
 }
 /* =========================
-   DRAG & DROP TARJETAS
+   DRAG & DROP MEJORADO
 ========================= */
 
 activarDragDrop(grid);
@@ -827,7 +827,7 @@ function activarDragDrop(container){
 
 if(!container) return;
 
-let dragging = null;
+let dragged = null;
 
 container.addEventListener("dragstart", e => {
 
@@ -835,16 +835,16 @@ const card = e.target.closest(".card");
 
 if(!card || card.classList.contains("add-ramo-card")) return;
 
-dragging = card;
+dragged = card;
 card.classList.add("dragging");
 
 });
 
 container.addEventListener("dragend", () => {
 
-if(dragging){
-dragging.classList.remove("dragging");
-dragging = null;
+if(dragged){
+dragged.classList.remove("dragging");
+dragged = null;
 
 guardarDatos();
 guardarAsistencia();
@@ -856,36 +856,40 @@ container.addEventListener("dragover", e => {
 
 e.preventDefault();
 
-const afterElement = getDragAfterElement(container, e.clientY);
-const draggingCard = container.querySelector(".dragging");
+const after = getCardAfter(container, e.clientY);
+const dragging = container.querySelector(".dragging");
 
-if(!draggingCard) return;
+if(!dragging) return;
 
-if(afterElement == null){
-container.appendChild(draggingCard);
+if(after == null){
+container.appendChild(dragging);
 }else{
-container.insertBefore(draggingCard, afterElement);
+container.insertBefore(dragging, after);
 }
 
 });
 
 }
 
-function getDragAfterElement(container, y){
+function getCardAfter(container, y){
 
 const cards = [...container.querySelectorAll(".card:not(.dragging):not(.add-ramo-card)")];
 
-return cards.reduce((closest, card) => {
+let closest = null;
+let closestOffset = Number.NEGATIVE_INFINITY;
+
+cards.forEach(card => {
 
 const box = card.getBoundingClientRect();
-const offset = y - box.top - box.height / 2;
+const offset = y - (box.top + box.height/2);
 
-if(offset < 0 && offset > closest.offset){
-return { offset: offset, element: card };
-}else{
-return closest;
+if(offset < 0 && offset > closestOffset){
+closestOffset = offset;
+closest = card;
 }
 
-}, { offset: Number.NEGATIVE_INFINITY }).element;
+});
+
+return closest;
 
 }
