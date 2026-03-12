@@ -817,17 +817,17 @@ if(infoBtnAsistencia){
   });
 }
 /* =========================
-   DRAG & DROP GRID (tipo Notion)
+   DRAG ORDEN SIMPLE (GRID)
 ========================= */
 
-activarDragGrid(grid);
-activarDragGrid(asistenciaGrid);
+activarDrag(grid);
+activarDrag(asistenciaGrid);
 
-function activarDragGrid(container){
+function activarDrag(container){
 
 if(!container) return;
 
-let dragging = null;
+let dragged = null;
 
 container.addEventListener("dragstart", e => {
 
@@ -835,16 +835,16 @@ const card = e.target.closest(".card");
 
 if(!card || card.classList.contains("add-ramo-card")) return;
 
-dragging = card;
+dragged = card;
 card.classList.add("dragging");
 
 });
 
 container.addEventListener("dragend", () => {
 
-if(dragging){
-dragging.classList.remove("dragging");
-dragging = null;
+if(dragged){
+dragged.classList.remove("dragging");
+dragged = null;
 
 guardarDatos();
 guardarAsistencia();
@@ -852,45 +852,26 @@ guardarAsistencia();
 
 });
 
-container.addEventListener("dragover", e => {
+container.addEventListener("dragenter", e => {
 
-e.preventDefault();
+const target = e.target.closest(".card");
 
-if(!dragging) return;
+if(!target) return;
+if(!dragged) return;
+if(target === dragged) return;
+if(target.classList.contains("add-ramo-card")) return;
 
-const afterElement = getClosestCard(container, e.clientX, e.clientY);
+const cards = [...container.querySelectorAll(".card:not(.add-ramo-card)")];
 
-if(afterElement){
-container.insertBefore(dragging, afterElement);
+const draggedIndex = cards.indexOf(dragged);
+const targetIndex = cards.indexOf(target);
+
+if(draggedIndex < targetIndex){
+container.insertBefore(dragged, target.nextSibling);
+}else{
+container.insertBefore(dragged, target);
 }
 
 });
-
-}
-
-function getClosestCard(container, x, y){
-
-const cards = [...container.querySelectorAll(".card:not(.dragging):not(.add-ramo-card)")];
-
-let closest = null;
-let closestDistance = Infinity;
-
-cards.forEach(card => {
-
-const rect = card.getBoundingClientRect();
-
-const cardCenterX = rect.left + rect.width / 2;
-const cardCenterY = rect.top + rect.height / 2;
-
-const distance = Math.hypot(x - cardCenterX, y - cardCenterY);
-
-if(distance < closestDistance){
-closestDistance = distance;
-closest = card;
-}
-
-});
-
-return closest;
 
 }
