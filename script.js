@@ -904,48 +904,43 @@ card.draggable = true;
 
 });
 /* =========================
-   CAMBIAR TAB CON SWIPE
+   SWIPE ENTRE TABS
 ========================= */
 
-const tabsContainer = document.querySelector(".tabs-container");
+let touchStartX = 0;
+let touchStartY = 0;
 
-let startX = 0;
-let startY = 0;
+document.addEventListener("touchstart", (e) => {
+  touchStartX = e.touches[0].clientX;
+  touchStartY = e.touches[0].clientY;
+}, { passive: true });
 
-tabsContainer.addEventListener("touchstart", e => {
+document.addEventListener("touchend", (e) => {
 
-startX = e.touches[0].clientX;
-startY = e.touches[0].clientY;
+  const touchEndX = e.changedTouches[0].clientX;
+  const touchEndY = e.changedTouches[0].clientY;
 
-});
+  const diffX = touchEndX - touchStartX;
+  const diffY = touchEndY - touchStartY;
 
-tabsContainer.addEventListener("touchend", e => {
+  if(Math.abs(diffX) < 80) return;              // swipe muy corto
+  if(Math.abs(diffX) < Math.abs(diffY)) return; // era scroll vertical
 
-const endX = e.changedTouches[0].clientX;
-const endY = e.changedTouches[0].clientY;
+  const active = document.querySelector(".tab-btn.active");
+  if(!active) return;
 
-const diffX = endX - startX;
-const diffY = endY - startY;
-
-if(Math.abs(diffX) < 60) return;        // swipe muy corto
-if(Math.abs(diffX) < Math.abs(diffY)) return; // era scroll vertical
-
-const active = document.querySelector(".tab-btn.active");
-
-if(diffX < 0){
-  // swipe izquierda → siguiente tab
-  const next = active.nextElementSibling;
-  if(next && next.classList.contains("tab-btn")){
-    next.click();
+  if(diffX < 0){
+    const next = active.nextElementSibling;
+    if(next && next.classList.contains("tab-btn")){
+      next.click();
+    }
   }
-}
 
-if(diffX > 0){
-  // swipe derecha → tab anterior
-  const prev = active.previousElementSibling;
-  if(prev && prev.classList.contains("tab-btn")){
-    prev.click();
+  if(diffX > 0){
+    const prev = active.previousElementSibling;
+    if(prev && prev.classList.contains("tab-btn")){
+      prev.click();
+    }
   }
-}
 
-});
+}, { passive: true });
