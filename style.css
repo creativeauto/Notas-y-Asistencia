@@ -547,10 +547,3 @@ margin-top:3px;
   opacity:0.6;
   transform:scale(1.03);
 }
-.card{
-  cursor: grab;
-}
-
-.card:active{
-  cursor: grabbing;
-}
