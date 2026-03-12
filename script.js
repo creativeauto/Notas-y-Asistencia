@@ -831,6 +831,11 @@ let dragged = null;
 
 container.addEventListener("dragstart", e => {
 
+if(e.target.closest("input, button, table")) {
+  e.preventDefault();
+  return;
+}
+
 const card = e.target.closest(".card");
 
 if(!card || card.classList.contains("add-ramo-card")) return;
