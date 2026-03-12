@@ -295,6 +295,11 @@ button:hover{
   margin-left:-2px;
   margin-right:-2px;
 }
+.info-extra{
+  margin-top:10px;
+  font-size:12px;
+  color:#666;
+}
 /* ===== RESPONSIVE ===== */
 
 @media (max-width: 1100px){
