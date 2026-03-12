@@ -880,3 +880,26 @@ container.insertBefore(dragged, target);
 });
 
 }
+/* =========================
+   PERMITIR SELECCIONAR TEXTO
+========================= */
+
+document.addEventListener("mousedown", (e)=>{
+
+const card = e.target.closest(".card");
+
+if(!card) return;
+
+if(e.target.closest("input, textarea")){
+card.draggable = false;
+}
+
+});
+
+document.addEventListener("mouseup", ()=>{
+
+document.querySelectorAll(".card").forEach(card=>{
+card.draggable = true;
+});
+
+});
