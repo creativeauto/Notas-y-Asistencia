@@ -563,6 +563,8 @@ if(asistenciaGrid){
       asistenciaGrid.appendChild(crearRamoAsistencia("Ramo "+i));
     }
 
+    guardarAsistencia();
+
   }
 
   actualizarBotonAgregarAsistencia();
