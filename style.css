@@ -1,3 +1,7 @@
+/* =========================
+   BASE
+========================= */
+
 body{
   font-family: "SF Pro", sans-serif;
   background:#f3f4f8;
@@ -11,7 +15,9 @@ h1{
   font-weight:600;
 }
 
-/* ===== GRID ===== */
+/* =========================
+   GRID / LAYOUT
+========================= */
 
 .grid{
   display:grid;
@@ -21,7 +27,9 @@ h1{
   margin:auto;
 }
 
-/* ===== CARD ===== */
+/* =========================
+   TARJETAS
+========================= */
 
 .card{
   background:white;
@@ -42,7 +50,9 @@ h1{
   transform:scale(1.03);
 }
 
-/* ===== MENÚ ===== */
+/* =========================
+   MENÚ TARJETA
+========================= */
 
 .menu-container{
   position:absolute;
@@ -96,7 +106,9 @@ h1{
   color:#be021c;
 }
 
-/* ===== TÍTULO RAMO ===== */
+/* =========================
+   TÍTULO RAMO
+========================= */
 
 .ramo-titulo{
   font-size:16px;
@@ -114,7 +126,9 @@ h1{
   border-bottom:2px solid #be021c;
 }
 
-/* ===== TABLA ===== */
+/* =========================
+   TABLAS
+========================= */
 
 table{
   width:100%;
@@ -153,23 +167,96 @@ th{
   border-bottom:1px solid #eee;
 }
 
-/* calculadora */
+tr:hover td{
+  background:#fafafa;
+}
+
+/* =========================
+   TABLA CALCULADORA
+========================= */
 
 #grid td{
   padding:3px 8px;
   border-bottom:1px solid #eee;
 }
 
-/* asistencia */
+#grid th:nth-child(1), #grid td:nth-child(1){
+  width:55%;
+}
+
+#grid th:nth-child(2), #grid td:nth-child(2){
+  width:15%;
+}
+
+#grid th:nth-child(3), #grid td:nth-child(3){
+  width:15%;
+}
+
+#grid th:nth-child(4), #grid td:nth-child(4){
+  width:15%;
+}
+
+/* =========================
+   TABLA ASISTENCIA
+========================= */
+
+#asistenciaGrid table{ 
+  width:100%; 
+}
 
 #asistenciaGrid td{
   padding:6px 8px;
   border-bottom:1px solid #eee;
 }
 
-tr:hover td{
-  background:#fafafa;
+#asistenciaGrid input[type="number"]{
+  width:100%;
+  box-sizing:border-box;
+  padding:3px;
+  border:1px solid #ccc;
+  border-radius:6px;
+  text-align:center;
 }
+
+#asistenciaGrid input[type="number"],
+#asistenciaGrid input{
+  -webkit-appearance: none;
+  appearance: none;
+  min-height: 24px;
+  line-height: normal;
+}
+
+#asistenciaGrid td{
+  vertical-align: middle;
+}
+
+#asistenciaGrid table{
+  table-layout: fixed;
+}
+
+#asistenciaGrid td{
+  min-width:60px;
+}
+
+#asistenciaGrid input[type="number"]{
+  width:100%;
+  min-width:40px;
+}
+
+.resultado{
+  font-weight:600;
+  text-align:center;
+  display:block;
+}
+
+.faltas-restantes{
+  font-size:12px;
+  margin-top:3px;
+}
+
+/* =========================
+   INPUTS TABLA
+========================= */
 
 .eval-nombre{
   width:120px;
@@ -192,25 +279,9 @@ tr:hover td{
   text-align:center;
 }
 
-/* columnas calculadora */
-
-#grid th:nth-child(1), #grid td:nth-child(1){
-  width:55%;
-}
-
-#grid th:nth-child(2), #grid td:nth-child(2){
-  width:15%;
-}
-
-#grid th:nth-child(3), #grid td:nth-child(3){
-  width:15%;
-}
-
-#grid th:nth-child(4), #grid td:nth-child(4){
-  width:15%;
-}
-
-/* ===== BOTONES ===== */
+/* =========================
+   BOTONES
+========================= */
 
 button{
   margin-top:10px;
@@ -226,7 +297,34 @@ button:hover{
   background:#9e0000;
 }
 
-/* ===== AGREGAR RAMO ===== */
+.delete-btn{
+  background:#be021c;
+  border:none;
+  width:34px;
+  height:34px;
+  border-radius:10px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  transition:0.2s ease;
+  color:white;
+  transform: translateY(-4px);
+}
+
+.delete-btn:hover{
+  background:#9f0016;
+  transform:scale(1.05);
+}
+
+.delete-btn svg{
+  width:16px;
+  height:16px;
+}
+
+/* =========================
+   BOTÓN AGREGAR RAMO
+========================= */
 
 .add-ramo-card{
   display:flex;
@@ -253,7 +351,9 @@ button:hover{
   transform:scale(1.1);
 }
 
-/* ===== HEADER ===== */
+/* =========================
+   HEADER
+========================= */
 
 .header{
   display:flex;
@@ -285,7 +385,9 @@ button:hover{
   margin-left:-2px;
 }
 
-/* ===== INFO PANEL ===== */
+/* =========================
+   PANEL INFORMACIÓN
+========================= */
 
 .info-btn{
   background-color:#f7f5ca;
@@ -301,7 +403,7 @@ button:hover{
 }
 
 .info-btn:hover{
-  transform:scale(1.05);
+  transform: scale(1.05);
   background-color:#eceab8;
 }
 
@@ -346,34 +448,9 @@ button:hover{
   color:#666;
 }
 
-/* ===== DELETE BUTTON ===== */
-
-.delete-btn{
-  background:#be021c;
-  border:none;
-  width:34px;
-  height:34px;
-  border-radius:10px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  cursor:pointer;
-  transition:0.2s ease;
-  color:white;
-  transform: translateY(-4px);
-}
-
-.delete-btn:hover{
-  background:#9f0016;
-  transform:scale(1.05);
-}
-
-.delete-btn svg{
-  width:16px;
-  height:16px;
-}
-
-/* ===== TABS ===== */
+/* =========================
+   TABS
+========================= */
 
 .tabs-container{
   margin-top:0;
@@ -404,16 +481,20 @@ button:hover{
 }
 
 @media (any-hover:hover){
+
   .tab-btn:hover{
     background:#f7f5ca;
     color:#111;
   }
+
 }
 
 @media (hover:none){
+
   .tab-btn{
     background:none !important;
   }
+
 }
 
 .tab-indicator{
@@ -438,54 +519,9 @@ button:hover{
   transform:translateX(0);
 }
 
-/* ===== ASISTENCIA ===== */
-
-#asistenciaGrid table{ 
-  width:100%; 
-}
-
-#asistenciaGrid input[type="number"]{
-  width:100%;
-  box-sizing:border-box;
-  padding:3px;
-  border:1px solid #ccc;
-  border-radius:6px;
-  text-align:center;
-}
-
-.resultado{
-  font-weight:600;
-  text-align:center;
-  display:block;
-}
-
-.faltas-restantes{
-  font-size:12px;
-  margin-top:3px;
-}
-
-#asistenciaGrid input[type="number"],
-#asistenciaGrid input{
-  -webkit-appearance: none;
-  appearance: none;
-  min-height: 24px;
-  line-height: normal;
-}
-
-#asistenciaGrid td{
-  vertical-align: middle;
-  min-width:60px;
-}
-
-#asistenciaGrid table{
-  table-layout: fixed;
-}
-
-#asistenciaGrid input[type="number"]{
-  min-width:40px;
-}
-
-/* ===== FOOTER ===== */
+/* =========================
+   FOOTER
+========================= */
 
 .footer{
   display:flex;
@@ -528,15 +564,20 @@ button:hover{
   color:#111;
 }
 
-/* ===== RESPONSIVE ===== */
+/* =========================
+   RESPONSIVE
+========================= */
 
 @media (max-width:1100px){
+
   .grid{
     grid-template-columns: repeat(2, 1fr);
   }
+
 }
 
 @media (max-width:700px){
+
   .grid{
     grid-template-columns: 1fr;
   }
@@ -548,4 +589,5 @@ button:hover{
   h1{
     font-size:20px;
   }
+
 }
