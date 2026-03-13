@@ -1,7 +1,3 @@
-/* =========================
-   BASE
-========================= */
-
 body{
   font-family: "SF Pro", sans-serif;
   background:#f3f4f8;
@@ -15,9 +11,7 @@ h1{
   font-weight:600;
 }
 
-/* =========================
-   GRID / LAYOUT
-========================= */
+/* ===== GRID ===== */
 
 .grid{
   display:grid;
@@ -27,9 +21,7 @@ h1{
   margin:auto;
 }
 
-/* =========================
-   TARJETAS (RAMOS)
-========================= */
+/* ===== CARD ===== */
 
 .card{
   background:white;
@@ -50,9 +42,7 @@ h1{
   transform:scale(1.03);
 }
 
-/* =========================
-   MENÚ RAMO
-========================= */
+/* ===== MENÚ ===== */
 
 .menu-container{
   position:absolute;
@@ -106,9 +96,7 @@ h1{
   color:#be021c;
 }
 
-/* =========================
-   TITULO RAMO
-========================= */
+/* ===== TÍTULO RAMO ===== */
 
 .ramo-titulo{
   font-size:16px;
@@ -126,9 +114,7 @@ h1{
   border-bottom:2px solid #be021c;
 }
 
-/* =========================
-   TABLAS
-========================= */
+/* ===== TABLA ===== */
 
 table{
   width:100%;
@@ -167,14 +153,14 @@ th{
   border-bottom:1px solid #eee;
 }
 
-/* =========================
-   CELDAS
-========================= */
+/* calculadora */
 
 #grid td{
   padding:3px 8px;
   border-bottom:1px solid #eee;
 }
+
+/* asistencia */
 
 #asistenciaGrid td{
   padding:6px 8px;
@@ -184,10 +170,6 @@ th{
 tr:hover td{
   background:#fafafa;
 }
-
-/* =========================
-   INPUTS
-========================= */
 
 .eval-nombre{
   width:120px;
@@ -210,18 +192,25 @@ tr:hover td{
   text-align:center;
 }
 
-/* =========================
-   DISTRIBUCIÓN COLUMNAS
-========================= */
+/* columnas calculadora */
 
-#grid th:nth-child(1), #grid td:nth-child(1){ width:55%; }
-#grid th:nth-child(2), #grid td:nth-child(2){ width:15%; }
-#grid th:nth-child(3), #grid td:nth-child(3){ width:15%; }
-#grid th:nth-child(4), #grid td:nth-child(4){ width:15%; }
+#grid th:nth-child(1), #grid td:nth-child(1){
+  width:55%;
+}
 
-/* =========================
-   BOTONES
-========================= */
+#grid th:nth-child(2), #grid td:nth-child(2){
+  width:15%;
+}
+
+#grid th:nth-child(3), #grid td:nth-child(3){
+  width:15%;
+}
+
+#grid th:nth-child(4), #grid td:nth-child(4){
+  width:15%;
+}
+
+/* ===== BOTONES ===== */
 
 button{
   margin-top:10px;
@@ -237,9 +226,7 @@ button:hover{
   background:#9e0000;
 }
 
-/* =========================
-   BOTON AGREGAR RAMO
-========================= */
+/* ===== AGREGAR RAMO ===== */
 
 .add-ramo-card{
   display:flex;
@@ -266,9 +253,7 @@ button:hover{
   transform:scale(1.1);
 }
 
-/* =========================
-   HEADER
-========================= */
+/* ===== HEADER ===== */
 
 .header{
   display:flex;
@@ -300,9 +285,7 @@ button:hover{
   margin-left:-2px;
 }
 
-/* =========================
-   BOTON INFO
-========================= */
+/* ===== INFO PANEL ===== */
 
 .info-btn{
   background-color:#f7f5ca;
@@ -335,10 +318,6 @@ button:hover{
   font-weight:bold;
 }
 
-/* =========================
-   PANEL INFO
-========================= */
-
 .info-panel{
   max-height:0;
   overflow:hidden;
@@ -367,9 +346,7 @@ button:hover{
   color:#666;
 }
 
-/* =========================
-   BOTON ELIMINAR
-========================= */
+/* ===== DELETE BUTTON ===== */
 
 .delete-btn{
   background:#be021c;
@@ -383,7 +360,7 @@ button:hover{
   cursor:pointer;
   transition:0.2s ease;
   color:white;
-  transform:translateY(-4px);
+  transform: translateY(-4px);
 }
 
 .delete-btn:hover{
@@ -396,9 +373,7 @@ button:hover{
   height:16px;
 }
 
-/* =========================
-   TABS
-========================= */
+/* ===== TABS ===== */
 
 .tabs-container{
   margin-top:0;
@@ -450,10 +425,6 @@ button:hover{
   transition:all .35s cubic-bezier(.4,0,.2,1);
 }
 
-/* =========================
-   CONTENIDO TABS
-========================= */
-
 .tab-content{
   display:none;
   opacity:0;
@@ -467,32 +438,19 @@ button:hover{
   transform:translateX(0);
 }
 
-/* =========================
-   SISTEMA DE ASISTENCIA
-========================= */
+/* ===== ASISTENCIA ===== */
 
-#asistenciaGrid table{
-  width:100%;
-  table-layout:fixed;
+#asistenciaGrid table{ 
+  width:100%; 
 }
 
-#asistenciaGrid input[type="number"],
-#asistenciaGrid input{
+#asistenciaGrid input[type="number"]{
   width:100%;
   box-sizing:border-box;
   padding:3px;
   border:1px solid #ccc;
   border-radius:6px;
   text-align:center;
-  -webkit-appearance:none;
-  appearance:none;
-  min-height:24px;
-  line-height:normal;
-}
-
-#asistenciaGrid td{
-  vertical-align:middle;
-  min-width:60px;
 }
 
 .resultado{
@@ -506,9 +464,28 @@ button:hover{
   margin-top:3px;
 }
 
-/* =========================
-   FOOTER
-========================= */
+#asistenciaGrid input[type="number"],
+#asistenciaGrid input{
+  -webkit-appearance: none;
+  appearance: none;
+  min-height: 24px;
+  line-height: normal;
+}
+
+#asistenciaGrid td{
+  vertical-align: middle;
+  min-width:60px;
+}
+
+#asistenciaGrid table{
+  table-layout: fixed;
+}
+
+#asistenciaGrid input[type="number"]{
+  min-width:40px;
+}
+
+/* ===== FOOTER ===== */
 
 .footer{
   display:flex;
@@ -551,9 +528,7 @@ button:hover{
   color:#111;
 }
 
-/* =========================
-   RESPONSIVE
-========================= */
+/* ===== RESPONSIVE ===== */
 
 @media (max-width:1100px){
   .grid{
@@ -562,9 +537,8 @@ button:hover{
 }
 
 @media (max-width:700px){
-
   .grid{
-    grid-template-columns:1fr;
+    grid-template-columns: 1fr;
   }
 
   body{
@@ -574,5 +548,4 @@ button:hover{
   h1{
     font-size:20px;
   }
-
 }
