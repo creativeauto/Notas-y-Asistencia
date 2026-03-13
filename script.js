@@ -756,6 +756,8 @@ confirm(`¿Estás seguro de que quieres reiniciar ${nombreRamo}?`);
 
 if(!confirmar) return;
 
+card.querySelector(".ramo-titulo").value = "Ramo";
+
 clases.value="";
 faltas.value="0";
 requerido.value="";
