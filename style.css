@@ -1,3 +1,7 @@
+/* =========================
+   BASE
+========================= */
+
 body{
   font-family: "SF Pro", sans-serif;
   background:#f3f4f8;
@@ -11,6 +15,10 @@ h1{
   font-weight:600;
 }
 
+/* =========================
+   GRID / LAYOUT
+========================= */
+
 .grid{
   display:grid;
   grid-template-columns: repeat(3, 1fr);
@@ -19,6 +27,10 @@ h1{
   margin:auto;
 }
 
+/* =========================
+   TARJETAS (RAMOS)
+========================= */
+
 .card{
   background:white;
   border-radius:18px;
@@ -26,9 +38,21 @@ h1{
   padding:15px;
   position:relative;
   overflow:visible;
+  cursor:grab;
 }
 
-/* ===== MENÚ ===== */
+.card:active{
+  cursor:grabbing;
+}
+
+.dragging{
+  opacity:0.6;
+  transform:scale(1.03);
+}
+
+/* =========================
+   MENÚ RAMO
+========================= */
 
 .menu-container{
   position:absolute;
@@ -82,7 +106,9 @@ h1{
   color:#be021c;
 }
 
-/* ===== TÍTULO ===== */
+/* =========================
+   TITULO RAMO
+========================= */
 
 .ramo-titulo{
   font-size:16px;
@@ -100,7 +126,9 @@ h1{
   border-bottom:2px solid #be021c;
 }
 
-/* ===== TABLA ===== */
+/* =========================
+   TABLAS
+========================= */
 
 table{
   width:100%;
@@ -121,7 +149,7 @@ table::before{
   top:0;
   left:-15px;
   width:calc(100% + 30px);
-  height:38.3px; /* altura de la barra gris */
+  height:38.3px;
   background:#f5f5f7;
   z-index:0;
 }
@@ -129,9 +157,9 @@ table::before{
 th{
   position:relative;
   z-index:1;
-  background:transparent; /* importante */
+  background:transparent;
   color:#555;
-  padding:12px 8px; /* mismo tamaño original */
+  padding:12px 8px;
   font-weight:600;
   text-transform:uppercase;
   font-size:12px;
@@ -139,13 +167,15 @@ th{
   border-bottom:1px solid #eee;
 }
 
-/* SOLO calculadora (notas) */
+/* =========================
+   CELDAS
+========================= */
+
 #grid td{
   padding:3px 8px;
   border-bottom:1px solid #eee;
 }
 
-/* asistencia mantiene el tamaño original */
 #asistenciaGrid td{
   padding:6px 8px;
   border-bottom:1px solid #eee;
@@ -154,6 +184,10 @@ th{
 tr:hover td{
   background:#fafafa;
 }
+
+/* =========================
+   INPUTS
+========================= */
 
 .eval-nombre{
   width:120px;
@@ -176,24 +210,18 @@ tr:hover td{
   text-align:center;
 }
 
-/* distribución de columnas */
-/* SOLO para la calculadora */
-#grid th:nth-child(1), #grid td:nth-child(1){
-  width:55%;
-}
+/* =========================
+   DISTRIBUCIÓN COLUMNAS
+========================= */
 
-#grid th:nth-child(2), #grid td:nth-child(2){
-  width:15%;
-}
+#grid th:nth-child(1), #grid td:nth-child(1){ width:55%; }
+#grid th:nth-child(2), #grid td:nth-child(2){ width:15%; }
+#grid th:nth-child(3), #grid td:nth-child(3){ width:15%; }
+#grid th:nth-child(4), #grid td:nth-child(4){ width:15%; }
 
-#grid th:nth-child(3), #grid td:nth-child(3){
-  width:15%;
-}
-
-#grid th:nth-child(4), #grid td:nth-child(4){
-  width:15%;
-}
-/* ===== BOTONES ===== */
+/* =========================
+   BOTONES
+========================= */
 
 button{
   margin-top:10px;
@@ -209,7 +237,9 @@ button:hover{
   background:#9e0000;
 }
 
-/* ===== BOTONES + RAMO ===== */
+/* =========================
+   BOTON AGREGAR RAMO
+========================= */
 
 .add-ramo-card{
   display:flex;
@@ -235,92 +265,112 @@ button:hover{
   background:#9e0000;
   transform:scale(1.1);
 }
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 20px;
+
+/* =========================
+   HEADER
+========================= */
+
+.header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:25px;
+  padding:10px 20px;
 }
 
-.info-btn {
-  background-color: #f7f5ca;
-  color: white;
-  border: none;
-  padding: 8px 14px;
-  border-radius: 20px;
-  cursor: pointer;
-  font-weight: bold;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-  transition: 0.2s ease;
-   margin-top: -12px; 
+.title-group{
+  display:flex;
+  flex-direction:column;
+  margin-top:18px;
 }
 
-.info-btn:hover {
-  transform: scale(1.05);
-  background-color: #eceab8;
-}
-.info-icon {
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  background: white;
-  color: #be021c;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 12px;
-  font-weight: bold;
+.title-group h1{
+  font-size:27px;
+  font-weight:700;
+  margin:0;
+  margin-left:-10px;
+  letter-spacing:-0.5px;
+  color:#111;
 }
 
-.info-panel {
-  max-height: 0;
-  overflow: hidden;
-  background: #f9f9f9;
-  padding: 0 20px;
-  transition: max-height 0.4s ease;
-  border-bottom: 1px solid #ddd;
+.subtitle{
+  font-size:14px;
+  color:#6b7280;
+  margin-top:4px;
+  margin-left:-2px;
 }
-.info-panel.active {
-  max-height: 300px;
-  padding: 15px 20px;
+
+/* =========================
+   BOTON INFO
+========================= */
+
+.info-btn{
+  background-color:#f7f5ca;
+  color:white;
+  border:none;
+  padding:8px 14px;
+  border-radius:20px;
+  cursor:pointer;
+  font-weight:bold;
+  box-shadow:0 4px 10px rgba(0,0,0,0.15);
+  transition:0.2s ease;
+  margin-top:-12px;
 }
-.info-panel {
-  font-size: 13px;
+
+.info-btn:hover{
+  transform:scale(1.05);
+  background-color:#eceab8;
 }
-.info-panel ul {
-  margin-top: 5px;
-  padding-left: 18px;
+
+.info-icon{
+  width:18px;
+  height:18px;
+  border-radius:50%;
+  background:white;
+  color:#be021c;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:12px;
+  font-weight:bold;
 }
+
+/* =========================
+   PANEL INFO
+========================= */
+
 .info-panel{
+  max-height:0;
+  overflow:hidden;
+  background:#f9f9f9;
+  padding:0 20px;
+  transition:max-height 0.4s ease;
+  border-bottom:1px solid #ddd;
+  font-size:13px;
   margin-left:-2px;
   margin-right:-2px;
 }
+
+.info-panel.active{
+  max-height:300px;
+  padding:15px 20px;
+}
+
+.info-panel ul{
+  margin-top:5px;
+  padding-left:18px;
+}
+
 .info-extra{
   margin-top:10px;
   font-size:12px;
   color:#666;
 }
-/* ===== RESPONSIVE ===== */
 
-@media (max-width: 1100px){
-  .grid{
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
+/* =========================
+   BOTON ELIMINAR
+========================= */
 
-@media (max-width: 700px){
-  .grid{
-    grid-template-columns: 1fr;
-  }
-
-  body{
-    padding:15px;
-  }
-
-  h1{
-    font-size:20px;
-  }
-}
 .delete-btn{
   background:#be021c;
   border:none;
@@ -333,7 +383,7 @@ button:hover{
   cursor:pointer;
   transition:0.2s ease;
   color:white;
-  transform: translateY(-4px);
+  transform:translateY(-4px);
 }
 
 .delete-btn:hover{
@@ -346,7 +396,9 @@ button:hover{
   height:16px;
 }
 
-/* ===== TABS ===== */
+/* =========================
+   TABS
+========================= */
 
 .tabs-container{
   margin-top:0;
@@ -372,31 +424,23 @@ button:hover{
   transition:color .25s ease, background .25s ease;
 }
 
-/* TAB ACTIVA */
 .tab-btn.active{
   color:#111;
 }
 
-/* EFECTOS SOLO EN COMPUTADOR */
 @media (any-hover:hover){
-
   .tab-btn:hover{
     background:#f7f5ca;
     color:#111;
   }
-
 }
 
-/* CELULAR */
 @media (hover:none){
-
   .tab-btn{
     background:none !important;
   }
-
 }
 
-/* LINEA DESLIZANTE */
 .tab-indicator{
   position:absolute;
   bottom:-1px;
@@ -406,67 +450,66 @@ button:hover{
   transition:all .35s cubic-bezier(.4,0,.2,1);
 }
 
-/* CONTENIDO */
+/* =========================
+   CONTENIDO TABS
+========================= */
 
 .tab-content{
   display:none;
+  opacity:0;
+  transform:translateX(30px);
+  transition:opacity .35s ease, transform .35s ease;
 }
 
 .tab-content.active{
   display:block;
+  opacity:1;
+  transform:translateX(0);
 }
+
 /* =========================
    SISTEMA DE ASISTENCIA
 ========================= */
-#asistenciaGrid table{ 
-  width:100%; 
+
+#asistenciaGrid table{
+  width:100%;
+  table-layout:fixed;
 }
-#asistenciaGrid input[type="number"]{
+
+#asistenciaGrid input[type="number"],
+#asistenciaGrid input{
   width:100%;
   box-sizing:border-box;
   padding:3px;
   border:1px solid #ccc;
   border-radius:6px;
   text-align:center;
+  -webkit-appearance:none;
+  appearance:none;
+  min-height:24px;
+  line-height:normal;
 }
+
+#asistenciaGrid td{
+  vertical-align:middle;
+  min-width:60px;
+}
+
 .resultado{
   font-weight:600;
   text-align:center;
   display:block;
 }
+
 .faltas-restantes{
-font-size:12px;
-margin-top:3px;
-}
-/* ===== FIX SAFARI iOS INPUTS EN TABLAS ===== */
-
-#asistenciaGrid input[type="number"],
-#asistenciaGrid input{
-  -webkit-appearance: none;
-  appearance: none;
-  min-height: 24px;
-  line-height: normal;
+  font-size:12px;
+  margin-top:3px;
 }
 
-/* evita que safari colapse celdas */
-#asistenciaGrid td{
-  vertical-align: middle;
-}
+/* =========================
+   FOOTER
+========================= */
 
-/* ===== FIX EXTRA iOS TABLAS ===== */
-
-#asistenciaGrid table{
-  table-layout: fixed;
-}
-
-#asistenciaGrid td{
-  min-width:60px;
-}
-
-#asistenciaGrid input[type="number"]{
-  width:100%;
-  min-width:40px;
-}
 .footer{
   display:flex;
   justify-content:space-between;
@@ -487,6 +530,7 @@ margin-top:3px;
 .footer a:hover{
   text-decoration:underline;
 }
+
 .ig-link{
   display:flex;
   align-items:center;
@@ -506,56 +550,29 @@ margin-top:3px;
 .ig-link:hover{
   color:#111;
 }
-.header{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin-bottom:25px;
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width:1100px){
+  .grid{
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
-.title-group{
-  display:flex;
-  flex-direction:column;
-  margin-top:18px;
-}
+@media (max-width:700px){
 
-.title-group h1{
-  font-size:27px;
-  font-weight:700;
-  margin:0;
-  margin-left:-10px;
-  letter-spacing:-0.5px;
-  color:#111;
-}
+  .grid{
+    grid-template-columns:1fr;
+  }
 
-.subtitle{
-  font-size:14px;
-  color:#6b7280;
-  margin-top:4px;
-  margin-left:-2px;
-}
+  body{
+    padding:15px;
+  }
 
-.card{
-  cursor:grab;
-}
+  h1{
+    font-size:20px;
+  }
 
-.card:active{
-  cursor:grabbing;
-}
-
-.dragging{
-  opacity:0.6;
-  transform:scale(1.03);
-}
-.tab-content{
-  display:none;
-  opacity:0;
-  transform:translateX(30px);
-  transition:opacity .35s ease, transform .35s ease;
-}
-
-.tab-content.active{
-  display:block;
-  opacity:1;
-  transform:translateX(0);
 }
