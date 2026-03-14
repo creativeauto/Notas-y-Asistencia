@@ -912,7 +912,7 @@ let dragged = null;
 
 container.addEventListener("dragstart", e => {
 
-if(e.target.closest("input, button, table")) {
+if(e.target.closest("input, button")) {
   e.preventDefault();
   return;
 }
